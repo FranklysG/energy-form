@@ -109,29 +109,11 @@ select::after {
   width: calc(100% - 100px);
   height: 5px;
   background-color: #1e2329;
-  /* background-color: #46bf34; */
 
   position: absolute;
   top: 25px;
   left: calc(100% - 460px);
   z-index: 0;
-}
-
-.content__left .content_left-header .content_left-header-step > input {
-  width: 100px;
-  height: 100px;
-  opacity: 0;
-  position: absolute;
-  margin: 0;
-  padding: 0;
-}
-
-.content__left
-  .content_left-header
-  .content_left-header-step
-  > input:checked
-  + div {
-  background-color: aqua;
 }
 
 /* END - HEADER STEP */
@@ -143,6 +125,7 @@ select::after {
 }
 
 .content__left-form .content__left-form-button {
+  background: #f5f5f5;
   cursor: pointer;
   border: 1px solid #f1f1f1;
   margin-right: 10px;
@@ -151,18 +134,55 @@ select::after {
   position: relative;
   text-align: center;
   max-width: 125px;
-  width: calc((100% - 45px) / 3);
+  width: calc((100% - -250px) / 3);
   color: #54595f;
 }
 
+.content__left-form .content__left-form-button > input {
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  left: 0;
+}
+
+.content__left-form
+  .content__left-form-button
+  > input:checked
+  + .content__left-form-button-overlay
+  .content__left-form-button-light {
+  background-color: #87c232;
+}
+
+.content__left-form
+  .content__left-form-button
+  > input:checked
+  + .content__left-form-button-overlay {
+  background-color: #1e2329;
+  border-color: #1e2329;
+  color: #fff;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0;
+  border-radius: 5px;
+  padding-top: 20px;
+  margin: 0;
+}
+
 .content__left-form .content__left-form-button:hover {
-  background-color: #1e2329 !important;
+  background-color: #1e2329;
   border-color: #1e2329;
   color: #fff;
 }
 
 .content__left-form .content__left-form-button-light {
-  background-color: #87c232 !important;
+  background-color: none;
   border-radius: 50%;
   display: block;
   /* visibility: hidden; */
@@ -174,7 +194,7 @@ select::after {
 }
 
 .content__left-form .content__left-form-button-img {
-  background-color: #ffffff !important;
+  background-color: #ffffff;
   border-radius: 50%;
   height: 75px;
   margin: 10px auto 20px auto;
@@ -189,7 +209,7 @@ select::after {
 .content__left-form .content__left-form-button-label {
   display: block;
   font-size: 95%;
-  min-height: 30px;
+  min-height: 40px;
   width: 100%;
 }
 
@@ -247,7 +267,7 @@ select::after {
 }
 
 .content__left-form-select-accept > label {
-  min-height: 0px !important;
+  min-height: 0px;
 }
 
 /* START - FORM TWO */
@@ -275,10 +295,10 @@ select::after {
 
 .content__left-form-next-step {
   cursor: pointer;
-  background-color: #87c232 !important;
-  border: 1px solid #87c232 !important;
-  color: #fff;
-  float: right;
+  background-color: #87c232;
+  border: 1px solid #87c232;
+  display: flex;
+  justify-content: center;
   width: 100%;
   font-weight: 700;
   line-height: 30px;
@@ -293,7 +313,7 @@ select::after {
 
 .content__left-form-prev-step {
   cursor: pointer;
-  background-color: #ffffff !important;
+  background-color: #ffffff;
   border: 1px solid #87c232;
   color: #87c232;
   width: 100%;

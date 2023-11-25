@@ -14,21 +14,18 @@
         <div class="content__left">
           <div class="content_left-header">
             <div class="content_left-header-step">
-              <input type="checkbox" name="check" />
               <div>
                 <span>01</span>
                 <label>Samenstellen</label>
               </div>
             </div>
             <div class="content_left-header-step">
-              <input type="checkbox" name="check" />
               <div>
                 <span>02</span>
                 <label>Invullen</label>
               </div>
             </div>
             <div class="content_left-header-step">
-              <input type="checkbox" name="check" />
               <div>
                 <span>03</span>
                 <label>Controleren</label>
@@ -43,165 +40,224 @@
                 <h3 class="content__left-form-title">
                   Ben je zakelijk of particulier?
                 </h3>
-                <button class="content__left-form-button">
-                  <span class="content__left-form-button-light"></span>
-                  <div class="content__left-form-button-img">
-                    <img src="/assets/businnes.png" alt="" />
+                <div style="display: flex">
+                  <div class="content__left-form-button">
+                    <input type="radio" name="zakelijk-of-particulier" />
+                    <div class="content__left-form-button-overlay">
+                      <span class="content__left-form-button-light"></span>
+                      <div class="content__left-form-button-img">
+                        <img src="/assets/businnes.png" alt="" />
+                      </div>
+                      <label class="content__left-form-button-label"
+                        >Zakelijk</label
+                      >
+                    </div>
                   </div>
-                  <label class="content__left-form-button-label"
-                    >Zakelijk</label
-                  >
-                </button>
-                <button class="content__left-form-button">
-                  <span class="content__left-form-button-light"></span>
-                  <div class="content__left-form-button-img">
-                    <img src="/assets/house.png" alt="" />
+                  <div class="content__left-form-button">
+                    <input type="radio" name="zakelijk-of-particulier" />
+                    <div class="content__left-form-button-overlay">
+                      <span class="content__left-form-button-light"></span>
+                      <div class="content__left-form-button-img">
+                        <img src="/assets/house.png" alt="" />
+                      </div>
+                      <label class="content__left-form-button-label"
+                        >Particulier</label
+                      >
+                    </div>
                   </div>
-                  <label class="content__left-form-button-label"
-                    >Particulier</label
-                  >
-                </button>
+                </div>
               </div>
               <div>
                 <h3 class="content__left-form-title">Kies je energieproduct</h3>
-                <button class="content__left-form-button">
-                  <span class="content__left-form-button-light"></span>
-                  <div class="content__left-form-button-img">
-                    <img src="/assets/energy.png" alt="" />
+                <div style="display: flex">
+                  <div class="content__left-form-button">
+                    <input type="radio" name="electriciteit-of-gas" />
+                    <div class="content__left-form-button-overlay">
+                      <span class="content__left-form-button-light"></span>
+                      <div class="content__left-form-button-img">
+                        <img src="/assets/energy.png" alt="" />
+                      </div>
+                      <label class="content__left-form-button-label"
+                        >Electriciteit</label
+                      >
+                    </div>
                   </div>
-                  <label class="content__left-form-button-label"
-                    >Electriciteit</label
-                  >
-                </button>
-                <button class="content__left-form-button">
-                  <span class="content__left-form-button-light"></span>
-                  <div class="content__left-form-button-img">
-                    <img src="/assets/gas.png" alt="" />
+                  <div class="content__left-form-button">
+                    <input type="radio" name="electriciteit-of-gas" />
+                    <div class="content__left-form-button-overlay">
+                      <span class="content__left-form-button-light"></span>
+                      <div class="content__left-form-button-img">
+                        <img src="/assets/gas.png" alt="" />
+                      </div>
+                      <label class="content__left-form-button-label">Gas</label>
+                    </div>
                   </div>
-                  <label class="content__left-form-button-label">Gas</label>
-                </button>
-                <button class="content__left-form-button">
-                  <span class="content__left-form-button-light"></span>
-                  <div class="content__left-form-button-img">
-                    <img src="/assets/energy-gas.png" alt="" />
+                  <div class="content__left-form-button">
+                    <input type="radio" name="electriciteit-of-gas" />
+                    <div class="content__left-form-button-overlay">
+                      <span class="content__left-form-button-light"></span>
+                      <div class="content__left-form-button-img">
+                        <img src="/assets/energy-gas.png" alt="" />
+                      </div>
+                      <label class="content__left-form-button-label"
+                        >Electriciteit & Gas</label
+                      >
+                    </div>
                   </div>
-                  <label class="content__left-form-button-label"
-                    >Electriciteit & Gas</label
-                  >
-                </button>
+                </div>
               </div>
               <div>
                 <h3 class="content__left-form-title">
                   Heb je een slimme meter?
                 </h3>
-                <button class="content__left-form-button">
-                  <span class="content__left-form-button-light"></span>
-                  <label class="content__left-form-button-label">Ja</label>
-                </button>
-                <button class="content__left-form-button">
-                  <span class="content__left-form-button-light"></span>
-                  <label class="content__left-form-button-label">Nee</label>
-                </button>
+                <div style="display: flex">
+                  <div class="content__left-form-button">
+                    <input type="radio" name="ja-nee" />
+                    <div class="content__left-form-button-overlay">
+                      <span class="content__left-form-button-light"></span>
+                      <label class="content__left-form-button-label">Ja</label>
+                    </div>
+                  </div>
+                  <div class="content__left-form-button">
+                    <input type="radio" name="ja-nee" />
+                    <div class="content__left-form-button-overlay">
+                      <span class="content__left-form-button-light"></span>
+                      <label class="content__left-form-button-label">Nee</label>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div>
                 <h3 class="content__left-form-title">Mijn energieverbruik</h3>
-                <button
-                  class="content__left-form-button"
-                  style="max-width: none"
-                >
-                  <span class="content__left-form-button-light"></span>
-                  <label class="content__left-form-button-label"
-                    >Ik weet mijn verbruik</label
+                <div style="display: flex">
+                  <div
+                    class="content__left-form-button"
+                    style="max-width: none"
                   >
-                </button>
-                <button
-                  class="content__left-form-button"
-                  style="max-width: none"
-                >
-                  <span class="content__left-form-button-light"></span>
-                  <label class="content__left-form-button-label"
-                    >Help mij schatten</label
+                    <input type="radio" name="energieverbruik" />
+                    <div class="content__left-form-button-overlay">
+                      <span class="content__left-form-button-light"></span>
+                      <label class="content__left-form-button-label"
+                        >Ik weet mijn verbruik</label
+                      >
+                    </div>
+                  </div>
+                  <div
+                    class="content__left-form-button"
+                    style="max-width: none"
                   >
-                </button>
+                    <input type="radio" name="energieverbruik" />
+                    <div class="content__left-form-button-overlay">
+                      <span class="content__left-form-button-light"></span>
+                      <label class="content__left-form-button-label"
+                        >Help mij schatten</label
+                      >
+                    </div>
+                  </div>
+                </div>
               </div>
               <div>
                 <h3 class="content__left-form-title">Mijn type woning</h3>
                 <div style="display: flex">
-                  <button class="content__left-form-button">
-                    <span class="content__left-form-button-light"></span>
-                    <div class="content__left-form-button-img">
-                      <img src="/assets/house-four.png" alt="" />
+                  <div class="content__left-form-button">
+                    <input type="radio" name="woning" />
+                    <div class="content__left-form-button-overlay">
+                      <span class="content__left-form-button-light"></span>
+                      <div class="content__left-form-button-img">
+                        <img src="/assets/house-four.png" alt="" />
+                      </div>
+                      <label class="content__left-form-button-label"
+                        >Appartement</label
+                      >
                     </div>
-                    <label class="content__left-form-button-label"
-                      >Appartement</label
-                    >
-                  </button>
-                  <button class="content__left-form-button">
-                    <span class="content__left-form-button-light"></span>
-                    <div class="content__left-form-button-img">
-                      <img src="/assets/house-three.png" alt="" />
+                  </div>
+                  <div class="content__left-form-button">
+                    <input type="radio" name="woning" />
+                    <div class="content__left-form-button-overlay">
+                      <span class="content__left-form-button-light"></span>
+                      <div class="content__left-form-button-img">
+                        <img src="/assets/house-three.png" alt="" />
+                      </div>
+                      <label class="content__left-form-button-label"
+                        >Tussenwoning</label
+                      >
                     </div>
-                    <label class="content__left-form-button-label"
-                      >Tussenwoning</label
-                    >
-                  </button>
-                  <button class="content__left-form-button">
-                    <span class="content__left-form-button-light"></span>
-                    <div class="content__left-form-button-img">
-                      <img src="/assets/house-three.png" alt="" />
+                  </div>
+                  <div class="content__left-form-button">
+                    <input type="radio" name="woning" />
+                    <div class="content__left-form-button-overlay">
+                      <span class="content__left-form-button-light"></span>
+                      <div class="content__left-form-button-img">
+                        <img src="/assets/house-three.png" alt="" />
+                      </div>
+                      <label class="content__left-form-button-label"
+                        >Hoekwoning</label
+                      >
                     </div>
-                    <label class="content__left-form-button-label"
-                      >Hoekwoning</label
-                    >
-                  </button>
-                  <button class="content__left-form-button">
-                    <span class="content__left-form-button-light"></span>
-                    <div class="content__left-form-button-img">
-                      <img src="/assets/house-two.png" alt="" />
+                  </div>
+                  <div class="content__left-form-button">
+                    <input type="radio" name="woning" />
+                    <div class="content__left-form-button-overlay">
+                      <span class="content__left-form-button-light"></span>
+                      <div class="content__left-form-button-img">
+                        <img src="/assets/house-two.png" alt="" />
+                      </div>
+                      <label class="content__left-form-button-label"
+                        >Vrijstaand</label
+                      >
                     </div>
-                    <label class="content__left-form-button-label"
-                      >Vrijstaand</label
-                    >
-                  </button>
+                  </div>
                 </div>
                 <h3 class="content__left-form-title">Aantal personen</h3>
                 <div style="display: flex">
-                  <button class="content__left-form-button">
-                    <span class="content__left-form-button-light"></span>
-                    <div class="content__left-form-button-img">
-                      <img src="/assets/1-personen.png" alt="" />
+                  <div class="content__left-form-button">
+                    <input type="radio" name="personen" />
+                    <div class="content__left-form-button-overlay">
+                      <span class="content__left-form-button-light"></span>
+                      <div class="content__left-form-button-img">
+                        <img src="/assets/1-personen.png" alt="" />
+                      </div>
+                      <label class="content__left-form-button-label"
+                        >1 Persoon</label
+                      >
                     </div>
-                    <label class="content__left-form-button-label"
-                      >1 Persoon</label
-                    >
-                  </button>
-                  <button class="content__left-form-button">
-                    <span class="content__left-form-button-light"></span>
-                    <div class="content__left-form-button-img">
-                      <img src="/assets/2-personen.png" alt="" />
+                  </div>
+                  <div class="content__left-form-button">
+                    <input type="radio" name="personen" />
+                    <div class="content__left-form-button-overlay">
+                      <span class="content__left-form-button-light"></span>
+                      <div class="content__left-form-button-img">
+                        <img src="/assets/2-personen.png" alt="" />
+                      </div>
+                      <label class="content__left-form-button-label"
+                        >2 Persoon</label
+                      >
                     </div>
-                    <label class="content__left-form-button-label"
-                      >2 Persoon</label
-                    >
-                  </button>
-                  <button class="content__left-form-button">
-                    <span class="content__left-form-button-light"></span>
-                    <div class="content__left-form-button-img">
-                      <img src="/assets/4-personen.png" alt="" />
+                  </div>
+                  <div class="content__left-form-button">
+                    <input type="radio" name="personen" />
+                    <div class="content__left-form-button-overlay">
+                      <span class="content__left-form-button-light"></span>
+                      <div class="content__left-form-button-img">
+                        <img src="/assets/4-personen.png" alt="" />
+                      </div>
+                      <label class="content__left-form-button-label"
+                        >3-4 Persoon</label
+                      >
                     </div>
-                    <label class="content__left-form-button-label"
-                      >3-4 Persoon</label
-                    >
-                  </button>
-                  <button class="content__left-form-button">
-                    <span class="content__left-form-button-light"></span>
-                    <div class="content__left-form-button-img">
-                      <img src="/assets/5-personen.png" alt="" />
+                  </div>
+                  <div class="content__left-form-button">
+                    <input type="radio" name="personen" />
+                    <div class="content__left-form-button-overlay">
+                      <span class="content__left-form-button-light"></span>
+                      <div class="content__left-form-button-img">
+                        <img src="/assets/5-personen.png" alt="" />
+                      </div>
+                      <label class="content__left-form-button-label"
+                        >5-6 Persoon</label
+                      >
                     </div>
-                    <label class="content__left-form-button-label"
-                      >5-6 Persoon</label
-                    >
-                  </button>
+                  </div>
                 </div>
               </div>
               <div>
@@ -255,7 +311,7 @@
                       value="1"
                     />
                     <label class="content__left-form-button-label"
-                      >Ik heb zonnepanelen</label
+                      style="min-height: 0px;">Ik heb zonnepanelen</label
                     >
                   </div>
                   <div>
@@ -292,9 +348,9 @@
                   >Controleer je gegevens en bevestig je aanvraag.
                 </div>
               </div>
-              <button class="content__left-form-next-step" onclick="nextTwo()">
+              <div class="content__left-form-next-step" onclick="nextTwo()">
                 Gegevens invullen
-              </button>
+              </div>
             </div>
             <div id="step-two" style="display: none">
               <h2>Vul je gegevens in</h2>
@@ -521,9 +577,9 @@
               >
                 Gegevens invullen
               </button>
-              <button class="content__left-form-prev-step" onclick="prevOne()">
+              <div class="content__left-form-prev-step" onclick="prevOne()">
                 Terug naar aanbod samenstellen
-              </button>
+              </div>
             </div>
             <div id="step-three" style="display: none">
               <h2>Controleer je gegevens</h2>
@@ -650,12 +706,10 @@
                   >Controleer je gegevens en bevestig je aanvraag.
                 </div>
               </div>
-              <button class="content__left-form-next-step">
-                Gegevens invullen
-              </button>
-              <button class="content__left-form-prev-step" onclick="prevTwo()">
+              <div class="content__left-form-next-step">Gegevens invullen</div>
+              <div class="content__left-form-prev-step" onclick="prevTwo()">
                 Terug naar aanbod samenstellen
-              </button>
+              </div>
             </div>
           </form>
         </div>
@@ -666,5 +720,6 @@
     <script src="https://cdn.jsdelivr.net/npm/signature_pad@3.0.0-beta.3/dist/signature_pad.min.js"></script>
     <script src="signed.js"></script>
     <script src="script.js"></script>
+    <script src="api.js"></script>
   </body>
 </html>
