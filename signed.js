@@ -42,7 +42,7 @@ var signaturePad = new SignaturePad(document.getElementById("signature-pad"), {
 var saveButton = document.getElementById("save");
 var cancelButton = document.getElementById("clear");
 
-saveButton.addEventListener("click", function (event) {
+saveButton?.addEventListener("click", function (event) {
   if (signaturePad.isEmpty()) {
     alert("Faça sua assinatura.");
   } else {
@@ -53,6 +53,6 @@ saveButton.addEventListener("click", function (event) {
   }
 });
 
-cancelButton.addEventListener("click", function (event) {
+cancelButton?.addEventListener("click", function (event) {
   signaturePad.clear();
 });
