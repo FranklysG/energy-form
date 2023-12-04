@@ -5,721 +5,818 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="style-mob.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#87C232",
+              black: "#1E2329",
+              gray_light: "#f8f8f8",
+            },
+          },
+        },
+      };
+    </script>
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .content-auto {
+          content-visibility: auto;
+        }
+
+        .container {
+          @apply max-w-6xl mx-auto;
+        }
+
+        .title {
+          @apply text-black text-3xl font-semibold;
+        }
+
+        .label {
+          @apply text-black text-base font-semibold mb-5;
+        }
+
+        .box {
+          @apply bg-gray_light;
+        }
+
+      
+        .step-li {
+          @apply flex w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-black after:border-4 after:inline-block dark:after:border-black;
+        }
+
+        .step-li.active {
+          @apply flex w-full items-center text-primary dark:text-primary after:content-[''] after:w-full after:h-1 after:border-b after:border-primary after:border-4 after:inline-block dark:after:border-primary;
+        }
+
+        .steps li.active span {
+          @apply bg-primary;
+        }
+
+        .steps li.active p {
+          @apply text-primary;
+        }
+
+
+        .divider {
+          @apply border-t border-[#ccc];
+        }
+
+        .card {
+          @apply bg-gray_light text-black after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3  after:rounded-full after:bg-gray_light rounded-md relative p-4 px-2  cursor-pointer hover:bg-black hover:text-white hover:after:bg-primary;
+        }
+
+        .card.active {
+          @apply text-white bg-black after:bg-primary;
+        }
+
+        .card.retangle {
+          @apply w-32 h-44 flex items-center flex-col justify-center gap-5  text-center;
+        }
+
+        .field-label {
+          @apply text-[0.844rem] leading-7 text-[#4b4f58];
+        }
+
+        .field {
+          @apply w-full h-[2.813rem] bg-[#fafafa] text-black placeholder:text-gray-400 text-base border border-[#e5e5e5] rounded-[0.125rem] pl-4;
+        }
+
+        .button {
+          @apply w-full h-12 bg-primary text-center text-white hover:text-black mt-5 uppercase font-bold;
+        }
+
+        .message-error {
+          @apply bg-[#f40] text-base p-3 text-white text-center mt-4;
+        }
+      }
+    </style>
   </head>
   <body>
-    <header></header>
-    <main>
-      <div class="content">
-        <div class="content__left">
-          <div class="content_left-header">
-            <div class="content_left-header-step">
-              <div>
-                <span>01</span>
-                <label>Samenstellen</label>
+    <main class="pt-10 flex flex-col container pb-20">
+      <div class="w-full h-40 box flex items-center">
+        <div class="w-full max-w-sm lg:max-w-md mx-auto my-auto px-5">
+          <ol class="steps flex items-center w-full h-fit">
+            <li class="step-li active relative">
+              <span
+                class="flex items-center justify-center w-10 h-10 bg-primary rounded-full lg:h-12 lg:w-12 dark:bg-primary shrink-0 text-white"
+              >
+                01
+                <!-- <svg class="w-3.5 h-3.5 text-primary lg:w-4 lg:h-4 dark:text-primary" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                    </svg> -->
+              </span>
+              <p class="absolute top-14 left-0 lg:-left-8">Samenstellen</p>
+            </li>
+            <li class="step-li relative">
+              <span
+                class="flex items-center justify-center w-10 h-10 bg-black rounded-full lg:h-12 lg:w-12 dark:bg-black shrink-0 text-white"
+              >
+                02
+              </span>
+              <p class="absolute top-14 -left-3">Invullen</p>
+            </li>
+            <li class="flex items-center w-fit relative">
+              <span
+                class="flex items-center justify-center w-10 h-10 bg-black rounded-full lg:h-12 lg:w-12 dark:bg-black shrink-0 text-white"
+              >
+                03
+              </span>
+              <p class="absolute top-14 -left-16 lg:-left-5">Samenstellen</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+      <div class="px-3 xl:px-0 grid grid-cols-1 lg:grid-cols-2 gap-4 mt-12">
+        <form class="">
+          <div class="step step-one  flex flex-col gap-10">
+            <h2 class="title my-12 mt-0">Stel je aanbod samen</h2>
+            <div>
+              <h3 class="label">Ben je zakelijk of particulier?</h3>
+              <div class="flex flex-wrap gap-3">
+                <label for="Zakelijk" class="card retangle active">
+                  <input id="Zakelijk" checked type="radio" name="zakelijk-of-particulier" hidden onclick="setCardActive(this)"  />
+                  <div class="bg-white w-[4.688rem] h-[4.688rem] rounded-full flex items-center justify-center">
+                    <img class="w-14 h-14 object-cover" src="/assets/house-four.png" alt="build" />
+                  </div>
+                  <p class="text-xs">Zakelijk</p>
+                </label>
+                
+                <label for="Particulier" class="card retangle">
+                  <input id="Particulier" type="radio" name="zakelijk-of-particulier" hidden onclick="setCardActive(this)"/>
+                  <div class="bg-white w-[4.688rem] h-[4.688rem] rounded-full flex items-center justify-center">
+                    <img class="w-14 h-14 object-cover" src="/assets/house.png" alt="house" />
+                  </div>
+                  <p class="text-xs">Particulier</p>
+                </label>
               </div>
             </div>
-            <div class="content_left-header-step">
-              <div>
-                <span>02</span>
-                <label>Invullen</label>
+            <div class="divider"></div>
+            <div>
+              <h3 class="label">Kies je energieproduct</h3>
+              <div class="flex flex-wrap gap-3">
+                <label id="Electriciteit" class="card active retangle">
+                  <input id="Electriciteit" checked type="radio" name="electriciteit-of-gas" hidden onclick="setCardActive(this)"  />
+                  <div
+                    class="bg-white w-[4.688rem] h-[4.688rem] rounded-full flex items-center justify-center"
+                  >
+                    <img
+                      class="w-14 h-14 object-cover"
+                      src="/assets/energy.png"
+                      alt="build"
+                    />
+                  </div>
+                  <p class="text-white text-xs">Electriciteit</p>
+                </label>
+                <label for="Gas" class="card retangle">
+                  <input id="Gas" type="radio" name="electriciteit-of-gas" hidden onclick="setCardActive(this)"  />
+                  <div
+                    class="bg-white w-[4.688rem] h-[4.688rem] rounded-full flex items-center justify-center"
+                  >
+                    <img
+                      class="w-14 h-14 object-cover"
+                      src="/assets/gas.png"
+                      alt="house"
+                    />
+                  </div>
+                  <p class="text-xs">Gas</p>
+                </label>
+                <label for="Electriciteit-Gas" class="card retangle">
+                  <input id="Electriciteit-Gas" type="radio" name="electriciteit-of-gas" hidden onclick="setCardActive(this)"  />
+                  <div
+                    class="bg-white w-[4.688rem] h-[4.688rem] rounded-full flex items-center justify-center"
+                  >
+                    <img
+                      class="w-14 h-14 object-cover"
+                      src="/assets/energy-gas.png"
+                      alt="house"
+                    />
+                  </div>
+                  <p class="text-xs">Electriciteit & Gas</p>
+                </label>
               </div>
             </div>
-            <div class="content_left-header-step">
-              <div>
-                <span>03</span>
-                <label>Controleren</label>
+            <div>
+              <div class="meter-content">
+                <h3 class="label">Heb je een slimme meter?</h3>
+                <div class="grid grid-cols-2 gap-3">
+                  <label for="meter-ja" class="card !px-4 active">
+                    <input id="meter-ja" checked type="radio" name="ja-nee" hidden onclick="setCardActive(this)"  />
+                    <p class="text-xs">Ja</p>
+                  </label>
+                  <label for="meter-nee" class="card !px-4">
+                    <input id="meter-nee" type="radio" name="ja-nee" hidden onclick="setCardActive(this)"  />
+                    <p class="text-xs">Nee</p>
+                  </label>
+                </div>
+              </div>
+              <div class="nee-message border border-[#7A7A7A] bg-[#FFF8E8] my-3 p-3 text-black text-sm italic  hidden">
+                Meld je je aan zonder slimme meter? Dan kunnen wij je verbruik niet doorlopend uitlezen en ontvang je slechts eenmaal per jaar een verbruikersafrekening i.p.v. iedere maand.
               </div>
             </div>
-            <div class="content_left-header-progress"></div>
+
+            <div>
+              <h3 class="label">Mijn energieverbruik</h3>
+              <div class="grid grid-cols-2 gap-3">
+                <label for="ik-weet" class="card !px-4 active">
+                  <input id="ik-weet" checked type="radio" name="energieverbruik" hidden onclick="setCardActive(this)"  />
+                  <p class="text-xs">Ik weet mijn verbruik</p>
+                </label>
+                <label for="hulp" class="card !px-4">
+                  <input id="hulp" type="radio" name="energieverbruik" hidden onclick="setCardActive(this)"  />
+                  <p class="text-xs">Help mij schatten</p>
+                </label>
+              </div>
+            </div>
+            <div class="help-options hidden">
+              <div>
+                <h3 class="label">Mijn type woning</h3>
+                <div class="flex flex-wrap gap-3">
+                  <label id="appartement" class="card active retangle">
+                    <input id="appartement" checked type="radio" name="wonning" hidden onclick="setCardActive(this)"  />
+                    <div
+                      class="bg-white w-[4.688rem] h-[4.688rem] rounded-full flex items-center justify-center"
+                    >
+                      <img
+                        class="w-14 h-14 object-cover"
+                        src="/assets/house-four.png"
+                        alt="build"
+                      />
+                    </div>
+                    <p class="text-white text-xs">Appartement</p>
+                  </label>
+                  <label for="tussenwoning" class="card retangle">
+                    <input id="tussenwoning" type="radio" name="wonning" hidden onclick="setCardActive(this)"  />
+                    <div
+                      class="bg-white w-[4.688rem] h-[4.688rem] rounded-full flex items-center justify-center"
+                    >
+                      <img
+                        class="w-14 h-14 object-cover"
+                        src="/assets/house-three.png"
+                        alt="house"
+                      />
+                    </div>
+                    <p class="text-xs">Tussenwoning</p>
+                  </label>
+                  <label for="hoekwoning" class="card retangle">
+                    <input id="hoekwoning" type="radio" name="wonning" hidden onclick="setCardActive(this)"  />
+                    <div
+                      class="bg-white w-[4.688rem] h-[4.688rem] rounded-full flex items-center justify-center"
+                    >
+                      <img
+                        class="w-14 h-14 object-cover"
+                        src="/assets/house-two.png"
+                        alt="house"
+                      />
+                    </div>
+                    <p class="text-xs">Hoekwoning</p>
+                  </label>
+                  <label for="vrijstaand" class="card retangle">
+                    <input id="vrijstaand" type="radio" name="wonning" hidden onclick="setCardActive(this)"  />
+                    <div
+                      class="bg-white w-[4.688rem] h-[4.688rem] rounded-full flex items-center justify-center"
+                    >
+                      <img
+                        class="w-14 h-14 object-cover"
+                        src="/assets/house.png"
+                        alt="house"
+                      />
+                    </div>
+                    <p class="text-xs">Vrijstaand</p>
+                  </label>
+                </div>
+              </div>
+              <div class="mt-8">
+                <h3 class="label">Aantal personen</h3>
+                <div class="flex flex-wrap gap-3">
+                  <label id="persoon-1" class="card active retangle">
+                    <input id="persoon-1" checked type="radio" name="aantal-mensen" hidden onclick="setCardActive(this)"  />
+                    <div
+                      class="bg-white w-[4.688rem] h-[4.688rem] rounded-full flex items-center justify-center"
+                    >
+                      <img
+                        class="w-14 h-14 object-cover"
+                        src="/assets/1-personen.png"
+                        alt="build"
+                      />
+                    </div>
+                    <p class="text-white text-xs">1 Persoon</p>
+                  </label>
+                  <label for="personen-2" class="card retangle">
+                    <input id="personen-2" type="radio" name="aantal-mensen" hidden onclick="setCardActive(this)"  />
+                    <div
+                      class="bg-white w-[4.688rem] h-[4.688rem] rounded-full flex items-center justify-center"
+                    >
+                      <img
+                        class="w-14 h-14 object-cover"
+                        src="/assets/2-personen.png"
+                        alt="house"
+                      />
+                    </div>
+                    <p class="text-xs">2 Personen</p>
+                  </label>
+                  <label for="personen-3-4" class="card retangle">
+                    <input id="personen-3-4" type="radio" name="aantal-mensen" hidden onclick="setCardActive(this)"  />
+                    <div
+                      class="bg-white w-[4.688rem] h-[4.688rem] rounded-full flex items-center justify-center"
+                    >
+                      <img
+                        class="w-14 h-14 object-cover"
+                        src="/assets/4-personen.png"
+                        alt="house"
+                      />
+                    </div>
+                    <p class="text-xs">3-4 Personen</p>
+                  </label>
+                  <label for="personen-5-6" class="card retangle">
+                    <input id="personen-5-6" type="radio" name="aantal-mensen" hidden onclick="setCardActive(this)"  />
+                    <div
+                      class="bg-white w-[4.688rem] h-[4.688rem] rounded-full flex items-center justify-center"
+                    >
+                      <img
+                        class="w-14 h-14 object-cover"
+                        src="/assets/5-personen.png"
+                        alt="house"
+                      />
+                    </div>
+                    <p class="text-xs">5-6 Personen</p>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="divider"></div>
+            <div class="">
+              <h3 class="label">Electriciteit</h3>
+              <div class="flex flex-col gap-3">
+                <div>
+                  <label class="field-label">Help mij schatten</label>
+                  <select class="field" name="electricityMeterType">
+                    <option value="0">Enkele meter</option>
+                    <option value="1">Dubbele meter</option>
+                  </select>
+                </div>
+                <div class="relative">
+                  <label class="field-label" for="">Verbruik piektarief</label>
+                  <input class="field" type="text" />
+                  <span class="absolute bottom-2 right-3">kWh</span>
+                </div>
+                <div>
+                  <label class="field-label" for=""
+                    >Enkele of dubbele meter</label
+                  >
+                  <select class="field" name="" id="">
+                    <option value="">Selecteer aub uw aansluiting</option>
+                    <option value="E_3X25A">3x 25A</option>
+                    <option value="E_3X35A">3x 35A</option>
+                    <option value="E_3X50A">3x 50A</option>
+                    <option value="E_3X63A">3x 63A</option>
+                    <option value="E_3X80A">3x 80A</option>
+                    <option value="E_NULTARIEF">Grootverbruik</option>
+                  </select>
+                </div>
+                <label for="zonnepanelen" class="flex items-center gap-3 cursor-pointer">
+                  <input type="checkbox" id="zonnepanelen" />
+                  Ik heb zonnepanelen
+                </label>
+                <div class="relative zonnepanelen-field hidden ">
+                  <label class="field-label" for="">Opwek zonnepanelen</label>
+                  <input class="field" type="text" />
+                  <span class="absolute bottom-2 right-3">kWh</span>
+                </div>
+                <div class="inline-flex items-center gap-3 mt-5">
+                  <svg
+                    class="w-10 h-10"
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="2em"
+                    viewBox="0 0 512 512"
+                  >
+                    <style>
+                      svg {
+                        fill: #87c232;
+                      }
+                    </style>
+                    <path
+                      d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"
+                    />
+                  </svg>
+                  <div class="text-sm font-bold">
+                    <span class="text-primary">Volgende stap:</span
+                    ><span class="ml-2">
+                      Controleer je gegevens en bevestig je aanvraag.</span
+                    >
+                  </div>
+                </div>
+                <span class="message-error">
+                  Jouw persoonlijke aanbod kon niet worden geladen. Ververs aub
+                  de pagina.
+                </span>
+              </div>
+            </div>
+            <button type="button" onclick="nextTwo()" class="button">Gegevens invullen</button>
           </div>
-          <form class="content__left-form" onsubmit="return false;">
-            <div id="step-one">
-              <h2>Stel je aanbod samen</h2>
+          <div class="step step-two  hidden">
+            <div class="flex flex-col">
               <div>
-                <h3 class="content__left-form-title">
-                  Ben je zakelijk of particulier?
-                </h3>
-                <div style="display: flex;flex-wrap: wrap;">
-                  <div class="content__left-form-button">
-                    <input type="radio" name="zakelijk-of-particulier" />
-                    <div class="content__left-form-button-overlay">
-                      <span class="content__left-form-button-light"></span>
-                      <div class="content__left-form-button-img">
-                        <img src="/assets/businnes.png" alt="" />
-                      </div>
-                      <label class="content__left-form-button-label"
-                        >Zakelijk</label
-                      >
-                    </div>
-                  </div>
-                  <div class="content__left-form-button">
-                    <input type="radio" name="zakelijk-of-particulier" />
-                    <div class="content__left-form-button-overlay">
-                      <span class="content__left-form-button-light"></span>
-                      <div class="content__left-form-button-img">
-                        <img src="/assets/house.png" alt="" />
-                      </div>
-                      <label class="content__left-form-button-label"
-                        >Particulier</label
-                      >
-                    </div>
-                  </div>
-                </div>
+                <h2 class="title my-12 mb-6">Vul je gegevens in</h2>
+                <h3 class="text-black text-base font-bold">Leveringsadres</h3>
               </div>
-              <div>
-                <h3 class="content__left-form-title">Kies je energieproduct</h3>
-                <div style="display: flex;flex-wrap: wrap;">
-                  <div class="content__left-form-button">
-                    <input type="radio" name="electriciteit-of-gas" />
-                    <div class="content__left-form-button-overlay">
-                      <span class="content__left-form-button-light"></span>
-                      <div class="content__left-form-button-img">
-                        <img src="/assets/energy.png" alt="" />
-                      </div>
-                      <label class="content__left-form-button-label"
-                        >Electriciteit</label
-                      >
-                    </div>
-                  </div>
-                  <div class="content__left-form-button">
-                    <input type="radio" name="electriciteit-of-gas" />
-                    <div class="content__left-form-button-overlay">
-                      <span class="content__left-form-button-light"></span>
-                      <div class="content__left-form-button-img">
-                        <img src="/assets/gas.png" alt="" />
-                      </div>
-                      <label class="content__left-form-button-label">Gas</label>
-                    </div>
-                  </div>
-                  <div class="content__left-form-button">
-                    <input type="radio" name="electriciteit-of-gas" />
-                    <div class="content__left-form-button-overlay">
-                      <span class="content__left-form-button-light"></span>
-                      <div class="content__left-form-button-img">
-                        <img src="/assets/energy-gas.png" alt="" />
-                      </div>
-                      <label class="content__left-form-button-label"
-                        >Electriciteit & Gas</label
-                      >
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <h3 class="content__left-form-title">
-                  Heb je een slimme meter?
-                </h3>
-                <div style="display: flex;flex-wrap: wrap;">
-                  <div class="content__left-form-button">
-                    <input type="radio" name="ja-nee" />
-                    <div class="content__left-form-button-overlay">
-                      <span class="content__left-form-button-light"></span>
-                      <label class="content__left-form-button-label">Ja</label>
-                    </div>
-                  </div>
-                  <div class="content__left-form-button">
-                    <input type="radio" name="ja-nee" />
-                    <div class="content__left-form-button-overlay">
-                      <span class="content__left-form-button-light"></span>
-                      <label class="content__left-form-button-label">Nee</label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <h3 class="content__left-form-title">Mijn energieverbruik</h3>
-                <div style="display: flex;flex-wrap: wrap;">
-                  <div
-                    class="content__left-form-button"
-                    style="max-width: none"
-                  >
-                    <input type="radio" name="energieverbruik" />
-                    <div class="content__left-form-button-overlay">
-                      <span class="content__left-form-button-light"></span>
-                      <label class="content__left-form-button-label"
-                        >Ik weet mijn verbruik</label
-                      >
-                    </div>
-                  </div>
-                  <div
-                    class="content__left-form-button"
-                    style="max-width: none"
-                  >
-                    <input type="radio" name="energieverbruik" />
-                    <div class="content__left-form-button-overlay">
-                      <span class="content__left-form-button-light"></span>
-                      <label class="content__left-form-button-label"
-                        >Help mij schatten</label
-                      >
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <h3 class="content__left-form-title">Mijn type woning</h3>
-                <div style="display: flex;flex-wrap: wrap;">
-                  <div class="content__left-form-button">
-                    <input type="radio" name="woning" />
-                    <div class="content__left-form-button-overlay">
-                      <span class="content__left-form-button-light"></span>
-                      <div class="content__left-form-button-img">
-                        <img src="/assets/house-four.png" alt="" />
-                      </div>
-                      <label class="content__left-form-button-label"
-                        >Appartement</label
-                      >
-                    </div>
-                  </div>
-                  <div class="content__left-form-button">
-                    <input type="radio" name="woning" />
-                    <div class="content__left-form-button-overlay">
-                      <span class="content__left-form-button-light"></span>
-                      <div class="content__left-form-button-img">
-                        <img src="/assets/house-three.png" alt="" />
-                      </div>
-                      <label class="content__left-form-button-label"
-                        >Tussenwoning</label
-                      >
-                    </div>
-                  </div>
-                  <div class="content__left-form-button">
-                    <input type="radio" name="woning" />
-                    <div class="content__left-form-button-overlay">
-                      <span class="content__left-form-button-light"></span>
-                      <div class="content__left-form-button-img">
-                        <img src="/assets/house-three.png" alt="" />
-                      </div>
-                      <label class="content__left-form-button-label"
-                        >Hoekwoning</label
-                      >
-                    </div>
-                  </div>
-                  <div class="content__left-form-button">
-                    <input type="radio" name="woning" />
-                    <div class="content__left-form-button-overlay">
-                      <span class="content__left-form-button-light"></span>
-                      <div class="content__left-form-button-img">
-                        <img src="/assets/house-two.png" alt="" />
-                      </div>
-                      <label class="content__left-form-button-label"
-                        >Vrijstaand</label
-                      >
-                    </div>
-                  </div>
-                </div>
-                <h3 class="content__left-form-title">Aantal personen</h3>
-                <div style="display: flex;flex-wrap: wrap;">
-                  <div class="content__left-form-button">
-                    <input type="radio" name="personen" />
-                    <div class="content__left-form-button-overlay">
-                      <span class="content__left-form-button-light"></span>
-                      <div class="content__left-form-button-img">
-                        <img src="/assets/1-personen.png" alt="" />
-                      </div>
-                      <label class="content__left-form-button-label"
-                        >1 Persoon</label
-                      >
-                    </div>
-                  </div>
-                  <div class="content__left-form-button">
-                    <input type="radio" name="personen" />
-                    <div class="content__left-form-button-overlay">
-                      <span class="content__left-form-button-light"></span>
-                      <div class="content__left-form-button-img">
-                        <img src="/assets/2-personen.png" alt="" />
-                      </div>
-                      <label class="content__left-form-button-label"
-                        >2 Persoon</label
-                      >
-                    </div>
-                  </div>
-                  <div class="content__left-form-button">
-                    <input type="radio" name="personen" />
-                    <div class="content__left-form-button-overlay">
-                      <span class="content__left-form-button-light"></span>
-                      <div class="content__left-form-button-img">
-                        <img src="/assets/4-personen.png" alt="" />
-                      </div>
-                      <label class="content__left-form-button-label"
-                        >3-4 Persoon</label
-                      >
-                    </div>
-                  </div>
-                  <div class="content__left-form-button">
-                    <input type="radio" name="personen" />
-                    <div class="content__left-form-button-overlay">
-                      <span class="content__left-form-button-light"></span>
-                      <div class="content__left-form-button-img">
-                        <img src="/assets/5-personen.png" alt="" />
-                      </div>
-                      <label class="content__left-form-button-label"
-                        >5-6 Persoon</label
-                      >
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <h3 class="content__left-form-title">Electriciteit</h3>
-                <div class="content__left-form-select">
+
+              <div class="flex flex-col gap-3 mt-6">
+                <div class="flex gap-3">
                   <div>
-                    <label class="content__left-form-select-label"
-                      >Help mij schatten</label
-                    >
-                    <select
-                      class="content__left-form-select-selected"
-                      name="electricityMeterType"
-                    >
-                      <option value="0">Enkele meter</option>
-                      <option value="1">Dubbele meter</option>
-                    </select>
+                    <label class="field-label" for="">Postcode</label>
+                    <input placeholder="Postcode" class="field" type="text" />
                   </div>
                   <div>
-                    <label class="content__left-form-select-label"
-                      >Verbruik</label
-                    >
-                    <input
-                      type="text"
-                      name=""
-                      id=""
-                      class="content__left-form-select-input"
-                    />
+                    <label class="field-label" for="">Nummer</label>
+                    <input placeholder="Nummer" class="field" type="text" />
                   </div>
                   <div>
-                    <label class="content__left-form-select-label"
-                      >Help mij schatten</label
-                    >
-                    <select
-                      name="electricityConnectionType"
-                      class="content__left-form-select-selected"
-                    >
-                      <option value="">Selecteer aub uw aansluiting</option>
-                      <option value="E_3X25A">3x 25A</option>
-                      <option value="E_3X35A">3x 35A</option>
-                      <option value="E_3X50A">3x 50A</option>
-                      <option value="E_3X63A">3x 63A</option>
-                      <option value="E_3X80A">3x 80A</option>
-                      <option value="E_NULTARIEF">Grootverbruik</option>
-                    </select>
-                  </div>
-                  <div class="content__left-form-select-accept">
-                    <input
-                      class=""
-                      name="EvUsageElectricityDoSupplyBack"
-                      type="checkbox"
-                      value="1"
-                    />
-                    <label class="content__left-form-button-label"
-                      style="min-height: 0px;">Ik heb zonnepanelen</label
-                    >
-                  </div>
-                  <div>
-                    <label class="content__left-form-select-label"
-                      >Opwek zonnepanelen</label
-                    >
-                    <input
-                      type="text"
-                      name=""
-                      id=""
-                      class="content__left-form-select-input"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div class="content__left-form-info">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  height="2em"
-                  viewBox="0 0 512 512"
-                >
-                  <style>
-                    svg {
-                      fill: #87c232;
-                    }
-                  </style>
-                  <path
-                    d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"
-                  />
-                </svg>
-                <div>
-                  <span style="color: #87c232; margin-right: 10px"
-                    >Volgende stap:</span
-                  >Controleer je gegevens en bevestig je aanvraag.
-                </div>
-              </div>
-              <div class="content__left-form-next-step" onclick="nextTwo()">
-                Gegevens invullen
-              </div>
-            </div>
-            <div id="step-two" style="display: none">
-              <h2>Vul je gegevens in</h2>
-              <div>
-                <h3 class="content__left-form-title">Leveringsadres</h3>
-                <div class="content__left-form-grid-three">
-                  <div>
-                    <label class="content__left-form-select-label">
-                      Postcode
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="Postcode"
-                      name=""
-                      id=""
-                      class="content__left-form-select-input"
-                    />
-                  </div>
-                  <div>
-                    <label class="content__left-form-select-label">
-                      Nummer
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="Nummer"
-                      name=""
-                      id=""
-                      class="content__left-form-select-input"
-                    />
-                  </div>
-                  <div>
-                    <label class="content__left-form-select-label">
-                      Toevoeging
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="Toevoeging"
-                      name=""
-                      id=""
-                      class="content__left-form-select-input"
-                    />
+                    <label class="field-label" for="">Toevoeging</label>
+                    <input placeholder="Toevoeging" class="field" type="text" />
                   </div>
                 </div>
                 <div>
-                  <label class="content__left-form-select-label">Straat</label>
-                  <input
-                    type="text"
-                    placeholder="Straat"
-                    name=""
-                    id=""
-                    class="content__left-form-select-input"
-                  />
+                  <label class="field-label" for="">Straat</label>
+                  <input placeholder="Straat" class="field" type="text" />
                 </div>
                 <div>
-                  <label class="content__left-form-select-label">Plaats</label>
-                  <input
-                    type="text"
-                    placeholder="Plaats"
-                    name=""
-                    id=""
-                    class="content__left-form-select-input"
-                  />
+                  <label class="field-label" for="">Plaats</label>
+                  <input placeholder="Plaats" class="field" type="text" />
                 </div>
                 <div>
-                  <label class="content__left-form-select-label"
+                  <label class="field-label" for=""
                     >Is dit een woon- of werkadres?</label
                   >
-                  <select
-                    name="electricityConnectionType"
-                    class="content__left-form-select-selected"
-                  >
-                    <option value="">Ja</option>
-                    <option value="">Nee</option>
+                  <select class="field" name="electricityMeterType">
+                    <option value="0">JA</option>
+                    <option value="1">Nee</option>
                   </select>
                 </div>
                 <div>
-                  <label class="content__left-form-select-label"
-                    >Help mij schatten</label
+                  <label class="field-label" for=""
+                    >Wil je wisselen van leverancier of ga je verhuizen?</label
                   >
-                  <select
-                    name="electricityConnectionType"
-                    class="content__left-form-select-selected"
-                  >
-                    <option value="">Overstappen</option>
-                    <option value="">Verhuizing</option>
+                  <select class="field" name="electricityMeterType">
+                    <option value="0">Overstappen</option>
+                    <option value="1">Verhuizing</option>
                   </select>
                 </div>
                 <div>
-                  <label class="content__left-form-select-label"
+                  <label class="field-label" for=""
                     >Gewenste startdatum levering</label
                   >
-                  <input
-                    type="text"
-                    placeholder="1-1-2024"
-                    name=""
-                    id=""
-                    class="content__left-form-select-input"
-                  />
+                  <input class="field" type="date" />
                 </div>
-              </div>
-              <div>
-                <h3 class="content__left-form-title">Persoonlijke gegevens</h3>
+                <div class="divider my-5"></div>
+                <h3 class="text-black text-base font-bold">
+                  Persoonlijke gegevens
+                </h3>
                 <div>
-                  <label class="content__left-form-select-label">Aanhef</label>
-                  <select
-                    name="electricityConnectionType"
-                    class="content__left-form-select-selected"
-                  >
-                    <option value="">Dhr</option>
-                    <option value="">Mevr</option>
+                  <label class="field-label" for="">Aanhef</label>
+                  <select class="field" name="electricityMeterType">
+                    <option value="male">Dhr</option>
+                    <option value="female">Mevr</option>
                   </select>
                 </div>
-                <div class="content__left-form-grid-two">
+                <div class="flex gap-3">
                   <div>
-                    <label class="content__left-form-select-label">
-                      Voornaam
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="Voornaam"
-                      name=""
-                      id=""
-                      class="content__left-form-select-input"
-                    />
+                    <label class="field-label" for="">Voornaam</label>
+                    <input placeholder="Voornaam" class="field" type="text" />
                   </div>
                   <div>
-                    <label class="content__left-form-select-label">
-                      Achternaam
-                    </label>
-                    <input
-                      type="text"
-                      placeholder="Achternaam"
-                      name=""
-                      id=""
-                      class="content__left-form-select-input"
-                    />
+                    <label class="field-label" for="">Achternaam</label>
+                    <input placeholder="Achternaam" class="field" type="text" />
                   </div>
                 </div>
                 <div>
-                  <label class="content__left-form-select-label">
-                    Geboortedatum
-                  </label>
+                  <label class="field-label" for="">Geboortedatum</label>
                   <input
-                    type="datetime"
-                    placeholder="Geboortedatum"
-                    name=""
-                    id=""
-                    class="content__left-form-select-input"
+                    placeholder="Selecteer uw geboortedatum"
+                    class="field"
+                    type="date"
                   />
                 </div>
-                <div class="content__left-form-grid-two">
+                <div class="flex gap-3">
                   <div>
-                    <label class="content__left-form-select-label">
-                      E-mailadres
-                    </label>
+                    <label class="field-label" for="">E-mailadres</label>
                     <input
-                      type="text"
                       placeholder="E-mailadres"
-                      name=""
-                      id=""
-                      class="content__left-form-select-input"
+                      class="field"
+                      type="text"
                     />
                   </div>
                   <div>
-                    <label class="content__left-form-select-label">
-                      Telefoonnummer
-                    </label>
+                    <label class="field-label" for="">Telefoonnummer</label>
                     <input
-                      type="text"
                       placeholder="Telefoonnummer"
-                      name=""
-                      id=""
-                      class="content__left-form-select-input"
+                      class="field"
+                      type="text"
                     />
                   </div>
                 </div>
                 <div>
-                  <label class="content__left-form-select-label"> IBAN </label>
+                  <label class="field-label" for="">IBAN</label>
                   <input
+                    placeholder="IBAN (bankrekeningnummer)"
+                    class="field"
                     type="text"
-                    placeholder="IBAN"
-                    name=""
-                    id=""
-                    class="content__left-form-select-input"
                   />
                 </div>
                 <div>
-                  <label class="content__left-form-select-label">
-                    Naam rekeninghouder
-                  </label>
+                  <label class="field-label" for="">Naam rekeninghouder</label>
                   <input
+                    placeholder="Naam rekeninghouder"
+                    class="field"
                     type="text"
-                    placeholder="Naam rekeninghouder "
-                    name=""
-                    id=""
-                    class="content__left-form-select-input"
                   />
                 </div>
-              </div>
-              <div class="content__left-form-info">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  height="2em"
-                  viewBox="0 0 512 512"
-                >
-                  <style>
-                    svg {
-                      fill: #87c232;
-                    }
-                  </style>
-                  <path
-                    d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"
-                  />
-                </svg>
-                <div>
-                  <span style="color: #87c232; margin-right: 10px"
-                    >Volgende stap:</span
-                  >Controleer je gegevens en bevestig je aanvraag.
-                </div>
-              </div>
-              <button
-                class="content__left-form-next-step"
-                onclick="nextThree()"
-              >
-                Gegevens invullen
-              </button>
-              <div class="content__left-form-prev-step" onclick="prevOne()">
-                Terug naar aanbod samenstellen
-              </div>
-            </div>
-            <div id="step-three" style="display: none">
-              <h2>Controleer je gegevens</h2>
-              <p>Controleer je gegevens goed, voordat je ze bevestigt!</p>
-
-              <table>
-                <tbody>
-                  <tr>
-                    <td>Straat en huisnummer</td>
-                    <td>Rua Santos Dumont, 75, São José 23dddd</td>
-                  </tr>
-                  <tr>
-                    <td>Postcode en plaats</td>
-                    <td>65840-000 São Raimundo das Mangabeiras</td>
-                  </tr>
-                  <tr>
-                    <td>Aansluiting elektriciteit EAN</td>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td>Start levering</td>
-                    <td>01-01-2024</td>
-                  </tr>
-                  <tr>
-                    <td>Verhuizing</td>
-                    <td>Nee</td>
-                  </tr>
-                </tbody>
-              </table>
-
-              <h3>Persoonlijke gegevens</h3>
-
-              <table>
-                <tbody>
-                  <tr>
-                    <td>Naam</td>
-                    <td>aaaa aaaaa</td>
-                  </tr>
-                  <tr>
-                    <td>Geboortedatum</td>
-                    <td>01-11-2023</td>
-                  </tr>
-                  <tr>
-                    <td>E-mailadres</td>
-                    <td>votaxoy328@dabeixin.com</td>
-                  </tr>
-                  <tr>
-                    <td>Telefoonnummer</td>
-                    <td>99999999999999</td>
-                  </tr>
-                  <tr>
-                    <td>IBAN</td>
-                    <td>234234234</td>
-                  </tr>
-                  <tr>
-                    <td>Naam rekeninghouder</td>
-                    <td>asdasda asdasd</td>
-                  </tr>
-                </tbody>
-              </table>
-
-              <h3>Handtekening voor akkoord</h3>
-
-              <div>
-                <div class="">
-                  <canvas
-                    id="signature-pad"
-                    class="signature-pad"
-                    style="
-                      border: 1px solid rgb(0, 0, 0);
-                      height: 150px;
-                      width: 100%;
-                      touch-action: none;
-                    "
-                    width="560"
-                    height="150"
-                  ></canvas>
-                </div>
-                <div class="signature-pad--footer">
-                  <div class="signature-pad--actions">
-                    <div class="column">
-                      <span
-                        id="clear"
-                        style="cursor: pointer; text-decoration: underline"
-                        >Wissen</span
-                      >
-                    </div>
+                <div class="inline-flex items-center gap-3 mt-5">
+                  <svg
+                    class="w-10 h-10"
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="2em"
+                    viewBox="0 0 512 512"
+                  >
+                    <style>
+                      svg {
+                        fill: #87c232;
+                      }
+                    </style>
+                    <path
+                      d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"
+                    />
+                  </svg>
+                  <div class="text-sm">
+                    <span class="text-primary">Volgende stap:</span
+                    ><span class="ml-2">
+                      Controleer je gegevens en bevestig je aanvraag.</span
+                    >
                   </div>
                 </div>
               </div>
+            </div>
+            <button onclick="nextThree()" type="button" class="button">Gegevens invullen</button>
+            <button
+              onclick="prevOne()"
+              type="button" 
+              class="w-full h-12 border border-primary text-center text-primary hover:text-primary mt-5 uppercase font-bold"
+            >
+              Gegevens invullen
+            </button>
+          </div>
 
-              <h3>Betaling</h3>
-              <p style="width: 500px">
-                De betaling van de maandelijkse termijnbedragen verloopt via een
-                automatische incasso. Ga je akkoord met het voorstel? Dan
-                ontvang je daaropvolgend een verzoek van ons om digitaal een
-                incassomachtiging af te geven.
-              </p>
+          <div class="step step-three hidden">
+            <h2 class="title my-12">Controleer je gegevens</h2>
+            <p>Controleer je gegevens goed, voordat je ze bevestigt!</p>
+            <h3 class="label mt-5">Leveringsadres</h3>
+            <table>
+              <tbody>
+                <tr>
+                  <td>Straat en huisnummer</td>
+                  <td>Rua Santos Dumont, 75, São José 23dddd</td>
+                </tr>
+                <tr>
+                  <td>Postcode en plaats</td>
+                  <td>65840-000 São Raimundo das Mangabeiras</td>
+                </tr>
+                <tr>
+                  <td>Aansluiting elektriciteit EAN</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Start levering</td>
+                  <td>01-01-2024</td>
+                </tr>
+                <tr>
+                  <td>Verhuizing</td>
+                  <td>Nee</td>
+                </tr>
+              </tbody>
+            </table>
 
-              Bij het ondertekenen van het contract ga je akkoord met onze
-              <a
-                href="https://www.shave-energy.nl/algemene-voorwaarden"
-                target="_blank"
-                >contract- en algemene voorwaarden</a
-              >
-              <div class="content__left-form-info">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  height="2em"
-                  viewBox="0 0 512 512"
-                >
-                  <style>
-                    svg {
-                      fill: #87c232;
-                    }
-                  </style>
-                  <path
-                    d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"
-                  />
-                </svg>
-                <div>
-                  <span style="color: #87c232; margin-right: 10px"
-                    >Volgende stap:</span
-                  >Controleer je gegevens en bevestig je aanvraag.
+            <div class="divider my-8"></div>
+            <h3 class="label mt-5">Persoonlijke gegevens</h3>
+
+            <table>
+              <tbody>
+                <tr>
+                  <td>Naam</td>
+                  <td>aaaa aaaaa</td>
+                </tr>
+                <tr>
+                  <td>Geboortedatum</td>
+                  <td>01-11-2023</td>
+                </tr>
+                <tr>
+                  <td>E-mailadres</td>
+                  <td>votaxoy328@dabeixin.com</td>
+                </tr>
+                <tr>
+                  <td>Telefoonnummer</td>
+                  <td>99999999999999</td>
+                </tr>
+                <tr>
+                  <td>IBAN</td>
+                  <td>234234234</td>
+                </tr>
+                <tr>
+                  <td>Naam rekeninghouder</td>
+                  <td>asdasda asdasd</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="divider my-8"></div>
+            <h3 class="label mt-5">Handtekening voor akkoord</h3>
+
+            <div>
+              <div class="">
+                <canvas
+                  id="signature-pad"
+                  class="signature-pad"
+                  style="
+                    border: 1px solid rgb(0, 0, 0);
+                    height: 150px;
+                    width: 100%;
+                    touch-action: none;
+                  "
+                  width="560"
+                  height="150"
+                ></canvas>
+              </div>
+              <div class="signature-pad--footer">
+                <div class="signature-pad--actions">
+                  <div class="column">
+                    <span
+                      id="clear"
+                      style="cursor: pointer; text-decoration: underline"
+                      >Wissen</span
+                    >
+                  </div>
                 </div>
               </div>
-              <div class="content__left-form-next-step">Gegevens invullen</div>
-              <div class="content__left-form-prev-step" onclick="prevTwo()">
-                Terug naar aanbod samenstellen
+            </div>
+            <div class="divider my-8"></div>
+            <h3 class="label mt-5">Betaling</h3>
+
+            <p class="max-w-3xl">
+              De betaling van de maandelijkse termijnbedragen verloopt via een
+              automatische incasso. Ga je akkoord met het voorstel? Dan ontvang
+              je daaropvolgend een verzoek van ons om digitaal een
+              incassomachtiging af te geven.
+            </p>
+
+            Bij het ondertekenen van het contract ga je akkoord met onze
+            <a href="#" target="_blank">contract- en algemene voorwaarden</a>
+            <div class="inline-flex items-center gap-3 mt-5">
+              <svg
+                class="w-10 h-10"
+                xmlns="http://www.w3.org/2000/svg"
+                height="2em"
+                viewBox="0 0 512 512"
+              >
+                <style>
+                  svg {
+                    fill: #87c232;
+                  }
+                </style>
+                <path
+                  d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"
+                />
+              </svg>
+              <div class="text-sm font-bold">
+                <span class="text-primary">Volgende stap:</span
+                ><span class="ml-2">
+                  Controleer je gegevens en bevestig je aanvraag.</span
+                >
               </div>
             </div>
-          </form>
+            <button  class="button">Gegevens invullen</button>
+            <button
+              onclick="prevTwo()"
+              type="button"
+              class="w-full h-12 border border-primary text-center text-primary hover:text-primary mt-5 uppercase font-bold"
+            >
+              Terug naar aanbod samenstellen
+            </button>
+          </div>
+        </form>
+        <div class="result bg-[#f8f8f8] px-2 lg:p-10">
+          <div class="EvOfferPanel" id="EvOfferPanel_62285">
+            <div class="EvStepAanbod" id="EvStepAanbod">
+              <h3 class="text-lg text-center text-[#1e2329] uppercase mt-4 lg:mt-0">Jouw persoonlijk aanbod</h3>
+
+              <div class="EvClear"></div>
+              <div class="divider my-8"></div>
+              <div class="flex flex-col gap-3">
+                <div class="OfferPointContainer flex items-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 fill-none text-primary flex-shrink-0">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                  </svg>
+                  
+                  <span class="text-sm lg:text-base">Spotmarkten EPEX/LEBA + Opslag </span>
+                </div>
+                <div class="OfferPointContainer flex items-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 fill-none text-primary flex-shrink-0">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                  </svg>
+                  
+                  <span
+                  class="text-sm lg:text-base"
+                    >Uur gewogen product voor elektriciteit (prijs en tarief van
+                    betreffend uur)
+                  </span>
+                </div>
+                <div class="OfferPointContainer flex items-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 fill-none text-primary flex-shrink-0">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                  </svg>
+                  
+                  <span class="text-sm lg:text-base" >Per dag variërende prijs voor gas</span>
+                </div>
+              </div>
+
+
+              <div class="EvClear"></div>
+              <div class="divider my-8"></div>
+
+              <div class="OfferPointContainer flex items-center gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-primary flex-shrink-0">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
+                </svg>
+                
+                <span>Energie tegen inkoopprijzen</span>
+              </div>
+              <div class="OfferPointContainer flex items-center gap-3 mt-3">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-primary flex-shrink-0 fill-none">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14.25 7.756a4.5 4.5 0 100 8.488M7.5 10.5h5.25m-5.25 3h5.25M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                
+                <span>Elke maand betaal je de werkelijke kosten</span>
+              </div>
+
+              <div class="OfferTextBlock mt-8">
+                <p class="text-sm lg:text-base">
+                  Jouw voorschot wordt o.a. berekend op basis van de gemiddelde
+                  marktprijs, je verbruiksprofiel en eventueel je eigen opwek.
+                  In jouw persoonlijke aanbod zie je een indicatie van de
+                  gemiddelde kosten per maand en de verwachte kosten per jaar.
+                </p>
+              </div>
+
+              <div class="EvClear"></div>
+
+              <table class="EvOfferTable border-collapse border border-gray-200 my-5 w-full">
+                <tbody class="text-xs">
+                  <tr >
+                    <td class="py-4 border border-gray-200 px-3">Totaal jaarlijkse kosten stroom</td>
+                    <td class="text-right border border-gray-200 px-3">€ 3.412,85</td>
+                  </tr>
+                  <tr>
+                    <td class="py-4 border border-gray-200 px-3">Totaal jaarlijkse kosten gas</td>
+                    <td class="text-right border border-gray-200 px-3">€ 0,00</td>
+                  </tr>
+                  <tr>
+                    <td class="py-4 border border-gray-200 px-3"><b>Totaal jaarlijkse kosten stroom &amp; gas</b></td>
+                    <td class="text-right border border-gray-200 px-3"><b>€ 3.412,85</b></td>
+                  </tr>
+                  <tr>
+                    <td class="py-4 border border-gray-200 px-3">BTW</td>
+                    <td class="text-right border border-gray-200 px-3">€ 592,31</td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <div class="EvAvgCostsMonth font-bold text-primary">
+                Indicatie termijnbedrag (p/m) <span><b>€ 284,40</b></span>
+              </div>
+              <div class="EvAvgCostsYear">
+                Verwachte kosten per jaar <span><b>€ 3.412,85</b></span>
+              </div>
+
+              <p class="mt-5">
+                De prijzen van het prijsplafond zijn verwerkt in dit persoonlijk
+                aanbod.
+              </p>
+              <button
+              onclick="prevTwo()"
+              type="button"
+              class="w-full h-12 border border-primary text-center text-primary mt-5 uppercase font-bold hover:border-black hover:text-black"
+            >
+            Prijsstructuur en kosten
+            </button>
+
+              <div class="EvClear"></div>
+            </div>
+          </div>
         </div>
-        <div class="content__rigth"></div>
       </div>
     </main>
-    <footer></footer>
     <script src="https://cdn.jsdelivr.net/npm/signature_pad@3.0.0-beta.3/dist/signature_pad.min.js"></script>
     <script src="signed.js"></script>
     <script src="script.js"></script>
-    <script src="api.js"></script>
   </body>
 </html>
