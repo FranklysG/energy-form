@@ -219,7 +219,7 @@
               </div>
             </div>
             <div class="help-options hidden">
-              <div>
+              <div class="type-wonning-fields hidden">
                 <h3 class="text-[#1e2329] text-base text-label font-medium mb-5">Mijn type woning</h3>
                 <div class="flex flex-wrap gap-3">
                   <label id="appartement" class=" card after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3  after:rounded-full rounded-md relative p-4 px-2  cursor-pointer hover:bg-[#1E2329] hover:text-white hover:after:bg-[#87C232] active text-white bg-[#1E2329] after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5  text-center">
@@ -301,7 +301,7 @@
                   </label>
                 </div>
               </div>
-              <div class="mt-8">
+              <div class="mt-8 aantal-personen-fields hidden">
                 <h3 class="text-[#1e2329] text-base text-label font-medium mb-5">Aantal personen</h3>
                 <div class="flex flex-wrap gap-3">
                   <label id="persoon-1" class="card after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3  after:rounded-full rounded-md relative p-4 px-2  cursor-pointer hover:bg-[#1E2329] hover:text-white hover:after:bg-[#87C232] active text-white bg-[#1E2329] after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5  text-center">
@@ -383,10 +383,111 @@
                   </label>
                 </div>
               </div>
+              <div class="company-help-fields">
+                <h3 class="text-[#1e2329] text-base text-label font-medium mb-5">Selecteer jouw bedrijfstype</h3>
+                <div class="flex flex-wrap gap-3">
+                  <label id="ZZP" class=" card after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3  after:rounded-full rounded-md relative p-4 px-2  cursor-pointer hover:bg-[#1E2329] hover:text-white hover:after:bg-[#87C232] active text-white bg-[#1E2329] after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5  text-center">
+                    <input
+                      id="ZZP"
+                      checked
+                      type="radio"
+                      name="bedrijfstype"
+                      hidden
+                      onclick="setCardActive(this)"
+                    />
+                    <div
+                      class="bg-white w-[4.688rem] h-[4.688rem] rounded-full flex items-center justify-center"
+                    >
+                      <img
+                        class="w-14 h-14 object-cover"
+                        src="http://greenly.checkweb.online/wp-content/uploads/2023/11/house.png"
+                        alt="build"
+                      />
+                    </div>
+                    <p class="text-xs">ZZP</p>
+                  </label>
+                  <label for="eenmanszaak" class=" card bg-[#f8f8f8] text-[#1E2329] after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3  after:rounded-full after:bg-[#f8f8f8] rounded-md relative p-4 px-2  cursor-pointer hover:bg-[#1E2329] hover:text-white hover:after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5  text-center">
+                    <input
+                      id="eenmanszaak"
+                      type="radio"
+                      name="bedrijfstype"
+                      hidden
+                      onclick="setCardActive(this)"
+                    />
+                    <div
+                      class="bg-white w-[4.688rem] h-[4.688rem] rounded-full flex items-center justify-center"
+                    >
+                      <img
+                        class="w-14 h-14 object-cover"
+                        src="/assets/eenmanszaak_Icon.png"
+                        alt="house"
+                      />
+                    </div>
+                    <p class="text-xs">Eenmanszaak</p>
+                  </label>
+                  <label for="winkel" class=" card bg-[#f8f8f8] text-[#1E2329] after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3  after:rounded-full after:bg-[#f8f8f8] rounded-md relative p-4 px-2  cursor-pointer hover:bg-[#1E2329] hover:text-white hover:after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5  text-center">
+                    <input
+                      id="winkel"
+                      type="radio"
+                      name="bedrijfstype"
+                      hidden
+                      onclick="setCardActive(this)"
+                    />
+                    <div
+                      class="bg-white w-[4.688rem] h-[4.688rem] rounded-full flex items-center justify-center"
+                    >
+                      <img
+                        class="w-14 h-14 object-cover"
+                        src="/assets/winkel_icon.png"
+                        alt="house"
+                      />
+                    </div>
+                    <p class="text-xs">Winkel</p>
+                  </label>
+                  <label for="kantoorpand" class=" card bg-[#f8f8f8] text-[#1E2329] after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3  after:rounded-full after:bg-[#f8f8f8] rounded-md relative p-4 px-2  cursor-pointer hover:bg-[#1E2329] hover:text-white hover:after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5  text-center">
+                    <input
+                      id="kantoorpand"
+                      type="radio"
+                      name="bedrijfstype"
+                      hidden
+                      onclick="setCardActive(this)"
+                    />
+                    <div
+                      class="bg-white w-[4.688rem] h-[4.688rem] rounded-full flex items-center justify-center"
+                    >
+                      <img
+                        class="w-14 h-14 object-cover"
+                        src="/assets/businnes.png"
+                        alt="house"
+                      />
+                    </div>
+                    <p class="text-xs">Kantoorpand</p>
+                  </label>
+                  <label for="industrieel" class=" card bg-[#f8f8f8] text-[#1E2329] after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3  after:rounded-full after:bg-[#f8f8f8] rounded-md relative p-4 px-2  cursor-pointer hover:bg-[#1E2329] hover:text-white hover:after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5  text-center">
+                    <input
+                      id="industrieel"
+                      type="radio"
+                      name="bedrijfstype"
+                      hidden
+                      onclick="setCardActive(this)"
+                    />
+                    <div
+                      class="bg-white w-[4.688rem] h-[4.688rem] rounded-full flex items-center justify-center"
+                    >
+                      <img
+                        class="w-14 h-14 object-cover"
+                        src="/assets/Industrie_icon.png"
+                        alt="house"
+                      />
+                    </div>
+                    <p class="text-xs">Industrieel</p>
+                  </label>
+                </div>
+              </div>
             </div>
 
             <div class="border-t border-gray-200"></div>
-            <div class="">
+            <div class="Electriciteit fields">
               <h3 class="text-[#1e2329] text-base text-label font-medium mb-5">Electriciteit</h3>
               <div class="flex flex-col gap-3">
                 <div>
@@ -427,35 +528,71 @@
                   <input class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-sm pl-4" type="text" />
                   <span class="absolute bottom-2 right-3">kWh</span>
                 </div>
-                <div class="inline-flex items-center gap-3 mt-5">
-                  <svg
-                    class="w-10 h-10"
-                    xmlns="http://www.w3.org/2000/svg"
-                    height="2em"
-                    viewBox="0 0 512 512"
-                  >
-                    <style>
-                      svg {
-                        fill: #87c232;
-                      }
-                    </style>
-                    <path
-                      d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"
-                    />
-                  </svg>
-                  <div class="text-sm font-bold">
-                    <span class="text-[#87C232]">Volgende stap:</span
-                    ><span class="ml-2">
-                      Controleer je gegevens en bevestig je aanvraag.</span
-                    >
-                  </div>
-                </div>
-                <span class="bg-red-600 text-base p-3 text-white text-center mt-4">
-                  Jouw persoonlijke aanbod kon niet worden geladen. Ververs aub
-                  de pagina.
-                </span>
               </div>
             </div>
+            <div class="border-t border-gray-200 electriciteit-gas-divider hidden">
+
+            </div>
+            <div class="Gas fields hidden">
+              <h3 class="text-[#1e2329] text-base text-label font-medium mb-5">Gas</h3>
+              <div class="flex flex-col gap-3">
+                <div class="relative">
+                  <label class="field-label text-[0.844rem] leading-7 text-[#3a3a3a]" for="">Verbruik gas</label>
+                  <input class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-sm pl-4" type="text" />
+                  <span class="absolute bottom-2 right-3">m3</span>
+                </div>
+                <div>
+                  <label class="field-label text-[0.844rem] leading-7 text-[#3a3a3a]" for="EvGasConnectionType"
+                    >Aansluiting</label
+                  >
+                  <select id="EvGasConnectionType" class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-sm pl-4" name="EvGasConnectionType" >
+                    <option value="">Selecteer aub uw aansluiting</option>
+                    <option value="G_G6_500">G6, jaarverbruik tot 500 m3(n)</option>
+                    <option value="G_G6_500_4000">G6, jaarverbruik 500 tot 4.000 m3(n)</option>
+                    <option value="G_G6_4000">G6, jaarverbruik vanaf 4.000 m3(n)</option>
+                    <option value="G_G10">G10</option>
+                    <option value="G_G16">G16</option>
+                    <option value="G_G25">G25</option>
+                    <option value="G_NULTARIEF">Grootverbruik</option>
+                  </select>
+                </div>
+                <div class="relative zonnepanelen-field hidden">
+                  <label class="field-label text-[0.844rem] leading-7 text-[#3a3a3a]" for="">Opwek zonnepanelen</label>
+                  <input class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-sm pl-4" type="text" />
+                  <span class="absolute bottom-2 right-3">kWh</span>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-col">
+              <div class="inline-flex items-center gap-3 mt-5">
+                <svg
+                  class="w-10 h-10"
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="2em"
+                  viewBox="0 0 512 512"
+                >
+                  <style>
+                    svg {
+                      fill: #87c232;
+                    }
+                  </style>
+                  <path
+                    d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"
+                  />
+                </svg>
+                <div class="text-sm font-bold">
+                  <span class="text-[#87C232]">Volgende stap:</span
+                  ><span class="ml-2">
+                    Controleer je gegevens en bevestig je aanvraag.</span
+                  >
+                </div>
+              </div>
+              <span class="bg-red-600 text-base p-3 text-white text-center mt-4">
+                Jouw persoonlijke aanbod kon niet worden geladen. Ververs aub
+                de pagina.
+              </span>
+            </div>
+
             <button type="button" onclick="nextTwo()" class="button w-full h-12 bg-[#87C232] text-center text-white hover:text-[#1E2329] mt-5 uppercase font-bold">
               Gegevens invullen
             </button>

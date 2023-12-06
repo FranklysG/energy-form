@@ -119,3 +119,54 @@ window.addEventListener("load", () => {
   setupClickEvent("meter-nee", toggleNeeMessage);
   setupClickEvent("meter-ja", toggleNeeMessage);
 });
+
+const showElement = (selector) => {
+  document.querySelector(selector).classList.remove('hidden');
+};
+
+const hideElement = (selector) => {
+  document.querySelector(selector).classList.add('hidden');
+};
+
+window.addEventListener('load', () => {
+  const eletricInput = document.getElementById('Electriciteit');
+  const gasInput = document.getElementById('Gas');
+  const bothInput = document.getElementById('Electriciteit-Gas');
+
+  eletricInput.addEventListener('click', () => {
+    showElement('.Electriciteit.fields');
+    hideElement('.Gas.fields');
+    hideElement('.electriciteit-gas-divider');
+  });
+
+  gasInput.addEventListener('click', () => {
+    showElement('.Gas.fields');
+    hideElement('.Electriciteit.fields');
+    hideElement('.electriciteit-gas-divider');
+  });
+
+  bothInput.addEventListener('click', () => {
+    showElement('.Gas.fields');
+    showElement('.Electriciteit.fields');
+    showElement('.electriciteit-gas-divider');
+  });
+});
+
+
+window.addEventListener('load', () => {
+  const particularInput = document.getElementById('Particulier');
+  const companyInput = document.getElementById('Zakelijk');
+
+  particularInput.addEventListener('click', () => {
+    showElement('.aantal-personen-fields')
+    showElement('.type-wonning-fields')
+    hideElement('.company-help-fields')
+  })
+
+  companyInput.addEventListener('click', () => {
+    hideElement('.aantal-personen-fields')
+    hideElement('.type-wonning-fields')
+    showElement('.company-help-fields')
+  })
+
+})
