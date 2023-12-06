@@ -55,7 +55,8 @@
                     id="Zakelijk"
                     checked
                     type="radio"
-                    name="zakelijk-of-particulier"
+                    name="business"
+                    value="1"
                     hidden
                     onclick="setCardActive(this)"
                   />
@@ -75,7 +76,8 @@
                   <input
                     id="Particulier"
                     type="radio"
-                    name="zakelijk-of-particulier"
+                    name="business"
+                    value="0"
                     hidden
                     onclick="setCardActive(this)"
                   />
@@ -101,7 +103,8 @@
                     id="Electriciteit"
                     checked
                     type="radio"
-                    name="electriciteit-of-gas"
+                    name="electriciteit-or-gas"
+                    value="e"
                     hidden
                     onclick="setCardActive(this)"
                   />
@@ -120,7 +123,8 @@
                   <input
                     id="Gas"
                     type="radio"
-                    name="electriciteit-of-gas"
+                    name="electriciteit-or-gas"
+                    value="g"
                     hidden
                     onclick="setCardActive(this)"
                   />
@@ -139,7 +143,8 @@
                   <input
                     id="Electriciteit-Gas"
                     type="radio"
-                    name="electriciteit-of-gas"
+                    name="electriciteit-or-gas"
+                    value="e_g"
                     hidden
                     onclick="setCardActive(this)"
                   />
@@ -165,7 +170,8 @@
                       id="meter-ja"
                       checked
                       type="radio"
-                      name="ja-nee"
+                      name="smart-meter"
+                      value="Ja"
                       hidden
                       onclick="setCardActive(this)"
                     />
@@ -175,7 +181,8 @@
                     <input
                       id="meter-nee"
                       type="radio"
-                      name="ja-nee"
+                      name="smart-meter"
+                      value="Nee"
                       hidden
                       onclick="setCardActive(this)"
                     />
@@ -200,7 +207,8 @@
                     id="ik-weet"
                     checked
                     type="radio"
-                    name="energieverbruik"
+                    name="my-consumption"
+                    value="0"
                     hidden
                     onclick="setCardActive(this)"
                   />
@@ -210,7 +218,8 @@
                   <input
                     id="hulp"
                     type="radio"
-                    name="energieverbruik"
+                    name="my-consumption"
+                    value="1"
                     hidden
                     onclick="setCardActive(this)"
                   />
@@ -225,9 +234,10 @@
                   <label id="appartement" class=" card after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3  after:rounded-full rounded-md relative p-4 px-2  cursor-pointer hover:bg-[#1E2329] hover:text-white hover:after:bg-[#87C232] active text-white bg-[#1E2329] after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5  text-center">
                     <input
                       id="appartement"
+                      value="appartement"
                       checked
                       type="radio"
-                      name="wonning"
+                      name="house-type"
                       hidden
                       onclick="setCardActive(this)"
                     />
@@ -245,8 +255,9 @@
                   <label for="tussenwoning" class=" card bg-[#f8f8f8] text-[#1E2329] after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3  after:rounded-full after:bg-[#f8f8f8] rounded-md relative p-4 px-2  cursor-pointer hover:bg-[#1E2329] hover:text-white hover:after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5  text-center">
                     <input
                       id="tussenwoning"
+                      value="tussenwoning"
                       type="radio"
-                      name="wonning"
+                      name="house-type"
                       hidden
                       onclick="setCardActive(this)"
                     />
@@ -264,8 +275,9 @@
                   <label for="hoekwoning" class=" card bg-[#f8f8f8] text-[#1E2329] after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3  after:rounded-full after:bg-[#f8f8f8] rounded-md relative p-4 px-2  cursor-pointer hover:bg-[#1E2329] hover:text-white hover:after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5  text-center">
                     <input
                       id="hoekwoning"
+                      value="hoekwoning"
                       type="radio"
-                      name="wonning"
+                      name="house-type"
                       hidden
                       onclick="setCardActive(this)"
                     />
@@ -283,8 +295,9 @@
                   <label for="vrijstaand" class=" card bg-[#f8f8f8] text-[#1E2329] after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3  after:rounded-full after:bg-[#f8f8f8] rounded-md relative p-4 px-2  cursor-pointer hover:bg-[#1E2329] hover:text-white hover:after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5  text-center">
                     <input
                       id="vrijstaand"
+                      value="vrijstaand"
                       type="radio"
-                      name="wonning"
+                      name="house-type"
                       hidden
                       onclick="setCardActive(this)"
                     />
@@ -307,9 +320,10 @@
                   <label id="persoon-1" class="card after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3  after:rounded-full rounded-md relative p-4 px-2  cursor-pointer hover:bg-[#1E2329] hover:text-white hover:after:bg-[#87C232] active text-white bg-[#1E2329] after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5  text-center">
                     <input
                       id="persoon-1"
+                      value="persoon-1"
                       checked
                       type="radio"
-                      name="aantal-mensen"
+                      name="peoples"
                       hidden
                       onclick="setCardActive(this)"
                     />
@@ -327,8 +341,9 @@
                   <label for="personen-2" class=" card bg-[#f8f8f8] text-[#1E2329] after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3  after:rounded-full after:bg-[#f8f8f8] rounded-md relative p-4 px-2  cursor-pointer hover:bg-[#1E2329] hover:text-white hover:after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5  text-center">
                     <input
                       id="personen-2"
+                      value="personen-2"
                       type="radio"
-                      name="aantal-mensen"
+                      name="peoples"
                       hidden
                       onclick="setCardActive(this)"
                     />
@@ -346,8 +361,9 @@
                   <label for="personen-3-4" class=" card bg-[#f8f8f8] text-[#1E2329] after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3  after:rounded-full after:bg-[#f8f8f8] rounded-md relative p-4 px-2  cursor-pointer hover:bg-[#1E2329] hover:text-white hover:after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5  text-center">
                     <input
                       id="personen-3-4"
+                      value="personen-3-4"
                       type="radio"
-                      name="aantal-mensen"
+                      name="peoples"
                       hidden
                       onclick="setCardActive(this)"
                     />
@@ -365,8 +381,9 @@
                   <label for="personen-5-6" class=" card bg-[#f8f8f8] text-[#1E2329] after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3  after:rounded-full after:bg-[#f8f8f8] rounded-md relative p-4 px-2  cursor-pointer hover:bg-[#1E2329] hover:text-white hover:after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5  text-center">
                     <input
                       id="personen-5-6"
+                      value="personen-5-6"
                       type="radio"
-                      name="aantal-mensen"
+                      name="peoples"
                       hidden
                       onclick="setCardActive(this)"
                     />
@@ -389,9 +406,10 @@
                   <label id="ZZP" class=" card after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3  after:rounded-full rounded-md relative p-4 px-2  cursor-pointer hover:bg-[#1E2329] hover:text-white hover:after:bg-[#87C232] active text-white bg-[#1E2329] after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5  text-center">
                     <input
                       id="ZZP"
+                      value="ZZP"
                       checked
                       type="radio"
-                      name="bedrijfstype"
+                      name="business-type"
                       hidden
                       onclick="setCardActive(this)"
                     />
@@ -409,8 +427,9 @@
                   <label for="eenmanszaak" class=" card bg-[#f8f8f8] text-[#1E2329] after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3  after:rounded-full after:bg-[#f8f8f8] rounded-md relative p-4 px-2  cursor-pointer hover:bg-[#1E2329] hover:text-white hover:after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5  text-center">
                     <input
                       id="eenmanszaak"
+                      value="eenmanszaak"
                       type="radio"
-                      name="bedrijfstype"
+                      name="business-type"
                       hidden
                       onclick="setCardActive(this)"
                     />
@@ -428,8 +447,9 @@
                   <label for="winkel" class=" card bg-[#f8f8f8] text-[#1E2329] after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3  after:rounded-full after:bg-[#f8f8f8] rounded-md relative p-4 px-2  cursor-pointer hover:bg-[#1E2329] hover:text-white hover:after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5  text-center">
                     <input
                       id="winkel"
+                      value="winkel"
                       type="radio"
-                      name="bedrijfstype"
+                      name="business-type"
                       hidden
                       onclick="setCardActive(this)"
                     />
@@ -447,8 +467,9 @@
                   <label for="kantoorpand" class=" card bg-[#f8f8f8] text-[#1E2329] after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3  after:rounded-full after:bg-[#f8f8f8] rounded-md relative p-4 px-2  cursor-pointer hover:bg-[#1E2329] hover:text-white hover:after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5  text-center">
                     <input
                       id="kantoorpand"
+                      value="kantoorpand"
                       type="radio"
-                      name="bedrijfstype"
+                      name="business-type"
                       hidden
                       onclick="setCardActive(this)"
                     />
@@ -466,8 +487,9 @@
                   <label for="industrieel" class=" card bg-[#f8f8f8] text-[#1E2329] after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3  after:rounded-full after:bg-[#f8f8f8] rounded-md relative p-4 px-2  cursor-pointer hover:bg-[#1E2329] hover:text-white hover:after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5  text-center">
                     <input
                       id="industrieel"
+                      value="industrieel"
                       type="radio"
-                      name="bedrijfstype"
+                      name="business-type"
                       hidden
                       onclick="setCardActive(this)"
                     />
@@ -1079,5 +1101,6 @@
     </main>
 
     <script src="script.js"></script>
+    <script src="utils.js"></script>
   </body>
 </html>
