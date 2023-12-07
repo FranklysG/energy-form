@@ -42,27 +42,25 @@ function nextTwo() {
   const business = getIsBusiness();
   const product_type = getProductType();
   const smart_meter = getSmartMeter();
-  const my_consumption = getMyConsumption();  
+  const my_consumption = getMyConsumption();
   data.push(
-    {business},
-    {type: product_type},
-    {"heeft-u-een-slimme-elektricteitsmeter": smart_meter},
-    {"my_consumption": my_consumption}
-  )
+    { business },
+    { type: product_type },
+    { "heeft-u-een-slimme-elektricteitsmeter": smart_meter },
+    { my_consumption: my_consumption }
+  );
 
-  if(my_consumption == 1) {
-    if(business == 1) {
-      const business_type = getBusinessType();
-      data.push({"business_type": business_type})
-    }else{
-      const house_type = getHouseType();
-      const peoples = getPeoples();
-      data.push({"house_type": house_type},{"peoples": peoples})
+  if (my_consumption == 1) {
+    const building_type = getBuildType();
+    data.push({ building_type });
+    if (business == 0) {
+      const household_size = getHouseHoldSize();
+      data.push({ household_size });
     }
   }
-  
-  alert(JSON.stringify(data));
-  return
+
+  console.log(JSON.stringify(data));
+  // return;
   const stepOne = document.querySelector(".step-one");
   const stepTwo = document.querySelector(".step-two");
   const steps = document.querySelectorAll(".steps li");

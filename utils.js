@@ -62,27 +62,12 @@ function getMyConsumption() {
    return radioSelecionado;
 }
 
-function getBusinessType() {
-    var radios = document.querySelectorAll('input[type=radio][name=business-type]');
+function getBuildType() {
+    var radios = document.querySelectorAll('input[type=radio][name=building_type]');
     var radioSelecionado;
     radios.forEach(function (radio) {
         if (radio.checked) {
-            var inputOculto = document.querySelector('input[type=radio][name=business-type][value="' + radio.value + '"]');
-            if (inputOculto) {
-                radioSelecionado = inputOculto.value;
-            }
-            return;
-        }
-    });
-    
-   return radioSelecionado;
-}
-function getHouseType() {
-    var radios = document.querySelectorAll('input[type=radio][name=house-type]');
-    var radioSelecionado;
-    radios.forEach(function (radio) {
-        if (radio.checked) {
-            var inputOculto = document.querySelector('input[type=radio][name=house-type][value="' + radio.value + '"]');
+            var inputOculto = document.querySelector('input[type=radio][name=building_type][value="' + radio.value + '"]');
             if (inputOculto) {
                 radioSelecionado = inputOculto.value;
             }
@@ -93,12 +78,12 @@ function getHouseType() {
    return radioSelecionado;
 }
 
-function getPeoples() {
-    var radios = document.querySelectorAll('input[type=radio][name=peoples]');
+function getHouseHoldSize() {
+    var radios = document.querySelectorAll('input[type=radio][name=household_size]');
     var radioSelecionado;
     radios.forEach(function (radio) {
         if (radio.checked) {
-            var inputOculto = document.querySelector('input[type=radio][name=peoples][value="' + radio.value + '"]');
+            var inputOculto = document.querySelector('input[type=radio][name=household_size][value="' + radio.value + '"]');
             if (inputOculto) {
                 radioSelecionado = inputOculto.value;
             }
