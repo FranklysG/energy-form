@@ -620,11 +620,11 @@
                   <div>
                     <label
                       class="field-label text-[0.844rem] leading-7 text-[#3a3a3a]"
-                      >Help mij schatten</label
+                      >Enkele of dubbele meter</label
                     >
                     <select
                       class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-sm pl-4"
-                      name="electricityMeterType"
+                      name="meter-type"
                     >
                       <option value="0">Enkele meter</option>
                       <option value="1">Dubbele meter</option>
@@ -634,11 +634,13 @@
                     <label
                       class="field-label text-[0.844rem] leading-7 text-[#3a3a3a]"
                       for=""
-                      >Verbruik piektarief</label
+                      >Verbruik</label
                     >
                     <input
                       class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-sm pl-4"
                       type="text"
+                      required
+                      name="peak-rate-eletric"
                     />
                     <span class="absolute bottom-2 right-3">kWh</span>
                   </div>
@@ -646,12 +648,12 @@
                     <label
                       class="field-label text-[0.844rem] leading-7 text-[#3a3a3a]"
                       for=""
-                      >Enkele of dubbele meter</label
+                      >Aansluiting</label
                     >
                     <select
                       class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-sm pl-4"
-                      name=""
-                      id=""
+                      name="connection-eletric"
+                      required
                     >
                       <option value="">Selecteer aub uw aansluiting</option>
                       <option value="E_3X25A">3x 25A</option>
@@ -701,6 +703,8 @@
                     >
                     <input
                       class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-sm pl-4"
+                      name="peak-rate-gas"
+                      required
                       type="text"
                     />
                     <span class="absolute bottom-2 right-3">m3</span>
@@ -708,13 +712,14 @@
                   <div>
                     <label
                       class="field-label text-[0.844rem] leading-7 text-[#3a3a3a]"
-                      for="EvGasConnectionType"
+                      for="connection-gas"
                       >Aansluiting</label
                     >
                     <select
-                      id="EvGasConnectionType"
+                      id="connection-gas"
                       class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-sm pl-4"
-                      name="EvGasConnectionType"
+                      name="connection-gas"
+                      required
                     >
                       <option value="">Selecteer aub uw aansluiting</option>
                       <option value="G_G6_500">
@@ -807,6 +812,8 @@
                       >
                       <input
                         placeholder="Postcode"
+                        name="postcode"
+                        required
                         class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-sm pl-4"
                         type="text"
                       />
@@ -819,6 +826,8 @@
                       >
                       <input
                         placeholder="Nummer"
+                        name="housenumber"
+                        required
                         class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-sm pl-4"
                         type="text"
                       />
@@ -844,6 +853,8 @@
                     >
                     <input
                       placeholder="Straat"
+                      name="streetname"
+                      required
                       class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-sm pl-4"
                       type="text"
                     />
@@ -856,6 +867,7 @@
                     >
                     <input
                       placeholder="Plaats"
+                      name="city"
                       class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-sm pl-4"
                       type="text"
                     />
@@ -868,7 +880,7 @@
                     >
                     <select
                       class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-sm pl-4"
-                      name="electricityMeterType"
+                      name="business-address"
                     >
                       <option value="0">JA</option>
                       <option value="1">Nee</option>
@@ -883,7 +895,7 @@
                     >
                     <select
                       class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-sm pl-4"
-                      name="electricityMeterType"
+                      name="change-or-moving"
                     >
                       <option value="0">Overstappen</option>
                       <option value="1">Verhuizing</option>
@@ -898,7 +910,56 @@
                     <input
                       class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-sm pl-4"
                       type="date"
+                      name="startdatum"
                     />
+                  </div>
+                  <div class="border-t border-gray-200 my-5"></div>
+                  <h3 class="text-[#1E2329] text-base font-bold">
+                    Bedrijfsgegevens
+                  </h3>
+                  <div>
+                    <label
+                      class="field-label text-[0.844rem] leading-7 text-[#3a3a3a]"
+                      for=""
+                      >Bedrijfsnaam</label
+                    >
+                    <input
+                      placeholder="Bedrijfsnaam"
+                      name="comapany"
+                      required
+                      class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-sm pl-4"
+                      type="text"
+                    />
+                  </div>
+                  <div class="flex gap-3">
+                    <div>
+                      <label
+                        class="field-label text-[0.844rem] leading-7 text-[#3a3a3a]"
+                        for=""
+                        >KvK-nummer</label
+                      >
+                      <input
+                        placeholder="KvK-nummer"
+                        name="rom-businnes"
+                        required
+                        class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-sm pl-4"
+                        type="text"
+                      />
+                    </div>
+                    <div>
+                      <label
+                        class="field-label text-[0.844rem] leading-7 text-[#3a3a3a]"
+                        for=""
+                        >BTW-nummer</label
+                      >
+                      <input
+                        placeholder="BTW-nummer"
+                        name="iva-number"
+                        required
+                        class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-sm pl-4"
+                        type="text"
+                      />
+                    </div>
                   </div>
                   <div class="border-t border-gray-200 my-5"></div>
                   <h3 class="text-[#1E2329] text-base font-bold">
@@ -912,7 +973,7 @@
                     >
                     <select
                       class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-sm pl-4"
-                      name="electricityMeterType"
+                      name="salutation"
                     >
                       <option value="male">Dhr</option>
                       <option value="female">Mevr</option>
@@ -927,6 +988,8 @@
                       >
                       <input
                         placeholder="Voornaam"
+                        name="first"
+                        required
                         class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-sm pl-4"
                         type="text"
                       />
@@ -939,6 +1002,8 @@
                       >
                       <input
                         placeholder="Achternaam"
+                        name="last"
+                        required
                         class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-sm pl-4"
                         type="text"
                       />
@@ -952,6 +1017,8 @@
                     >
                     <input
                       placeholder="Selecteer uw geboortedatum"
+                      name="birthdate"
+                      required
                       class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-sm pl-4"
                       type="date"
                     />
@@ -965,6 +1032,8 @@
                       >
                       <input
                         placeholder="E-mailadres"
+                        name="email"
+                        required
                         class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-sm pl-4"
                         type="text"
                       />
@@ -977,6 +1046,8 @@
                       >
                       <input
                         placeholder="Telefoonnummer"
+                        name="phone"
+                        required
                         class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-sm pl-4"
                         type="text"
                       />
@@ -990,6 +1061,8 @@
                     >
                     <input
                       placeholder="IBAN (bankrekeningnummer)"
+                      name="iban"
+                      required
                       class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-sm pl-4"
                       type="text"
                     />
@@ -1002,6 +1075,8 @@
                     >
                     <input
                       placeholder="Naam rekeninghouder"
+                      name="owner"
+                      required
                       class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-sm pl-4"
                       type="text"
                     />
@@ -1390,7 +1465,8 @@
       </section>
       <div
         class="w-full h-full fixed top-0 left-0 flex items-center bg-black/20 result-modal hidden"
-      >
+        onclick="closeResultModal()"
+        >
         <div
           class="bg-white w-full max-w-2xl h-full max-h-[479px] mx-auto overflow-auto p-2"
         >

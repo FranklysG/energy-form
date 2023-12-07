@@ -38,16 +38,27 @@ function prevOne() {
 }
 
 function nextTwo() {
+  const isValid = validateAndHighlightEmptyFields();
+  if (!isValid) return;
+
   const data = [];
   const business = getIsBusiness();
   const product_type = getProductType();
   const smart_meter = getSmartMeter();
   const my_consumption = getMyConsumption();
+  const { meterType, peakRateEletric, connectionEletric } = getMeterType();
+  const { peakRateGas, connectionGas } = getGasType();
+
   data.push(
     { business },
     { type: product_type },
     { "heeft-u-een-slimme-elektricteitsmeter": smart_meter },
-    { my_consumption: my_consumption }
+    { my_consumption },
+    { meterType },
+    { peakRateEletric },
+    { connectionEletric },
+    { peakRateGas },
+    { connectionGas }
   );
 
   if (my_consumption == 1) {
@@ -60,7 +71,7 @@ function nextTwo() {
   }
 
   console.log(JSON.stringify(data));
-  // return;
+
   const stepOne = document.querySelector(".step-one");
   const stepTwo = document.querySelector(".step-two");
   const steps = document.querySelectorAll(".steps li");
@@ -90,6 +101,29 @@ function prevTwo() {
 }
 
 function nextThree() {
+  const isValid = validateAndHighlightEmptyFields();
+  if (!isValid) return;
+
+  const data = {};
+  const {
+    postcode,
+    housenumber,
+    streetname,
+    city,
+    startdatum,
+    company,
+    romNumber,
+    ivaNumber,
+    first,
+    last,
+    birthdate,
+    email,
+    phone,
+    iban,
+    owner,
+  } = getCustomer();
+
+  console.log(JSON.stringify(data))
   const stepOne = document.querySelector(".step-one");
   const stepTwo = document.querySelector(".step-two");
   const stepThree = document.querySelector(".step-three");
@@ -230,11 +264,46 @@ window.addEventListener("load", () => {
   });
 });
 
-
 function openResultModal() {
-  showElement(".result-modal")
+  showElement(".result-modal");
 }
 
 function closeResultModal() {
-  hideElement(".result-modal")
+  hideElement(".result-modal");
+}
+
+function validateAndHighlightEmptyFields() {
+  var form = document.querySelector("form");
+
+  if (form) {
+    var isValid = true;
+
+    form.querySelectorAll("input, select, textarea").forEach(function (field) {
+      // Verifica se o campo é visível
+      var isVisible = field.offsetParent !== null;
+
+      if (isVisible) {
+        // Se o campo é visível, verifica a validade
+        if (!field.checkValidity()) {
+          // O campo não é válido
+          isValid = false;
+
+          // Adiciona uma borda vermelha ao campo não preenchido
+          if (field.value.trim() === "") {
+            field.style.border = "2px solid red";
+          }
+
+          // Você pode adicionar ações específicas para campos inválidos, se necessário
+          console.log("Campo inválido:", field);
+        } else {
+          // Remove a borda vermelha se o campo for válido
+          field.style.border = "";
+        }
+      }
+    });
+
+    return isValid;
+  } else {
+    console.error("Formulário não encontrado.");
+  }
 }
