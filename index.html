@@ -1375,7 +1375,7 @@
                   persoonlijk aanbod.
                 </p>
                 <button
-                  onclick="prevTwo()"
+                  onclick="openResultModal()"
                   type="button w-full h-12 bg-[#87C232] text-center text-white hover:text-[#1E2329] mt-5 uppercase font-bold"
                   class="w-full h-12 border border-[#87C232] text-center text-[#87C232] mt-5 uppercase font-bold hover:border-[#1E2329] hover:text-[#1E2329]"
                 >
@@ -1388,6 +1388,233 @@
           </div>
         </div>
       </section>
+      <div
+        class="w-full h-full fixed top-0 left-0 flex items-center bg-black/20 result-modal hidden"
+      >
+        <div
+          class="bg-white w-full max-w-2xl h-full max-h-[479px] mx-auto overflow-auto p-2"
+        >
+          <h3 class="font-bold text-xl text-[#1E2329] text-center">
+            PRIJSSTRUCTUUR EN KOSTEN
+          </h3>
+          <div class="p-12 bg-[#F8F8F8] stroom-result-modal">
+            <h3 class="font-bold text-xl text-[#1E2329] text-center">STROOM</h3>
+            <div class="border-t border-gray-200 my-8"></div>
+            <table
+              class="EvOfferTable border-collapse border border-gray-200 my-5 w-full"
+            >
+              <tbody class="text-xs">
+                <tr class="py-4">
+                  <td class="text-left py-4 pl-3 text-xs font-bold">
+                    Variabele kosten
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-4 border border-gray-200 px-3">
+                    Verwachte inkoopprijs (gemiddeld) 1800kWh x € 0,1210
+                  </td>
+                  <td class="text-right border border-gray-200 py-4 px-3">
+                    € 217,80
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-4 border border-gray-200 px-3">
+                    Inkoopvergoeding 1800kWh x € 0,0303
+                  </td>
+                  <td class="text-right border border-gray-200 px-3">€ 0,00</td>
+                </tr>
+                <tr>
+                  <td class="py-4 border border-gray-200 px-3">
+                    Overheidsheffingen
+                  </td>
+                  <td class="text-right border border-gray-200 px-3">
+                    <b>€ 3.412,85</b>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-4 border border-gray-200 px-3">
+                    0 - 1800kWh x € 0,1525
+                  </td>
+                  <td class="text-right border border-gray-200 px-3">
+                    € 592,31
+                  </td>
+                </tr>
+                <tr class="py-4">
+                  <td class="text-left py-4 pl-3 text-xs font-bold">
+                    Vaste kosten
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-4 border border-gray-200 px-3">
+                    Vaste leveringskosten
+                  </td>
+                  <td class="text-right border border-gray-200 px-3">
+                    € 592,31
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-4 border border-gray-200 px-3">
+                    Vermindering energiebelasting
+                  </td>
+                  <td class="text-right border border-gray-200 px-3">
+                    € 592,31
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-4 border border-gray-200 px-3">
+                    Netbeheerkosten (Stedin 3x25A)
+                  </td>
+                  <td class="text-right border border-gray-200 px-3">
+                    € 592,31
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-4 border border-gray-200 px-3 font-bold">
+                    Totaal jaarlijkse kosten stroom
+                  </td>
+                  <td class="text-right border border-gray-200 px-3">
+                    € 592,31
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="EvGreyPanel p-12 bg-[#F8F8F8] mt-8 gas-result-modal hidden">
+
+            <h3 class="font-bold text-xl text-[#1E2329] text-center">GAS</h3>
+        
+            <div class="border-t border-gray-200 my-8"></div>
+            
+            <table
+            class="EvOfferTable border-collapse border border-gray-200 my-5 w-full"
+          >
+            <tbody class="text-xs">
+              <tr class="py-4">
+                <td class="text-left py-4 pl-3 text-xs font-bold">
+                  Variabele kosten
+                </td>
+              </tr>
+              <tr>
+                <td class="py-4 border border-gray-200 px-3">
+                  Verwachte inkoopprijs (gemiddeld) 1800kWh x € 0,1210
+                </td>
+                <td class="text-right border border-gray-200 py-4 px-3">
+                  € 217,80
+                </td>
+              </tr>
+              <tr>
+                <td class="py-4 border border-gray-200 px-3">
+                  Inkoopvergoeding 1800kWh x € 0,0303
+                </td>
+                <td class="text-right border border-gray-200 px-3">€ 0,00</td>
+              </tr>
+              <tr>
+                <td class="py-4 border border-gray-200 px-3">
+                  Overheidsheffingen
+                </td>
+                <td class="text-right border border-gray-200 px-3">
+                  <b>€ 3.412,85</b>
+                </td>
+              </tr>
+              <tr>
+                <td class="py-4 border border-gray-200 px-3">
+                  0 - 1800kWh x € 0,1525
+                </td>
+                <td class="text-right border border-gray-200 px-3">
+                  € 592,31
+                </td>
+              </tr>
+              <tr class="py-4">
+                <td class="text-left py-4 pl-3 text-xs font-bold">
+                  Vaste kosten
+                </td>
+              </tr>
+              <tr>
+                <td class="py-4 border border-gray-200 px-3">
+                  Vaste leveringskosten
+                </td>
+                <td class="text-right border border-gray-200 px-3">
+                  € 592,31
+                </td>
+              </tr>
+              <tr>
+                <td class="py-4 border border-gray-200 px-3">
+                  Vermindering energiebelasting
+                </td>
+                <td class="text-right border border-gray-200 px-3">
+                  € 592,31
+                </td>
+              </tr>
+              <tr>
+                <td class="py-4 border border-gray-200 px-3">
+                  Netbeheerkosten (Stedin 3x25A)
+                </td>
+                <td class="text-right border border-gray-200 px-3">
+                  € 592,31
+                </td>
+              </tr>
+              <tr>
+                <td class="py-4 border border-gray-200 px-3 font-bold">
+                  Totaal jaarlijkse kosten gas
+                </td>
+                <td class="text-right border border-gray-200 px-3">
+                  € 592,31
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        
+        </div>
+          <div class="EvGreyPanel p-12 bg-[#F8F8F8] mt-8">
+            <h3 class="font-bold text-xl text-[#1E2329] text-center">
+              TOTAAL STROOM & GAS
+            </h3>
+
+            <div class="border-t border-gray-200 my-8"></div>
+
+            <table
+              class="EvOfferTable border-collapse border border-gray-200 my-5 w-full"
+            >
+              <tbody class="text-xs">
+                <tr>
+                  <td class="py-4 border border-gray-200 px-3">
+                    Totaal jaarlijkse kosten stroom
+                  </td>
+                  <td class="py-4 border border-gray-200 px-3">€ 376,91</td>
+                </tr>
+                <tr>
+                  <td class="py-4 border border-gray-200 px-3">
+                    Totaal jaarlijkse kosten gas
+                  </td>
+                  <td class="py-4 border border-gray-200 px-3">€ 0,00</td>
+                </tr>
+                <tr>
+                  <td class="py-4 border border-gray-200 px-3">
+                    <b>Totaal jaarlijkse kosten stroom &amp; gas</b>
+                  </td>
+                  <td class="py-4 border border-gray-200 px-3">
+                    <b>€ 376,91</b>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-4 border border-gray-200 px-3">BTW</td>
+                  <td class="py-4 border border-gray-200 px-3">€ 65,41</td>
+                </tr>
+                <tr>
+                  <td class="py-4 border border-gray-200 px-3">
+                    Indicatie termijnbedrag (p/m)
+                  </td>
+                  <td class="py-4 border border-gray-200 px-3">€ 31,41</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <button type="button" onclick="closeResultModal()" class="text-sm mx-auto w-full flex justify-center my-8">
+            Sluiten
+          </button>
+        </div>
+      </div>
     </main>
     <script src="script.js"></script>
     <script src="utils.js"></script>

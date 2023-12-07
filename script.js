@@ -189,18 +189,27 @@ window.addEventListener("load", () => {
     showElement(".Electriciteit.fields");
     hideElement(".Gas.fields");
     hideElement(".electriciteit-gas-divider");
+
+    showElement(".stroom-result-modal");
+    hideElement(".gas-result-modal");
   });
 
   gasInput.addEventListener("click", () => {
     showElement(".Gas.fields");
     hideElement(".Electriciteit.fields");
     hideElement(".electriciteit-gas-divider");
+
+    showElement(".gas-result-modal");
+    hideElement(".stroom-result-modal");
   });
 
   bothInput.addEventListener("click", () => {
     showElement(".Gas.fields");
     showElement(".Electriciteit.fields");
     showElement(".electriciteit-gas-divider");
+
+    showElement(".gas-result-modal");
+    showElement(".stroom-result-modal");
   });
 });
 
@@ -220,3 +229,12 @@ window.addEventListener("load", () => {
     showElement(".company-help-fields");
   });
 });
+
+
+function openResultModal() {
+  showElement(".result-modal")
+}
+
+function closeResultModal() {
+  hideElement(".result-modal")
+}
