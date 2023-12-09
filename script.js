@@ -110,8 +110,8 @@ function nextThree() {
     city,
     startdatum,
     company,
-    romNumber,
-    ivaNumber,
+    companyCoc,
+    companyVat,
     first,
     last,
     birthdate,
@@ -121,7 +121,8 @@ function nextThree() {
     owner,
     businessAddress,
     changeOrMoving,
-    salutation
+    salutation,
+    betreftOrVerhuizing
   } = getCustomer();
 
   form.postcode = postcode;
@@ -130,8 +131,8 @@ function nextThree() {
   form.city = city;
   form.startdatum = startdatum;
   form.company = company;
-  form.romNumber = romNumber;
-  form.ivaNumber = ivaNumber;
+  form.companyCoc = companyCoc;
+  form.companyVat = companyVat;
   form.first = first;
   form.last = last;
   form.birthdate = birthdate;
@@ -142,6 +143,7 @@ function nextThree() {
   form.businessAddress = businessAddress;
   form.changeOrMoving = changeOrMoving;
   form.salutation = salutation;
+  form.betreftOrVerhuizing = betreftOrVerhuizing;
 
   const stepOne = document.querySelector(".step-one");
   const stepTwo = document.querySelector(".step-two");
@@ -298,24 +300,16 @@ function validateAndHighlightEmptyFields() {
     var isValid = true;
 
     form.querySelectorAll("input, select, textarea").forEach(function (field) {
-      // Verifica se o campo é visível
       var isVisible = field.offsetParent !== null;
 
       if (isVisible) {
-        // Se o campo é visível, verifica a validade
         if (!field.checkValidity()) {
-          // O campo não é válido
           isValid = false;
 
-          // Adiciona uma borda vermelha ao campo não preenchido
           if (field.value.trim() === "") {
             field.style.border = "2px solid red";
           }
-
-          // Você pode adicionar ações específicas para campos inválidos, se necessário
-          console.log("Campo inválido:", field);
         } else {
-          // Remove a borda vermelha se o campo for válido
           field.style.border = "";
         }
       }
@@ -325,4 +319,11 @@ function validateAndHighlightEmptyFields() {
   } else {
     console.error("Formulário não encontrado.");
   }
+}
+
+function closeModal() {
+  const errors = document.querySelector("dialog[name=errors]");
+  const success = document.querySelector("dialog[name=success]");
+  success.close();
+  errors.close();
 }

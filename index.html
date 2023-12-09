@@ -635,7 +635,7 @@
                     >
                     <input
                       class="field w-full h-11 bg-gray-300 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-sm pl-4"
-                      type="text"
+                      type="number"
                       required
                       onchange="putPeakRateCustomer(this)"
                       disabled
@@ -678,7 +678,7 @@
                     >
                     <input
                       class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-sm pl-4"
-                      type="text"
+                      type="number"
                     />
                     <span class="absolute bottom-2 right-3">kWh</span>
                   </div>
@@ -705,7 +705,7 @@
                       name="peak-rate-gas"
                       required
                       onchange="putPeakRateCustomer(this)"
-                      type="text"
+                      type="number"
                     />
                     <span class="absolute bottom-2 right-3">m3</span>
                   </div>
@@ -745,7 +745,7 @@
                     >
                     <input
                       class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-sm pl-4"
-                      type="text"
+                      type="number"
                     />
                     <span class="absolute bottom-2 right-3">kWh</span>
                   </div>
@@ -883,8 +883,22 @@
                       class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-sm pl-4"
                       name="business-address"
                     >
-                      <option value="0">JA</option>
-                      <option value="1">Nee</option>
+                      <option value="Ja">JA</option>
+                      <option value="Nee">Nee</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label
+                      class="field-label text-[0.844rem] leading-7 text-[#3a3a3a]"
+                      for=""
+                      >Betreft het een verhuizing</label
+                    >
+                    <select
+                      class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-sm pl-4"
+                      name="betreft-het-een-verhuizing"
+                    >
+                      <option value="Ja">JA</option>
+                      <option value="Nee">Nee</option>
                     </select>
                   </div>
                   <div>
@@ -941,7 +955,7 @@
                       >
                       <input
                         placeholder="KvK-nummer"
-                        name="rom-businnes"
+                        name="company-coc"
                         required
                         class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-sm pl-4"
                         type="text"
@@ -955,8 +969,7 @@
                       >
                       <input
                         placeholder="BTW-nummer"
-                        name="iva-number"
-                        required
+                        name="company-vat"
                         class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-sm pl-4"
                         type="text"
                       />
@@ -1036,7 +1049,7 @@
                         name="email"
                         required
                         class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-sm pl-4"
-                        type="text"
+                        type="email"
                       />
                     </div>
                     <div>
@@ -1050,7 +1063,7 @@
                         name="phone"
                         required
                         class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-sm pl-4"
-                        type="text"
+                        type="tel"
                       />
                     </div>
                   </div>
@@ -1063,9 +1076,8 @@
                     <input
                       placeholder="IBAN (bankrekeningnummer)"
                       name="iban"
-                      required
                       class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-sm pl-4"
-                      type="text"
+                      type="number"
                     />
                   </div>
                   <div>
@@ -1264,6 +1276,7 @@
                 </div>
               </div>
               <button
+                onclick="createEnergyOffer()"
                 class="button w-full h-12 bg-[#87C232] text-center text-white hover:text-[#1E2329] mt-5 uppercase font-bold"
               >
                 Gegevens invullen
@@ -1749,6 +1762,195 @@
           </button>
         </div>
       </div>
+      <dialog
+        class="relative z-10"
+        name="success"
+        aria-labelledby="modal-title"
+        role="dialog"
+        aria-modal="true"
+      >
+        <div
+          class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+        ></div>
+
+        <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+          <div
+            class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0"
+          >
+            <div
+              class="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6"
+            >
+              <div>
+                <div
+                  class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100"
+                >
+                  <svg
+                    class="h-6 w-6 text-green-600"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M4.5 12.75l6 6 9-13.5"
+                    />
+                  </svg>
+                </div>
+                <div class="mt-3 text-center sm:mt-5">
+                  <h3
+                    class="text-base font-semibold leading-6 text-gray-900"
+                    id="modal-title"
+                  >
+                    Aanbieding succesvol verzonden
+                  </h3>
+                  <div class="mt-2">
+                    <p class="text-sm text-gray-500">
+                      Even geduld a.u.b., wij nemen contact met u op zodra wij
+                      uw zending hebben geanalyseerd.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-5 sm:mt-6">
+                <button
+                  type="button"
+                  onclick="close"
+                  class="inline-flex w-full justify-center rounded-md bg-[#87C232] px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-[#87C232]/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#87C232]"
+                >
+                  Opnieuw simuleren
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </dialog>
+      <dialog
+        class="relative z-10"
+        name="errors"
+        aria-labelledby="modal-title"
+        role="dialog"
+        aria-modal="true"
+      >
+        <div
+          class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+        ></div>
+
+        <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+          <div
+            class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0"
+          >
+            <div
+              class="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6"
+            >
+              <div>
+                <div
+                  class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-red-100"
+                >
+                  <svg
+                    class="h-6 w-6 text-red-600"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </div>
+                <div class="mt-3 text-center sm:mt-5">
+                  <h3
+                    class="text-base font-semibold leading-6 text-gray-900"
+                    id="modal-title"
+                  >
+                    Er is iets fout gegaan
+                  </h3>
+                  <div class="mt-2 space-y-2">
+                    <p class="text-sm text-gray-500">
+                      Controleer of alle velden correct zijn ingevuld
+                    </p>
+                    <ul
+                      name="list-errors"
+                      class="flex flex-col items-start flex-start justify-start list-disc pl-10 gap-2"
+                    ></ul>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-5 sm:mt-6">
+                <button
+                  type="button"
+                  onclick="closeModal()"
+                  class="inline-flex w-full justify-center rounded-md bg-[#87C232] px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-[#87C232]/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#87C232]"
+                >
+                  Opnieuw simuleren
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </dialog>
+      <dialog
+        class="relative z-10"
+        name="loading"
+        aria-labelledby="modal-title"
+        role="dialog"
+        aria-modal="true"
+      >
+        <div
+          class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+        ></div>
+
+        <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+          <div
+            class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0"
+          >
+            <div
+              class="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6"
+            >
+              <div>
+                <div
+                  class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-yellow-100"
+                >
+                  <svg
+                    class="h-6 w-6 text-yellow-600 animate-spin"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                  >
+                      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                      <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                </div>
+                <div class="mt-3 text-center sm:mt-5">
+                  <h3
+                    class="text-base font-semibold leading-6 text-gray-900"
+                    id="modal-title"
+                  >
+                  wachten ...
+                  </h3>
+                  <div class="mt-2 space-y-2">
+                    <p class="text-sm text-gray-500">
+                      Een ogenblik geduld terwijl we uw gegevens valideren
+                    </p>
+                    <ul
+                      name="list-errors"
+                      class="flex flex-col items-start flex-start justify-start list-disc pl-10 gap-2"
+                    ></ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </dialog>
     </main>
     <script src="script.js"></script>
     <script src="utils.js"></script>

@@ -48,7 +48,7 @@ saveButton?.addEventListener("click", function (event) {
   } else {
     // var dataURL = signaturePad.toDataURL();
     // download(dataURL, "signature.png");
-    //alert(dataURL);
+    // return dataURL;
     // $("#imageCheck").val(dataURL);
   }
 });

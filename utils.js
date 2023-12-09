@@ -164,8 +164,8 @@ function getCustomer() {
   const city = document.querySelector("input[name=city]");
   const startdatum = document.querySelector("input[name=startdatum]");
   const company = document.querySelector("input[name=company]");
-  const romNumber = document.querySelector("input[name=rom-businnes]");
-  const ivaNumber = document.querySelector("input[name=iva-number]");
+  const companyCoc = document.querySelector("input[name=company-coc]");
+  const companyVat = document.querySelector("input[name=company-vat]");
   const first = document.querySelector("input[name=first]");
   const last = document.querySelector("input[name=last]");
   const birthdate = document.querySelector("input[name=birthdate]");
@@ -173,6 +173,10 @@ function getCustomer() {
   const phone = document.querySelector("input[name=phone]");
   const iban = document.querySelector("input[name=iban]");
   const owner = document.querySelector("input[name=owner]");
+
+  const betreftOrVerhuizing = document.querySelector(
+    "select[name=betreft-het-een-verhuizing]"
+  );
 
   const businessAddress = document.querySelector(
     "select[name=business-address]"
@@ -210,11 +214,11 @@ function getCustomer() {
   if (company) {
     data.company = company.value;
   }
-  if (romNumber) {
-    data.romNumber = romNumber.value;
+  if (companyCoc) {
+    data.companyCoc = companyCoc.value;
   }
-  if (ivaNumber) {
-    data.ivaNumber = ivaNumber.value;
+  if (companyVat) {
+    data.companyVat = companyVat.value;
   }
   if (first) {
     data.first = first.value;
@@ -226,7 +230,13 @@ function getCustomer() {
     data.email = email.value;
   }
   if (birthdate) {
-    data.birthdate = birthdate.value;
+    const selectedDate = new Date(birthdate.value);
+    const day = String(selectedDate.getDate()).padStart(2, "0");
+    const month = String(selectedDate.getMonth() + 1).padStart(2, "0");
+    const year = selectedDate.getFullYear();
+
+    const formattedDate = `${day}-${month}-${year}`;
+    data.birthdate = formattedDate;
   }
   if (phone) {
     data.phone = phone.value;
@@ -239,6 +249,9 @@ function getCustomer() {
   }
   if (company) {
     data.company = company.value;
+  }
+  if (betreftOrVerhuizing) {
+    data.betreftOrVerhuizing = betreftOrVerhuizing.value;
   }
 
   return data;
@@ -265,14 +278,12 @@ function putCustomer() {
 }
 
 function putPeakRateCustomer(e) {
-
   let totalStoorm = document.querySelector("label[name=total-stoorm]");
-  totalStoorm.classList.remove('bg-slate-200')
-  totalStoorm.classList.remove('animate-pulse')
-  totalStoorm.innerHTML = '0,00'
+  totalStoorm.classList.remove("bg-slate-200");
+  totalStoorm.classList.remove("animate-pulse");
+  totalStoorm.innerHTML = "0,00";
 
-  if(e.name === 'peak-rate-eletric'){
-
+  if (e.name === "peak-rate-eletric") {
     const connectionEletricSelect = document.querySelector(
       'select[name="connection-eletric"]'
     );
@@ -284,78 +295,113 @@ function putPeakRateCustomer(e) {
         connectionEletricSelect.dispatchEvent(event);
       }
     }
-  
 
-    const eletricLabels = document.querySelectorAll("label[name=peak-rate-eletric]");
+    const eletricLabels = document.querySelectorAll(
+      "label[name=peak-rate-eletric]"
+    );
     eletricLabels.forEach((label) => {
-      label.innerHTML = e.value
-    })
+      label.innerHTML = e.value;
+    });
     const purchase_surcharge_electricity = document.querySelector(
       "label[name=purchase_surcharge_electricity]"
     ).textContent;
-    
+
     const purchase_fee_return_delivery_electricity = document.querySelector(
       "label[name=purchase_fee_return_delivery_electricity]"
     ).textContent;
 
-    if(purchase_surcharge_electricity !== '0,00'){
-      document.querySelector("td[name=eletric-total-price-buy]").innerHTML = '€ '+(e.value * purchase_surcharge_electricity).toFixed(2)
-      document.querySelector("td[name=eletric-total-tax-buy]").innerHTML = '€ '+(e.value * purchase_fee_return_delivery_electricity).toFixed(2)
-      document.querySelector("td[name=eletric-total-buy-and-tax]").innerHTML = '€ '+((e.value * purchase_surcharge_electricity)+(e.value * purchase_fee_return_delivery_electricity)).toFixed(2)
-      document.querySelector("td[name=eletric-total-buy-and-tax-margem]").innerHTML = '€ '+((e.value * purchase_surcharge_electricity)+(e.value * purchase_fee_return_delivery_electricity)).toFixed(2)
-      
-      totalStoorm.innerHTML = '€ '+((e.value * purchase_surcharge_electricity)+(e.value * purchase_fee_return_delivery_electricity)).toFixed(2)
-    }
-  }
-  
-  let totalGas = document.querySelector("label[name=total-gas]")
-  totalGas.classList.remove('bg-slate-200')
-  totalGas.classList.remove('animate-pulse')
-  totalGas.innerHTML = '0,00'
-  if(e.name === 'peak-rate-gas') {
+    if (purchase_surcharge_electricity !== "0,00") {
+      document.querySelector("td[name=eletric-total-price-buy]").innerHTML =
+        "€ " + (e.value * purchase_surcharge_electricity).toFixed(2);
+      document.querySelector("td[name=eletric-total-tax-buy]").innerHTML =
+        "€ " + (e.value * purchase_fee_return_delivery_electricity).toFixed(2);
+      document.querySelector("td[name=eletric-total-buy-and-tax]").innerHTML =
+        "€ " +
+        (
+          e.value * purchase_surcharge_electricity +
+          e.value * purchase_fee_return_delivery_electricity
+        ).toFixed(2);
+      document.querySelector(
+        "td[name=eletric-total-buy-and-tax-margem]"
+      ).innerHTML =
+        "€ " +
+        (
+          e.value * purchase_surcharge_electricity +
+          e.value * purchase_fee_return_delivery_electricity
+        ).toFixed(2);
 
-  const connectionGasSelect = document.querySelector(
-    'select[name="connection-gas"]'
-  );
-  if (connectionGasSelect) {
-    const currentIndex = connectionGasSelect.selectedIndex;
-    if (currentIndex < connectionGasSelect.options.length - 1) {
-      connectionGasSelect.selectedIndex = currentIndex + 1;
-      const event = new Event("change");
-      connectionGasSelect.dispatchEvent(event);
+      totalStoorm.innerHTML =
+        "€ " +
+        (
+          e.value * purchase_surcharge_electricity +
+          e.value * purchase_fee_return_delivery_electricity
+        ).toFixed(2);
     }
   }
+
+  let totalGas = document.querySelector("label[name=total-gas]");
+  totalGas.classList.remove("bg-slate-200");
+  totalGas.classList.remove("animate-pulse");
+  totalGas.innerHTML = "0,00";
+  if (e.name === "peak-rate-gas") {
+    const connectionGasSelect = document.querySelector(
+      'select[name="connection-gas"]'
+    );
+    if (connectionGasSelect) {
+      const currentIndex = connectionGasSelect.selectedIndex;
+      if (currentIndex < connectionGasSelect.options.length - 1) {
+        connectionGasSelect.selectedIndex = currentIndex + 1;
+        const event = new Event("change");
+        connectionGasSelect.dispatchEvent(event);
+      }
+    }
 
     const gasLabels = document.querySelectorAll("label[name=peak-rate-gas]");
     gasLabels.forEach((label) => {
-      label.innerHTML = e.value
-    })
+      label.innerHTML = e.value;
+    });
     const inkoopopslag_gas = document.querySelector(
       "label[name=inkoopopslag_gas]"
     ).textContent;
-    
+
     const purchase_surcharge_gas = document.querySelector(
       "label[name=purchase_surcharge_gas]"
     ).textContent;
-  
-    if(inkoopopslag_gas !== '0,00'){
-      document.querySelector("td[name=gas-total-price-buy]").innerHTML = '€ '+(e.value * inkoopopslag_gas).toFixed(2)
-      document.querySelector("td[name=gas-total-tax-buy]").innerHTML = '€ '+(e.value * purchase_surcharge_gas).toFixed(2)
-      document.querySelector("td[name=gas-total-buy-and-tax]").innerHTML = '€ '+((e.value * inkoopopslag_gas)+(e.value * purchase_surcharge_gas)).toFixed(2)
-      document.querySelector("td[name=gas-total-buy-and-tax-margem]").innerHTML = '€ '+((e.value * inkoopopslag_gas)+(e.value * purchase_surcharge_gas)).toFixed(2)
-     
-      totalGas.innerHTML = '€ '+((e.value * inkoopopslag_gas)+(e.value * purchase_surcharge_gas)).toFixed(2)
+
+    if (inkoopopslag_gas !== "0,00") {
+      document.querySelector("td[name=gas-total-price-buy]").innerHTML =
+        "€ " + (e.value * inkoopopslag_gas).toFixed(2);
+      document.querySelector("td[name=gas-total-tax-buy]").innerHTML =
+        "€ " + (e.value * purchase_surcharge_gas).toFixed(2);
+      document.querySelector("td[name=gas-total-buy-and-tax]").innerHTML =
+        "€ " +
+        (e.value * inkoopopslag_gas + e.value * purchase_surcharge_gas).toFixed(
+          2
+        );
+      document.querySelector(
+        "td[name=gas-total-buy-and-tax-margem]"
+      ).innerHTML =
+        "€ " +
+        (e.value * inkoopopslag_gas + e.value * purchase_surcharge_gas).toFixed(
+          2
+        );
+
+      totalGas.innerHTML =
+        "€ " +
+        (e.value * inkoopopslag_gas + e.value * purchase_surcharge_gas).toFixed(
+          2
+        );
     }
   }
 
-  const total = document.querySelector("label[name=total-stoorm-gas]")
-  total.classList.remove('bg-slate-200')
-  total.classList.remove('animate-pulse')
-  total.innerHTML = '0,00'
+  const total = document.querySelector("label[name=total-stoorm-gas]");
+  total.classList.remove("bg-slate-200");
+  total.classList.remove("animate-pulse");
+  total.innerHTML = "0,00";
 
-  const stoormGas = parseFloat(totalGas.textContent) + parseFloat(totalStoorm.textContent);
-  if(stoormGas > 0){
+  const stoormGas =
+    parseFloat(totalGas.textContent) + parseFloat(totalStoorm.textContent);
+  if (stoormGas > 0) {
     total.innerHTML = stoormGas;
   }
 }
-
