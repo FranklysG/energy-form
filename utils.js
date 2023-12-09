@@ -1,3 +1,4 @@
+<script type="text/javascript" name="utils">
 function getIsBusiness() {
   var radios = document.querySelectorAll("input[type=radio][name=business]");
   var radioSelecionado;
@@ -413,3 +414,4 @@ function putPeakRateCustomer(e) {
     total.innerHTML = "€ " + stoormGas.toFixed(2);
   }
 }
+</script>

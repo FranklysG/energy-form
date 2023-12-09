@@ -287,13 +287,15 @@
                   <div class="flex flex-wrap gap-3">
                     <label
                       id="appartement"
-                      class="card after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3 after:rounded-full rounded-md relative p-4 px-2 cursor-pointer hover:bg-[#1E2329] hover:text-white hover:after:bg-[#87C232] active text-white bg-[#1E2329] after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5 text-center"
+                      class="card bg-[#f8f8f8] text-[#1E2329] after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3 after:rounded-full after:bg-[#f8f8f8] rounded-md relative p-4 px-2 cursor-pointer hover:bg-[#1E2329] hover:text-white hover:after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5 text-center"
                     >
                       <input
                         id="appartement"
                         value="appartement"
                         type="radio"
+                        checked
                         name="building_type"
+                        onchange="getEstimateConsumer()"
                         hidden
                         onclick="setCardActive(this)"
                       />
@@ -317,6 +319,7 @@
                         value="tussenwoning"
                         type="radio"
                         name="building_type"
+                        onchange="getEstimateConsumer()"
                         hidden
                         onclick="setCardActive(this)"
                       />
@@ -340,6 +343,7 @@
                         value="hoekwoning"
                         type="radio"
                         name="building_type"
+                        onchange="getEstimateConsumer()"
                         hidden
                         onclick="setCardActive(this)"
                       />
@@ -363,6 +367,7 @@
                         value="vrijstaand"
                         type="radio"
                         name="building_type"
+                        onchange="getEstimateConsumer()"
                         hidden
                         onclick="setCardActive(this)"
                       />
@@ -388,13 +393,15 @@
                   <div class="flex flex-wrap gap-3">
                     <label
                       id="persoon-1"
-                      class="card after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3 after:rounded-full rounded-md relative p-4 px-2 cursor-pointer hover:bg-[#1E2329] hover:text-white hover:after:bg-[#87C232] active text-white bg-[#1E2329] after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5 text-center"
+                      class="card bg-[#f8f8f8] text-[#1E2329] after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3 after:rounded-full after:bg-[#f8f8f8] rounded-md relative p-4 px-2 cursor-pointer hover:bg-[#1E2329] hover:text-white hover:after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5 text-center"
                     >
                       <input
                         id="persoon-1"
                         value="1"
                         type="radio"
                         name="household_size"
+                        checked
+                        onchange="getEstimateConsumer()"
                         hidden
                         onclick="setCardActive(this)"
                       />
@@ -418,6 +425,7 @@
                         value="2"
                         type="radio"
                         name="household_size"
+                        onchange="getEstimateConsumer()"
                         hidden
                         onclick="setCardActive(this)"
                       />
@@ -441,6 +449,7 @@
                         value="3-4"
                         type="radio"
                         name="household_size"
+                        onchange="getEstimateConsumer()"
                         hidden
                         onclick="setCardActive(this)"
                       />
@@ -464,6 +473,7 @@
                         value="5-6"
                         type="radio"
                         name="household_size"
+                        onchange="getEstimateConsumer()"
                         hidden
                         onclick="setCardActive(this)"
                       />
@@ -489,13 +499,15 @@
                   <div class="flex flex-wrap gap-3">
                     <label
                       id="ZZP"
-                      class="card after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3 after:rounded-full rounded-md relative p-4 px-2 cursor-pointer hover:bg-[#1E2329] hover:text-white hover:after:bg-[#87C232] active text-white bg-[#1E2329] after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5 text-center"
+                      class="card bg-[#f8f8f8] text-[#1E2329] after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3 after:rounded-full after:bg-[#f8f8f8] rounded-md relative p-4 px-2 cursor-pointer hover:bg-[#1E2329] hover:text-white hover:after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5 text-center"
                     >
                       <input
                         id="ZZP"
                         value="zzp"
                         type="radio"
+                        checked
                         name="building_type"
+                        onchange="getEstimateConsumer()"
                         hidden
                         onclick="setCardActive(this)"
                       />
@@ -519,6 +531,7 @@
                         value="eenmanszaak"
                         type="radio"
                         name="building_type"
+                        onchange="getEstimateConsumer()"
                         hidden
                         onclick="setCardActive(this)"
                       />
@@ -542,6 +555,7 @@
                         value="winkel"
                         type="radio"
                         name="building_type"
+                        onchange="getEstimateConsumer()"
                         hidden
                         onclick="setCardActive(this)"
                       />
@@ -565,6 +579,7 @@
                         value="kantoorpand"
                         type="radio"
                         name="building_type"
+                        onchange="getEstimateConsumer()"
                         hidden
                         onclick="setCardActive(this)"
                       />
@@ -588,6 +603,7 @@
                         value="industrieel"
                         type="radio"
                         name="building_type"
+                        onchange="getEstimateConsumer()"
                         hidden
                         onclick="setCardActive(this)"
                       />

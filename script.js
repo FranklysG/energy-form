@@ -1,3 +1,4 @@
+<script type="text/javascript" name="script">
 const form = {};
 const removeStepActive = (idx) => {
   const steps = document.querySelectorAll(".steps li");
@@ -329,3 +330,4 @@ function closeModal() {
   errors.close();
   loading.close();
 }
+</script>

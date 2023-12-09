@@ -1,3 +1,4 @@
+<script type="text/javascript" name="api">
 const domain = "hosted-energy";
 const scope = "user";
 const version = "v1";
@@ -195,7 +196,6 @@ async function createEnergyOffer() {
       document.querySelector("dialog[name=success]").showModal();
     }
   } catch (error) {
-    
     console.log(error);
   }
 }
@@ -204,3 +204,81 @@ function getSignature() {
   var dataURL = signaturePad.toDataURL();
   return dataURL;
 }
+
+async function getEstimateConsumer(element) {
+  try {
+    
+    document.querySelector("dialog[name=loading]").showModal();
+
+    var requestOptions = {
+      headers: myHeaders,
+      redirect: "follow",
+    };
+    
+    let isBusiness = getIsBusiness();
+    let building_type = getBuildType();
+    let household_size = getHouseHoldSize();
+
+    let url = `${base_url}/user/energy/estimation?building_type=${building_type}`;
+
+    if(Boolean(parseInt(isBusiness))){
+      url+=`&business=${isBusiness}`
+    }else{
+      url+=`&household_size=${household_size}`
+    }
+
+    const response = await fetch(
+      url,
+      {
+        method: "GET",
+        ...requestOptions,
+      }
+    )
+      .then((response) => response.text())
+      .then((result) => result)
+      .catch((error) => console.log("error", error));
+
+    const { errors, success, data } = JSON.parse(response);
+    document.querySelector("dialog[name=loading]").close();
+
+    if (!success) {
+      document.querySelector("dialog[name=errors]").showModal();
+      const list = document.querySelector("ul[name=list-errors]");
+
+      Object.keys(errors).forEach((item) => {
+        const errorMessage = errors[item][0];
+        const listItem = document.createElement("li");
+        listItem.className = "text-xs font-normal text-red-700";
+        listItem.textContent = errorMessage;
+        list.appendChild(listItem);
+      });
+
+      return
+    } else {
+      const peakRateEletric = document.querySelector('input[name=peak-rate-eletric]');
+      const peakRateGas = document.querySelector('input[name=peak-rate-gas]');
+      const household_size = document.querySelector('input[name=household_size]');
+
+      switch (household_size.value) {
+        case '1':
+          peakRateEletric.value = data.e_low
+          break;
+        case '2':
+          peakRateEletric.value = data.e_high
+          break;
+        default:
+          peakRateEletric.value = data.e_single
+          break;
+      }
+
+
+      if(peakRateGas){
+        peakRateGas.value = data.gas
+      }
+    }
+
+  } catch (error) {
+    console.log(error)
+  }
+}
+</script>
