@@ -640,6 +640,7 @@
                       class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-sm pl-4"
                       type="text"
                       required
+                      onchange="putPeakRateCustomer(this)"
                       name="peak-rate-eletric"
                     />
                     <span class="absolute bottom-2 right-3">kWh</span>
@@ -705,6 +706,7 @@
                       class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-sm pl-4"
                       name="peak-rate-gas"
                       required
+                      onchange="putPeakRateCustomer(this)"
                       type="text"
                     />
                     <span class="absolute bottom-2 right-3">m3</span>
@@ -925,7 +927,7 @@
                     >
                     <input
                       placeholder="Bedrijfsnaam"
-                      name="comapany"
+                      name="company"
                       required
                       class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-sm pl-4"
                       type="text"
@@ -1134,23 +1136,27 @@
                 <tbody>
                   <tr>
                     <td>Straat en huisnummer</td>
-                    <td>Rua Santos Dumont, 75, São José 23dddd</td>
+                    <td name="first-address">
+                      Rua Santos Dumont, 75, São José 23dddd
+                    </td>
                   </tr>
                   <tr>
                     <td>Postcode en plaats</td>
-                    <td>65840-000 São Raimundo das Mangabeiras</td>
+                    <td name="last-address">
+                      65840-000 São Raimundo das Mangabeiras
+                    </td>
                   </tr>
                   <tr>
                     <td>Aansluiting elektriciteit EAN</td>
-                    <td></td>
+                    <td name="ean"></td>
                   </tr>
                   <tr>
                     <td>Start levering</td>
-                    <td>01-01-2024</td>
+                    <td name="startdatum">01-01-2024</td>
                   </tr>
                   <tr>
                     <td>Verhuizing</td>
-                    <td>Nee</td>
+                    <td name="changeOrMoving">Nee</td>
                   </tr>
                 </tbody>
               </table>
@@ -1164,27 +1170,27 @@
                 <tbody>
                   <tr>
                     <td>Naam</td>
-                    <td>aaaa aaaaa</td>
+                    <td name="first">aaaa aaaaa</td>
                   </tr>
                   <tr>
                     <td>Geboortedatum</td>
-                    <td>01-11-2023</td>
+                    <td name="birthdate">01-11-2023</td>
                   </tr>
                   <tr>
                     <td>E-mailadres</td>
-                    <td>votaxoy328@dabeixin.com</td>
+                    <td name="email">votaxoy328@dabeixin.com</td>
                   </tr>
                   <tr>
                     <td>Telefoonnummer</td>
-                    <td>99999999999999</td>
+                    <td name="phone">99999999999999</td>
                   </tr>
                   <tr>
                     <td>IBAN</td>
-                    <td>234234234</td>
+                    <td name="iban">234234234</td>
                   </tr>
                   <tr>
                     <td>Naam rekeninghouder</td>
-                    <td>asdasda asdasd</td>
+                    <td name="owner">asdasda asdasd</td>
                   </tr>
                 </tbody>
               </table>
@@ -1466,7 +1472,7 @@
       <div
         class="w-full h-full fixed top-0 left-0 flex items-center bg-black/20 result-modal hidden"
         onclick="closeResultModal()"
-        >
+      >
         <div
           class="bg-white w-full max-w-2xl h-full max-h-[479px] mx-auto overflow-auto p-2"
         >
@@ -1476,9 +1482,7 @@
           <div class="p-12 bg-[#F8F8F8] stroom-result-modal">
             <h3 class="font-bold text-xl text-[#1E2329] text-center">STROOM</h3>
             <div class="border-t border-gray-200 my-8"></div>
-            <table
-              class="EvOfferTable border-collapse border border-gray-200 my-5 w-full"
-            >
+            <table class="border-collapse border border-gray-200 my-5 w-full">
               <tbody class="text-xs">
                 <tr class="py-4">
                   <td class="text-left py-4 pl-3 text-xs font-bold">
@@ -1487,32 +1491,48 @@
                 </tr>
                 <tr>
                   <td class="py-4 border border-gray-200 px-3">
-                    Verwachte inkoopprijs (gemiddeld) 1800kWh x € 0,1210
+                    Verwachte inkoopprijs (gemiddeld)
+                    <label name="peak-rate">0</label> x € 0,1210
                   </td>
-                  <td class="text-right border border-gray-200 py-4 px-3">
-                    € 217,80
+                  <td
+                    name="eletric-total-price-buy"
+                    class="text-right border border-gray-200 py-4 px-3"
+                  >
+                    € 0,00
                   </td>
                 </tr>
                 <tr>
                   <td class="py-4 border border-gray-200 px-3">
-                    Inkoopvergoeding 1800kWh x € 0,0303
+                    Inkoopvergoeding <label name="peak-rate">0</label> x €
+                    0,0303
                   </td>
-                  <td class="text-right border border-gray-200 px-3">€ 0,00</td>
+                  <td
+                    name="eletric-total-tax-buy"
+                    class="text-right border border-gray-200 px-3"
+                  >
+                    € 0,00
+                  </td>
                 </tr>
                 <tr>
                   <td class="py-4 border border-gray-200 px-3">
                     Overheidsheffingen
                   </td>
-                  <td class="text-right border border-gray-200 px-3">
-                    <b>€ 3.412,85</b>
+                  <td
+                    name="eletric-total-buy-and-tax"
+                    class="font-bold text-right border border-gray-200 px-3"
+                  >
+                    € 0,00
                   </td>
                 </tr>
                 <tr>
                   <td class="py-4 border border-gray-200 px-3">
-                    0 - 1800kWh x € 0,1525
+                    0 - <label name="peak-rate">0</label> x € 0,1525
                   </td>
-                  <td class="text-right border border-gray-200 px-3">
-                    € 592,31
+                  <td
+                    name="eletric-total-buy-and-tax-margem"
+                    class="text-right border border-gray-200 px-3"
+                  >
+                    € 0,00
                   </td>
                 </tr>
                 <tr class="py-4">
@@ -1555,92 +1575,66 @@
               </tbody>
             </table>
           </div>
-          <div class="EvGreyPanel p-12 bg-[#F8F8F8] mt-8 gas-result-modal hidden">
-
-            <h3 class="font-bold text-xl text-[#1E2329] text-center">GAS</h3>
-        
-            <div class="border-t border-gray-200 my-8"></div>
-            
-            <table
-            class="EvOfferTable border-collapse border border-gray-200 my-5 w-full"
+          <div
+            class="p-12 bg-[#F8F8F8] mt-8 gas-result-modal hidden"
           >
-            <tbody class="text-xs">
-              <tr class="py-4">
-                <td class="text-left py-4 pl-3 text-xs font-bold">
-                  Variabele kosten
-                </td>
-              </tr>
-              <tr>
-                <td class="py-4 border border-gray-200 px-3">
-                  Verwachte inkoopprijs (gemiddeld) 1800kWh x € 0,1210
-                </td>
-                <td class="text-right border border-gray-200 py-4 px-3">
-                  € 217,80
-                </td>
-              </tr>
-              <tr>
-                <td class="py-4 border border-gray-200 px-3">
-                  Inkoopvergoeding 1800kWh x € 0,0303
-                </td>
-                <td class="text-right border border-gray-200 px-3">€ 0,00</td>
-              </tr>
-              <tr>
-                <td class="py-4 border border-gray-200 px-3">
-                  Overheidsheffingen
-                </td>
-                <td class="text-right border border-gray-200 px-3">
-                  <b>€ 3.412,85</b>
-                </td>
-              </tr>
-              <tr>
-                <td class="py-4 border border-gray-200 px-3">
-                  0 - 1800kWh x € 0,1525
-                </td>
-                <td class="text-right border border-gray-200 px-3">
-                  € 592,31
-                </td>
-              </tr>
-              <tr class="py-4">
-                <td class="text-left py-4 pl-3 text-xs font-bold">
-                  Vaste kosten
-                </td>
-              </tr>
-              <tr>
-                <td class="py-4 border border-gray-200 px-3">
-                  Vaste leveringskosten
-                </td>
-                <td class="text-right border border-gray-200 px-3">
-                  € 592,31
-                </td>
-              </tr>
-              <tr>
-                <td class="py-4 border border-gray-200 px-3">
-                  Vermindering energiebelasting
-                </td>
-                <td class="text-right border border-gray-200 px-3">
-                  € 592,31
-                </td>
-              </tr>
-              <tr>
-                <td class="py-4 border border-gray-200 px-3">
-                  Netbeheerkosten (Stedin 3x25A)
-                </td>
-                <td class="text-right border border-gray-200 px-3">
-                  € 592,31
-                </td>
-              </tr>
-              <tr>
-                <td class="py-4 border border-gray-200 px-3 font-bold">
-                  Totaal jaarlijkse kosten gas
-                </td>
-                <td class="text-right border border-gray-200 px-3">
-                  € 592,31
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        
-        </div>
+            <h3 class="font-bold text-xl text-[#1E2329] text-center">GAS</h3>
+
+            <div class="border-t border-gray-200 my-8"></div>
+
+            <table class="border-collapse border border-gray-200 my-5 w-full">
+              <tbody class="text-xs">
+                <tr class="py-4">
+                  <td class="text-left py-4 pl-3 text-xs font-bold">
+                    Variabele kosten
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-4 border border-gray-200 px-3">
+                    Verwachte inkoopprijs (gemiddeld)
+                    <span class="SmallText"
+                      ><br /><label name="peak-rate">0</label>m<sup>3</sup> x € 0,4000</span
+                    >
+                  </td>
+                  <td name="gas-total-price-buy" class="text-right border border-gray-200 px-3">€ 1.600,00</td>
+                </tr>
+                <tr>
+                  <td class="py-4 border border-gray-200 px-3">
+                    Inkoopvergoeding
+                    <span class="SmallText"
+                      ><br /><label name="peak-rate">0</label>m<sup>3</sup> x € 0,0800</span
+                    >
+                  </td>
+                  <td name="gas-total-tax-buy" class="text-right border border-gray-200 px-3">€ 320,00</td>
+                </tr>
+                <tr>
+                  <td class="py-4 border border-gray-200 px-3">Overheidsheffingen</td>
+                  <td name="gas-total-buy-and-tax" class="text-right border border-gray-200 px-3">€ 1.959,20</td>
+                </tr>
+                <tr class="SmallText">
+                  <td class="py-4 border border-gray-200 px-3"><label name="peak-rate">0</label>m<sup>3</sup> x € 0,4898</td>
+                  <td name="gas-total-buy-and-tax-margem" class="text-right border border-gray-200 px-3">€ 1.959,20</td>
+                </tr>
+                <tr class="py-4">
+                  <td class="text-left py-4 pl-3 text-xs font-bold">
+                    Variabele kosten
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-4 border border-gray-200 px-3">Vaste leveringskosten</td>
+                  <td class="text-right border border-gray-200 px-3">€ 60,00</td>
+                </tr>
+                <tr>
+                  <td class="py-4 border border-gray-200 px-3">Netbeheerkosten (Stedin t/m G6, verbruik &gt; 4000)</td>
+                  <td class="text-right border border-gray-200 px-3">€ 269,52</td>
+                </tr>
+                <tr>
+                  <td class="py-4 border border-gray-200 px-3"><b>Totaal jaarlijkse kosten gas</b></td>
+                  <td class="text-right border border-gray-200 px-3"><b>€ 4.208,72</b></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
           <div class="EvGreyPanel p-12 bg-[#F8F8F8] mt-8">
             <h3 class="font-bold text-xl text-[#1E2329] text-center">
               TOTAAL STROOM & GAS
@@ -1686,7 +1680,11 @@
             </table>
           </div>
 
-          <button type="button" onclick="closeResultModal()" class="text-sm mx-auto w-full flex justify-center my-8">
+          <button
+            type="button"
+            onclick="closeResultModal()"
+            class="text-sm mx-auto w-full flex justify-center my-8"
+          >
             Sluiten
           </button>
         </div>

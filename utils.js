@@ -173,16 +173,14 @@ function getCustomer() {
   const phone = document.querySelector("input[name=phone]");
   const iban = document.querySelector("input[name=iban]");
   const owner = document.querySelector("input[name=owner]");
-  
+
   const businessAddress = document.querySelector(
     "select[name=business-address]"
   );
   const changeOrMoving = document.querySelector(
     "select[name=change-or-moving]"
   );
-  const salutation = document.querySelector(
-    "select[name=salutation]"
-  );
+  const salutation = document.querySelector("select[name=salutation]");
 
   var data = {};
   if (postcode) {
@@ -218,6 +216,69 @@ function getCustomer() {
   if (ivaNumber) {
     data.ivaNumber = ivaNumber.value;
   }
+  if (first) {
+    data.first = first.value;
+  }
+  if (last) {
+    data.last = last.value;
+  }
+  if (email) {
+    data.email = email.value;
+  }
+  if (birthdate) {
+    data.birthdate = birthdate.value;
+  }
+  if (phone) {
+    data.phone = phone.value;
+  }
+  if (iban) {
+    data.iban = iban.value;
+  }
+  if (owner) {
+    data.owner = owner.value;
+  }
+  if (company) {
+    data.company = company.value;
+  }
 
-  return data
+  return data;
 }
+
+function putCustomer() {
+  window.onload = function () {
+    document.querySelector("td[name=first-address]").innerHTML =
+      form.streetname + ", " + form.romNumber;
+    document.querySelector("td[name=last-address]").innerHTML =
+      form.postcode + ", " + form.city;
+    document.querySelector("td[name=ean]").innerHTML = form.ean;
+    document.querySelector("td[name=startdatum]").innerHTML = form.startdatum;
+    document.querySelector("td[name=changeOrMoving]").innerHTML = form.owner;
+
+    document.querySelector("td[name=first]").innerHTML =
+      form.first + " " + form.last;
+    document.querySelector("td[name=birthdate]").innerHTML = form.birthdate;
+    document.querySelector("td[name=email]").innerHTML = form.email;
+    document.querySelector("td[name=phone]").innerHTML = form.phone;
+    document.querySelector("td[name=iban]").innerHTML = form.iban;
+    document.querySelector("td[name=owner]").innerHTML = form.owner;
+  };
+}
+
+function putPeakRateCustomer(e) {
+  const labels = document.querySelectorAll("label[name=peak-rate]");
+  labels.forEach((label) => {
+    label.innerHTML = e.value
+  })
+
+  document.querySelector("td[name=eletric-total-price-buy]").innerHTML = '€ '+(e.value * 0.1210).toFixed(2)
+  document.querySelector("td[name=eletric-total-tax-buy]").innerHTML = '€ '+(e.value * 0.0303).toFixed(2)
+  document.querySelector("td[name=eletric-total-buy-and-tax]").innerHTML = '€ '+((e.value * 0.1210)+(e.value * 0.0303)).toFixed(2)
+  document.querySelector("td[name=eletric-total-buy-and-tax-margem]").innerHTML = '€ '+((e.value * 0.1210)+(e.value * 0.0303)).toFixed(2)
+
+  document.querySelector("td[name=gas-total-price-buy]").innerHTML = '€ '+(e.value * 0.4000).toFixed(2)
+  document.querySelector("td[name=gas-total-tax-buy]").innerHTML = '€ '+(e.value * 0.0800).toFixed(2)
+  document.querySelector("td[name=gas-total-buy-and-tax]").innerHTML = '€ '+((e.value * 0.4000)+(e.value * 0.0800)).toFixed(2)
+  document.querySelector("td[name=gas-total-buy-and-tax-margem]").innerHTML = '€ '+((e.value * 0.4000)+(e.value * 0.0800)).toFixed(2)
+
+}
+

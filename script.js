@@ -1,3 +1,4 @@
+const form = {};
 const removeStepActive = (idx) => {
   const steps = document.querySelectorAll(".steps li");
   const step = steps[idx];
@@ -49,28 +50,24 @@ function nextTwo() {
   const { meterType, peakRateEletric, connectionEletric } = getMeterType();
   const { peakRateGas, connectionGas } = getGasType();
 
-  data.push(
-    { business },
-    { type: product_type },
-    { "heeft-u-een-slimme-elektricteitsmeter": smart_meter },
-    { my_consumption },
-    { meterType },
-    { peakRateEletric },
-    { connectionEletric },
-    { peakRateGas },
-    { connectionGas }
-  );
+  form.business = business;
+  form.type = product_type;
+  form.heeft_u_een_slimme_elektricteitsmeter = smart_meter;
+  form.my_consumption = my_consumption;
+  form.meterType = meterType;
+  form.peakRateEletric = peakRateEletric;
+  form.connectionEletric = connectionEletric;
+  form.peakRateGas = peakRateGas;
+  form.connectionGas = connectionGas;
 
   if (my_consumption == 1) {
     const building_type = getBuildType();
-    data.push({ building_type });
+    form.building_type = building_type;
     if (business == 0) {
       const household_size = getHouseHoldSize();
-      data.push({ household_size });
+      form.household_size = household_size;
     }
   }
-
-  console.log(JSON.stringify(data));
 
   const stepOne = document.querySelector(".step-one");
   const stepTwo = document.querySelector(".step-two");
@@ -87,6 +84,7 @@ function nextTwo() {
   );
 
   activateStep(1);
+  putCustomer();
 }
 
 function prevTwo() {
@@ -104,7 +102,7 @@ function nextThree() {
   const isValid = validateAndHighlightEmptyFields();
   if (!isValid) return;
 
-  const data = {};
+  const data = [];
   const {
     postcode,
     housenumber,
@@ -121,9 +119,30 @@ function nextThree() {
     phone,
     iban,
     owner,
+    businessAddress,
+    changeOrMoving,
+    salutation
   } = getCustomer();
 
-  console.log(JSON.stringify(data))
+  form.postcode = postcode;
+  form.housenumber = housenumber;
+  form.streetname = streetname;
+  form.city = city;
+  form.startdatum = startdatum;
+  form.company = company;
+  form.romNumber = romNumber;
+  form.ivaNumber = ivaNumber;
+  form.first = first;
+  form.last = last;
+  form.birthdate = birthdate;
+  form.email = email;
+  form.phone = phone;
+  form.iban = iban;
+  form.owner = owner;
+  form.businessAddress = businessAddress;
+  form.changeOrMoving = changeOrMoving;
+  form.salutation = salutation;
+
   const stepOne = document.querySelector(".step-one");
   const stepTwo = document.querySelector(".step-two");
   const stepThree = document.querySelector(".step-three");
