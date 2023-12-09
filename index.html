@@ -63,14 +63,15 @@
                 <div class="flex flex-wrap gap-3">
                   <label
                     for="Zakelijk"
-                    class="card after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3 after:rounded-full rounded-md relative p-4 px-2 cursor-pointer hover:bg-[#1E2329] hover:text-white hover:after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5 text-center active text-white bg-[#1E2329] after:bg-[#87C232]"
+                    class="card bg-[#f8f8f8] text-[#1E2329] after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3 after:rounded-full after:bg-[#f8f8f8] rounded-md relative p-4 px-2 cursor-pointer hover:bg-[#1E2329] hover:text-white hover:after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5 text-center"
                   >
                     <input
                       id="Zakelijk"
-                      checked
                       type="radio"
                       name="business"
                       value="1"
+                      data-product="62285"
+                      onchange="getProduct(this)"
                       hidden
                       onclick="setCardActive(this)"
                     />
@@ -95,6 +96,8 @@
                       type="radio"
                       name="business"
                       value="0"
+                      data-product="62286"
+                      onchange="getProduct(this)"
                       hidden
                       onclick="setCardActive(this)"
                     />
@@ -121,11 +124,10 @@
                 <div class="flex flex-wrap gap-3">
                   <label
                     id="Electriciteit"
-                    class="card after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3 after:rounded-full rounded-md relative p-4 px-2 cursor-pointer hover:bg-[#1E2329] hover:text-white hover:after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5 text-center active text-white bg-[#1E2329] after:bg-[#87C232]"
+                    class="card bg-[#f8f8f8] text-[#1E2329] after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3 after:rounded-full after:bg-[#f8f8f8] rounded-md relative p-4 px-2 cursor-pointer hover:bg-[#1E2329] hover:text-white hover:after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5 text-center"
                   >
                     <input
                       id="Electriciteit"
-                      checked
                       type="radio"
                       name="electriciteit-or-gas"
                       value="e"
@@ -201,11 +203,10 @@
                   <div class="grid grid-cols-2 gap-3">
                     <label
                       for="meter-ja"
-                      class="card after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3 after:rounded-full rounded-md relative p-4 cursor-pointer hover:bg-[#1E2329] hover:text-white hover:after:bg-[#87C232] !px-4 active text-white bg-[#1E2329] after:bg-[#87C232]"
+                      class="card bg-[#f8f8f8] text-[#1E2329] after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3 after:rounded-full after:bg-[#f8f8f8] rounded-md relative p-4 px-4 cursor-pointer hover:bg-[#1E2329] hover:text-white hover:after:bg-[#87C232]"
                     >
                       <input
                         id="meter-ja"
-                        checked
                         type="radio"
                         name="smart-meter"
                         value="Ja"
@@ -248,11 +249,10 @@
                 <div class="grid grid-cols-2 gap-3">
                   <label
                     for="ik-weet"
-                    class="card after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3 after:rounded-full rounded-md relative p-4 cursor-pointer hover:bg-[#1E2329] hover:text-white hover:after:bg-[#87C232] !px-4 active text-white bg-[#1E2329] after:bg-[#87C232]"
+                    class="card bg-[#f8f8f8] text-[#1E2329] after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3 after:rounded-full after:bg-[#f8f8f8] rounded-md relative p-4 px-4 cursor-pointer hover:bg-[#1E2329] hover:text-white hover:after:bg-[#87C232]"
                   >
                     <input
                       id="ik-weet"
-                      checked
                       type="radio"
                       name="my-consumption"
                       value="0"
@@ -292,7 +292,6 @@
                       <input
                         id="appartement"
                         value="appartement"
-                        checked
                         type="radio"
                         name="building_type"
                         hidden
@@ -394,7 +393,6 @@
                       <input
                         id="persoon-1"
                         value="1"
-                        checked
                         type="radio"
                         name="household_size"
                         hidden
@@ -496,7 +494,6 @@
                       <input
                         id="ZZP"
                         value="zzp"
-                        checked
                         type="radio"
                         name="building_type"
                         hidden
@@ -637,10 +634,11 @@
                       >Verbruik</label
                     >
                     <input
-                      class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-sm pl-4"
+                      class="field w-full h-11 bg-gray-300 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-sm pl-4"
                       type="text"
                       required
                       onchange="putPeakRateCustomer(this)"
+                      disabled
                       name="peak-rate-eletric"
                     />
                     <span class="absolute bottom-2 right-3">kWh</span>
@@ -703,7 +701,7 @@
                       >Verbruik gas</label
                     >
                     <input
-                      class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-sm pl-4"
+                      class="field w-full h-11 bg-gray-300 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-sm pl-4"
                       name="peak-rate-gas"
                       required
                       onchange="putPeakRateCustomer(this)"
@@ -778,7 +776,8 @@
                   </div>
                 </div>
                 <span
-                  class="bg-red-600 text-base p-3 text-white text-center mt-4"
+                  name="message-error"
+                  class="bg-red-600 hidden text-base p-3 text-white text-center mt-4"
                 >
                   Jouw persoonlijke aanbod kon niet worden geladen. Ververs aub
                   de pagina.
@@ -1415,40 +1414,72 @@
                       <td class="py-4 border border-gray-200 px-3">
                         Totaal jaarlijkse kosten stroom
                       </td>
-                      <td class="text-right border border-gray-200 px-3">
-                        € 3.412,85
+                      <td
+                        name="total-kosten-stroom"
+                        class="text-right border border-gray-200 px-3"
+                      >
+                        <label
+                          name="total-stoorm"
+                          class="bg-slate-200 animate-pulse rounded-md px-8 py-0.5"
+                        ></label>
                       </td>
                     </tr>
                     <tr>
                       <td class="py-4 border border-gray-200 px-3">
                         Totaal jaarlijkse kosten gas
                       </td>
-                      <td class="text-right border border-gray-200 px-3">
-                        € 0,00
+                      <td
+                        name="total-kosten-stroom"
+                        class="text-right border border-gray-200 px-3"
+                      >
+                        <label
+                          name="total-gas"
+                          class="bg-slate-200 animate-pulse rounded-md px-8 py-0.5"
+                        ></label>
                       </td>
                     </tr>
                     <tr>
                       <td class="py-4 border border-gray-200 px-3">
                         <b>Totaal jaarlijkse kosten stroom &amp; gas</b>
                       </td>
-                      <td class="text-right border border-gray-200 px-3">
-                        <b>€ 3.412,85</b>
+                      <td
+                        class="text-right border border-gray-200 px-3 font-bold"
+                      >
+                        <label
+                          name="total-stoorm-gas"
+                          class="bg-slate-200 animate-pulse rounded-md px-8 py-0.5"
+                        ></label>
                       </td>
                     </tr>
                     <tr>
                       <td class="py-4 border border-gray-200 px-3">BTW</td>
                       <td class="text-right border border-gray-200 px-3">
-                        € 592,31
+                        <label
+                          name="total-btw"
+                          class="bg-slate-200 animate-pulse rounded-md px-8 py-0.5"
+                        ></label>
                       </td>
                     </tr>
                   </tbody>
                 </table>
 
                 <div class="EvAvgCostsMonth font-bold text-[#87C232]">
-                  Indicatie termijnbedrag (p/m) <span><b>€ 284,40</b></span>
+                  Indicatie termijnbedrag (p/m)
+                  <span class="pl-4"
+                    ><label
+                      name="totla-sugguest"
+                      class="bg-slate-200 animate-pulse rounded-md px-8 py-0.5"
+                    ></label
+                  ></span>
                 </div>
                 <div class="EvAvgCostsYear">
-                  Verwachte kosten per jaar <span><b>€ 3.412,85</b></span>
+                  Verwachte kosten per jaar
+                  <span class="pl-4"
+                    ><label
+                      name="total-year"
+                      class="bg-slate-200 animate-pulse rounded-md px-8 py-0.5"
+                    ></label
+                  ></span>
                 </div>
 
                 <p class="mt-5">
@@ -1492,7 +1523,8 @@
                 <tr>
                   <td class="py-4 border border-gray-200 px-3">
                     Verwachte inkoopprijs (gemiddeld)
-                    <label name="peak-rate">0</label> x € 0,1210
+                    <label name="peak-rate-eletric">0</label> x €
+                    <label name="purchase_surcharge_electricity">0,00</label>
                   </td>
                   <td
                     name="eletric-total-price-buy"
@@ -1503,8 +1535,11 @@
                 </tr>
                 <tr>
                   <td class="py-4 border border-gray-200 px-3">
-                    Inkoopvergoeding <label name="peak-rate">0</label> x €
-                    0,0303
+                    Inkoopvergoeding <label name="peak-rate-eletric">0</label> x
+                    €
+                    <label name="purchase_fee_return_delivery_electricity"
+                      >0,00</label
+                    >
                   </td>
                   <td
                     name="eletric-total-tax-buy"
@@ -1526,7 +1561,7 @@
                 </tr>
                 <tr>
                   <td class="py-4 border border-gray-200 px-3">
-                    0 - <label name="peak-rate">0</label> x € 0,1525
+                    0 - <label name="peak-rate-eletric">0</label> x € 0,00
                   </td>
                   <td
                     name="eletric-total-buy-and-tax-margem"
@@ -1544,40 +1579,30 @@
                   <td class="py-4 border border-gray-200 px-3">
                     Vaste leveringskosten
                   </td>
-                  <td class="text-right border border-gray-200 px-3">
-                    € 592,31
-                  </td>
+                  <td class="text-right border border-gray-200 px-3">€ 0,00</td>
                 </tr>
                 <tr>
                   <td class="py-4 border border-gray-200 px-3">
                     Vermindering energiebelasting
                   </td>
-                  <td class="text-right border border-gray-200 px-3">
-                    € 592,31
-                  </td>
+                  <td class="text-right border border-gray-200 px-3">€ 0,00</td>
                 </tr>
                 <tr>
                   <td class="py-4 border border-gray-200 px-3">
                     Netbeheerkosten (Stedin 3x25A)
                   </td>
-                  <td class="text-right border border-gray-200 px-3">
-                    € 592,31
-                  </td>
+                  <td class="text-right border border-gray-200 px-3">€ 0,00</td>
                 </tr>
                 <tr>
                   <td class="py-4 border border-gray-200 px-3 font-bold">
                     Totaal jaarlijkse kosten stroom
                   </td>
-                  <td class="text-right border border-gray-200 px-3">
-                    € 592,31
-                  </td>
+                  <td class="text-right border border-gray-200 px-3">€ 0,00</td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <div
-            class="p-12 bg-[#F8F8F8] mt-8 gas-result-modal hidden"
-          >
+          <div class="p-12 bg-[#F8F8F8] mt-8 gas-result-modal hidden">
             <h3 class="font-bold text-xl text-[#1E2329] text-center">GAS</h3>
 
             <div class="border-t border-gray-200 my-8"></div>
@@ -1593,27 +1618,54 @@
                   <td class="py-4 border border-gray-200 px-3">
                     Verwachte inkoopprijs (gemiddeld)
                     <span class="SmallText"
-                      ><br /><label name="peak-rate">0</label>m<sup>3</sup> x € 0,4000</span
+                      ><br /><label name="peak-rate-gas">0</label>m<sup>3</sup>
+                      x €
+                      <label name="purchase_surcharge_gas">0,00</label></span
                     >
                   </td>
-                  <td name="gas-total-price-buy" class="text-right border border-gray-200 px-3">€ 1.600,00</td>
+                  <td
+                    name="gas-total-price-buy"
+                    class="text-right border border-gray-200 px-3"
+                  >
+                    € 0,00
+                  </td>
                 </tr>
                 <tr>
                   <td class="py-4 border border-gray-200 px-3">
                     Inkoopvergoeding
                     <span class="SmallText"
-                      ><br /><label name="peak-rate">0</label>m<sup>3</sup> x € 0,0800</span
+                      ><br /><label name="peak-rate-gas">0</label>m<sup>3</sup>
+                      x € <label name="inkoopopslag_gas">0,00</label></span
                     >
                   </td>
-                  <td name="gas-total-tax-buy" class="text-right border border-gray-200 px-3">€ 320,00</td>
+                  <td
+                    name="gas-total-tax-buy"
+                    class="text-right border border-gray-200 px-3"
+                  >
+                    € 0,00
+                  </td>
                 </tr>
                 <tr>
-                  <td class="py-4 border border-gray-200 px-3">Overheidsheffingen</td>
-                  <td name="gas-total-buy-and-tax" class="text-right border border-gray-200 px-3">€ 1.959,20</td>
+                  <td class="py-4 border border-gray-200 px-3">
+                    Overheidsheffingen
+                  </td>
+                  <td
+                    name="gas-total-buy-and-tax"
+                    class="text-right border border-gray-200 px-3"
+                  >
+                    € 0,00
+                  </td>
                 </tr>
                 <tr class="SmallText">
-                  <td class="py-4 border border-gray-200 px-3"><label name="peak-rate">0</label>m<sup>3</sup> x € 0,4898</td>
-                  <td name="gas-total-buy-and-tax-margem" class="text-right border border-gray-200 px-3">€ 1.959,20</td>
+                  <td class="py-4 border border-gray-200 px-3">
+                    <label name="peak-rate-gas">0</label>m<sup>3</sup> x € 0,00
+                  </td>
+                  <td
+                    name="gas-total-buy-and-tax-margem"
+                    class="text-right border border-gray-200 px-3"
+                  >
+                    € 0,00
+                  </td>
                 </tr>
                 <tr class="py-4">
                   <td class="text-left py-4 pl-3 text-xs font-bold">
@@ -1621,16 +1673,24 @@
                   </td>
                 </tr>
                 <tr>
-                  <td class="py-4 border border-gray-200 px-3">Vaste leveringskosten</td>
-                  <td class="text-right border border-gray-200 px-3">€ 60,00</td>
+                  <td class="py-4 border border-gray-200 px-3">
+                    Vaste leveringskosten
+                  </td>
+                  <td class="text-right border border-gray-200 px-3">€ 0,00</td>
                 </tr>
                 <tr>
-                  <td class="py-4 border border-gray-200 px-3">Netbeheerkosten (Stedin t/m G6, verbruik &gt; 4000)</td>
-                  <td class="text-right border border-gray-200 px-3">€ 269,52</td>
+                  <td class="py-4 border border-gray-200 px-3">
+                    Netbeheerkosten (Stedin t/m G6, verbruik &gt; 4000)
+                  </td>
+                  <td class="text-right border border-gray-200 px-3">€ 0,00</td>
                 </tr>
                 <tr>
-                  <td class="py-4 border border-gray-200 px-3"><b>Totaal jaarlijkse kosten gas</b></td>
-                  <td class="text-right border border-gray-200 px-3"><b>€ 4.208,72</b></td>
+                  <td class="py-4 border border-gray-200 px-3">
+                    <b>Totaal jaarlijkse kosten gas</b>
+                  </td>
+                  <td class="text-right border border-gray-200 px-3">
+                    <b>€ 0,00</b>
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -1650,7 +1710,7 @@
                   <td class="py-4 border border-gray-200 px-3">
                     Totaal jaarlijkse kosten stroom
                   </td>
-                  <td class="py-4 border border-gray-200 px-3">€ 376,91</td>
+                  <td class="py-4 border border-gray-200 px-3">€ 0,00</td>
                 </tr>
                 <tr>
                   <td class="py-4 border border-gray-200 px-3">
@@ -1663,18 +1723,18 @@
                     <b>Totaal jaarlijkse kosten stroom &amp; gas</b>
                   </td>
                   <td class="py-4 border border-gray-200 px-3">
-                    <b>€ 376,91</b>
+                    <b>€ 0,00</b>
                   </td>
                 </tr>
                 <tr>
                   <td class="py-4 border border-gray-200 px-3">BTW</td>
-                  <td class="py-4 border border-gray-200 px-3">€ 65,41</td>
+                  <td class="py-4 border border-gray-200 px-3">€ 0,00</td>
                 </tr>
                 <tr>
                   <td class="py-4 border border-gray-200 px-3">
                     Indicatie termijnbedrag (p/m)
                   </td>
-                  <td class="py-4 border border-gray-200 px-3">€ 31,41</td>
+                  <td class="py-4 border border-gray-200 px-3">€ 0,00</td>
                 </tr>
               </tbody>
             </table>
@@ -1692,5 +1752,6 @@
     </main>
     <script src="script.js"></script>
     <script src="utils.js"></script>
+    <script src="api.js"></script>
   </body>
 </html>

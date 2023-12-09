@@ -265,20 +265,97 @@ function putCustomer() {
 }
 
 function putPeakRateCustomer(e) {
-  const labels = document.querySelectorAll("label[name=peak-rate]");
-  labels.forEach((label) => {
-    label.innerHTML = e.value
-  })
 
-  document.querySelector("td[name=eletric-total-price-buy]").innerHTML = '€ '+(e.value * 0.1210).toFixed(2)
-  document.querySelector("td[name=eletric-total-tax-buy]").innerHTML = '€ '+(e.value * 0.0303).toFixed(2)
-  document.querySelector("td[name=eletric-total-buy-and-tax]").innerHTML = '€ '+((e.value * 0.1210)+(e.value * 0.0303)).toFixed(2)
-  document.querySelector("td[name=eletric-total-buy-and-tax-margem]").innerHTML = '€ '+((e.value * 0.1210)+(e.value * 0.0303)).toFixed(2)
+  let totalStoorm = document.querySelector("label[name=total-stoorm]");
+  totalStoorm.classList.remove('bg-slate-200')
+  totalStoorm.classList.remove('animate-pulse')
+  totalStoorm.innerHTML = '0,00'
 
-  document.querySelector("td[name=gas-total-price-buy]").innerHTML = '€ '+(e.value * 0.4000).toFixed(2)
-  document.querySelector("td[name=gas-total-tax-buy]").innerHTML = '€ '+(e.value * 0.0800).toFixed(2)
-  document.querySelector("td[name=gas-total-buy-and-tax]").innerHTML = '€ '+((e.value * 0.4000)+(e.value * 0.0800)).toFixed(2)
-  document.querySelector("td[name=gas-total-buy-and-tax-margem]").innerHTML = '€ '+((e.value * 0.4000)+(e.value * 0.0800)).toFixed(2)
+  if(e.name === 'peak-rate-eletric'){
 
+    const connectionEletricSelect = document.querySelector(
+      'select[name="connection-eletric"]'
+    );
+    if (connectionEletricSelect) {
+      const currentIndex = connectionEletricSelect.selectedIndex;
+      if (currentIndex < connectionEletricSelect.options.length - 1) {
+        connectionEletricSelect.selectedIndex = currentIndex + 1;
+        const event = new Event("change");
+        connectionEletricSelect.dispatchEvent(event);
+      }
+    }
+  
+
+    const eletricLabels = document.querySelectorAll("label[name=peak-rate-eletric]");
+    eletricLabels.forEach((label) => {
+      label.innerHTML = e.value
+    })
+    const purchase_surcharge_electricity = document.querySelector(
+      "label[name=purchase_surcharge_electricity]"
+    ).textContent;
+    
+    const purchase_fee_return_delivery_electricity = document.querySelector(
+      "label[name=purchase_fee_return_delivery_electricity]"
+    ).textContent;
+
+    if(purchase_surcharge_electricity !== '0,00'){
+      document.querySelector("td[name=eletric-total-price-buy]").innerHTML = '€ '+(e.value * purchase_surcharge_electricity).toFixed(2)
+      document.querySelector("td[name=eletric-total-tax-buy]").innerHTML = '€ '+(e.value * purchase_fee_return_delivery_electricity).toFixed(2)
+      document.querySelector("td[name=eletric-total-buy-and-tax]").innerHTML = '€ '+((e.value * purchase_surcharge_electricity)+(e.value * purchase_fee_return_delivery_electricity)).toFixed(2)
+      document.querySelector("td[name=eletric-total-buy-and-tax-margem]").innerHTML = '€ '+((e.value * purchase_surcharge_electricity)+(e.value * purchase_fee_return_delivery_electricity)).toFixed(2)
+      
+      totalStoorm.innerHTML = '€ '+((e.value * purchase_surcharge_electricity)+(e.value * purchase_fee_return_delivery_electricity)).toFixed(2)
+    }
+  }
+  
+  let totalGas = document.querySelector("label[name=total-gas]")
+  totalGas.classList.remove('bg-slate-200')
+  totalGas.classList.remove('animate-pulse')
+  totalGas.innerHTML = '0,00'
+  if(e.name === 'peak-rate-gas') {
+
+  const connectionGasSelect = document.querySelector(
+    'select[name="connection-gas"]'
+  );
+  if (connectionGasSelect) {
+    const currentIndex = connectionGasSelect.selectedIndex;
+    if (currentIndex < connectionGasSelect.options.length - 1) {
+      connectionGasSelect.selectedIndex = currentIndex + 1;
+      const event = new Event("change");
+      connectionGasSelect.dispatchEvent(event);
+    }
+  }
+
+    const gasLabels = document.querySelectorAll("label[name=peak-rate-gas]");
+    gasLabels.forEach((label) => {
+      label.innerHTML = e.value
+    })
+    const inkoopopslag_gas = document.querySelector(
+      "label[name=inkoopopslag_gas]"
+    ).textContent;
+    
+    const purchase_surcharge_gas = document.querySelector(
+      "label[name=purchase_surcharge_gas]"
+    ).textContent;
+  
+    if(inkoopopslag_gas !== '0,00'){
+      document.querySelector("td[name=gas-total-price-buy]").innerHTML = '€ '+(e.value * inkoopopslag_gas).toFixed(2)
+      document.querySelector("td[name=gas-total-tax-buy]").innerHTML = '€ '+(e.value * purchase_surcharge_gas).toFixed(2)
+      document.querySelector("td[name=gas-total-buy-and-tax]").innerHTML = '€ '+((e.value * inkoopopslag_gas)+(e.value * purchase_surcharge_gas)).toFixed(2)
+      document.querySelector("td[name=gas-total-buy-and-tax-margem]").innerHTML = '€ '+((e.value * inkoopopslag_gas)+(e.value * purchase_surcharge_gas)).toFixed(2)
+     
+      totalGas.innerHTML = '€ '+((e.value * inkoopopslag_gas)+(e.value * purchase_surcharge_gas)).toFixed(2)
+    }
+  }
+
+  const total = document.querySelector("label[name=total-stoorm-gas]")
+  total.classList.remove('bg-slate-200')
+  total.classList.remove('animate-pulse')
+  total.innerHTML = '0,00'
+
+  const stoormGas = parseFloat(totalGas.textContent) + parseFloat(totalStoorm.textContent);
+  if(stoormGas > 0){
+    total.innerHTML = stoormGas;
+  }
 }
 

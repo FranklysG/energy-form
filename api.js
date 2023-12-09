@@ -10,32 +10,79 @@ myHeaders.append("Accept", "application/json");
 myHeaders.append("Content-Type", "application/json");
 
 var requestOptions = {
-  method: "GET",
   headers: myHeaders,
   redirect: "follow",
 };
 
-// get the user
-// fetch(`${base_url}/${scope}`, requestOptions)
-//   .then((response) => response.text())
-//   .then((result) => console.log(result))
-//   .catch((error) => console.log("error", error));
-
-// get all forms
-// fetch(`${base_url}/${scope}/forms`, requestOptions)
-//   .then((response) => response.text())
-//   .then((result) => console.log(result))
-//   .catch((error) => console.log("error", error));
-
-// get a expecific form
-// fetch(`${base_url}/${scope}/forms/916/elements`, requestOptions)
-//   .then((response) => response.text())
-//   .then((result) => console.log(result))
-//   .catch((error) => console.log("error", error));
-
-function createEnergyOffer() {
+async function getProduct(element) {
+  const product_id = element.getAttribute("data-product");
   try {
-    
+    if (product_id) {
+      const response = await fetch(
+        `${base_url}/${scope}/products/${product_id}`,
+        {
+          method: "GET",
+          ...requestOptions,
+        }
+      )
+        .then((response) => response.text())
+        .then((result) => result)
+        .catch((error) => console.log("error", error));
+  
+      const { data } = JSON.parse(response);
+      const custom = data.customfields;
+  
+      if (custom) {
+        const peakRateEletric = document.querySelector(
+          "input[name=peak-rate-eletric]"
+        );
+        peakRateEletric.classList.remove("bg-gray-300");
+        peakRateEletric.classList.add("bg-gray-50");
+        peakRateEletric.removeAttribute("disabled");
+  
+        const peakRateGas = document.querySelector("input[name=peak-rate-gas]");
+        peakRateGas.classList.remove("bg-gray-300");
+        peakRateGas.classList.add("bg-gray-50");
+        peakRateGas.removeAttribute("disabled");
+  
+        const purchase_fee_return_delivery_electricity = document.querySelector(
+          "label[name=purchase_fee_return_delivery_electricity]"
+        );
+        purchase_fee_return_delivery_electricity.innerHTML =
+          custom.purchase_fee_return_delivery_electricity;
+  
+        const purchase_surcharge_electricity = document.querySelector(
+          "label[name=purchase_surcharge_electricity]"
+        );
+        purchase_surcharge_electricity.innerHTML =
+          custom.purchase_surcharge_electricity;
+  
+        const purchase_surcharge_gas = document.querySelector(
+          "label[name=purchase_surcharge_gas]"
+        );
+        purchase_surcharge_gas.innerHTML = custom.purchase_surcharge_gas;
+  
+        const inkoopopslag_gas = document.querySelector(
+          "label[name=inkoopopslag_gas]"
+        );
+        inkoopopslag_gas.innerHTML = custom["inkoopopslag-gas"];
+  
+        const btw_nr_verplicht_bij_teruglevering = document.querySelector(
+          "label[name=total-btw]"
+        );
+        btw_nr_verplicht_bij_teruglevering.classList.remove("bg-slate-200");
+        btw_nr_verplicht_bij_teruglevering.classList.remove("animate-pulse");
+        btw_nr_verplicht_bij_teruglevering.innerHTML =
+          custom["btw-nr-verplicht-bij-teruglevering"];
+      }
+    }
+  } catch (error) {
+    document.querySelector('span[name=message-error]').classList.remove('hidden')
+  }
+}
+
+async function createEnergyOffer() {
+  try {
     var raw = JSON.stringify({
       transaction_type: "offer",
       postcode: "7521WC",
@@ -111,7 +158,7 @@ function createEnergyOffer() {
       redirect: "follow",
     };
 
-    fetch(
+    await fetch(
       `${base_url}/sales/flow/energie-small-business/energie`,
       requestOptions
     )
