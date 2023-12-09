@@ -281,7 +281,10 @@ function putPeakRateCustomer(e) {
   let totalStoorm = document.querySelector("label[name=total-stoorm]");
   totalStoorm.classList.remove("bg-slate-200");
   totalStoorm.classList.remove("animate-pulse");
-  totalStoorm.innerHTML = "0,00";
+
+  let totalGas = document.querySelector("label[name=total-gas]");
+  totalGas.classList.remove("bg-slate-200");
+  totalGas.classList.remove("animate-pulse");
 
   if (e.name === "peak-rate-eletric") {
     const connectionEletricSelect = document.querySelector(
@@ -310,7 +313,7 @@ function putPeakRateCustomer(e) {
       "label[name=purchase_fee_return_delivery_electricity]"
     ).textContent;
 
-    if (purchase_surcharge_electricity !== "0,00") {
+    if (purchase_surcharge_electricity !== "0.00") {
       document.querySelector("td[name=eletric-total-price-buy]").innerHTML =
         "€ " + (e.value * purchase_surcharge_electricity).toFixed(2);
       document.querySelector("td[name=eletric-total-tax-buy]").innerHTML =
@@ -337,12 +340,12 @@ function putPeakRateCustomer(e) {
           e.value * purchase_fee_return_delivery_electricity
         ).toFixed(2);
     }
+
+    if (totalGas.textContent === "") {
+      totalGas.innerHTML = "€ 0.00";
+    }
   }
 
-  let totalGas = document.querySelector("label[name=total-gas]");
-  totalGas.classList.remove("bg-slate-200");
-  totalGas.classList.remove("animate-pulse");
-  totalGas.innerHTML = "0,00";
   if (e.name === "peak-rate-gas") {
     const connectionGasSelect = document.querySelector(
       'select[name="connection-gas"]'
@@ -368,7 +371,7 @@ function putPeakRateCustomer(e) {
       "label[name=purchase_surcharge_gas]"
     ).textContent;
 
-    if (inkoopopslag_gas !== "0,00") {
+    if (inkoopopslag_gas !== "0.00") {
       document.querySelector("td[name=gas-total-price-buy]").innerHTML =
         "€ " + (e.value * inkoopopslag_gas).toFixed(2);
       document.querySelector("td[name=gas-total-tax-buy]").innerHTML =
@@ -392,16 +395,21 @@ function putPeakRateCustomer(e) {
           2
         );
     }
+
+    if (totalStoorm.textContent === "") {
+      totalStoorm.innerHTML = "€ 0.00";
+    }
   }
 
   const total = document.querySelector("label[name=total-stoorm-gas]");
   total.classList.remove("bg-slate-200");
   total.classList.remove("animate-pulse");
-  total.innerHTML = "0,00";
+  total.innerHTML = "€ 0.00";
 
   const stoormGas =
-    parseFloat(totalGas.textContent) + parseFloat(totalStoorm.textContent);
+    parseFloat(totalGas.textContent.replace(/€\s*/, "")) +
+    parseFloat(totalStoorm.textContent.replace(/€\s*/, ""));
   if (stoormGas > 0) {
-    total.innerHTML = stoormGas;
+    total.innerHTML = "€ " + stoormGas.toFixed(2);
   }
 }

@@ -307,7 +307,7 @@ function validateAndHighlightEmptyFields() {
           isValid = false;
 
           if (field.value.trim() === "") {
-            field.style.border = "2px solid red";
+            field.style.border = "1px solid red";
           }
         } else {
           field.style.border = "";
