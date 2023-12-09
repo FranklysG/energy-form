@@ -324,6 +324,8 @@ function validateAndHighlightEmptyFields() {
 function closeModal() {
   const errors = document.querySelector("dialog[name=errors]");
   const success = document.querySelector("dialog[name=success]");
+  const loading = document.querySelector("dialog[name=loading]");
   success.close();
   errors.close();
+  loading.close();
 }

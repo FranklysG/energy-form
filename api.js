@@ -177,7 +177,7 @@ async function createEnergyOffer() {
       .then((result) => result)
       .catch((error) => console.log("error", error));
 
-    document.querySelector("dialog[name=success]").close();
+    document.querySelector("dialog[name=loading]").close();
     const { errors, success, data } = JSON.parse(response);
 
     if (!success) {
@@ -195,6 +195,7 @@ async function createEnergyOffer() {
       document.querySelector("dialog[name=success]").showModal();
     }
   } catch (error) {
+    
     console.log(error);
   }
 }
