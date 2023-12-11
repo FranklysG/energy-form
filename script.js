@@ -295,12 +295,12 @@ function closeResultModal() {
 }
 
 function validateAndHighlightEmptyFields() {
-  var form = document.querySelector("form");
+  var form_to_validade = document.querySelector("form");
 
-  if (form) {
+  if (form_to_validade) {
     var isValid = true;
 
-    form.querySelectorAll("input, select, textarea").forEach(function (field) {
+    form_to_validade.querySelectorAll("input, select, textarea").forEach(function (field) {
       var isVisible = field.offsetParent !== null;
 
       if (isVisible) {
