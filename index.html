@@ -400,7 +400,6 @@
                         value="1"
                         type="radio"
                         name="household_size"
-                        checked
                         onchange="getEstimateConsumer()"
                         hidden
                         onclick="setCardActive(this)"
@@ -1147,7 +1146,7 @@
                 type="button"
                 class="w-full h-12 border border-[#87C232] text-center text-[#87C232] hover:text-[#87C232] mt-5 uppercase font-bold"
               >
-                Gegevens invullen
+                Terug naar aanbod samenstellen
               </button>
             </div>
 
@@ -1162,28 +1161,49 @@
               <table>
                 <tbody>
                   <tr>
-                    <td>Straat en huisnummer</td>
-                    <td name="first-address">
-                      Rua Santos Dumont, 75, São José 23dddd
+                    <td class="w-52 text-sm py-1.5">
+                      Straat en huisnummer
                     </td>
+                    <td
+                      class="text-sm py-1.5"
+                      name="first-address"
+                    ></td>
                   </tr>
                   <tr>
-                    <td>Postcode en plaats</td>
-                    <td name="last-address">
-                      65840-000 São Raimundo das Mangabeiras
+                    <td class="w-52 text-sm py-1.5">
+                      Postcode en plaats
                     </td>
+                    <td
+                      class="text-sm py-1.5"
+                      name="last-address"
+                    ></td>
                   </tr>
                   <tr>
-                    <td>Aansluiting elektriciteit EAN</td>
-                    <td name="ean"></td>
+                    <td class="w-52 text-sm py-1.5">
+                      Aansluiting elektriciteit EAN
+                    </td>
+                    <td
+                      class="text-sm py-1.5"
+                      name="ean"
+                    ></td>
                   </tr>
                   <tr>
-                    <td>Start levering</td>
-                    <td name="startdatum">01-01-2024</td>
+                    <td class="w-52 text-sm py-1.5">
+                      Start levering
+                    </td>
+                    <td
+                      class="text-sm py-1.5"
+                      name="startdatum"
+                    ></td>
                   </tr>
                   <tr>
-                    <td>Verhuizing</td>
-                    <td name="changeOrMoving">Nee</td>
+                    <td class="w-52 text-sm py-1.5">
+                      Verhuizing
+                    </td>
+                    <td
+                      class="text-sm py-1.5"
+                      name="changeOrMoving"
+                    ></td>
                   </tr>
                 </tbody>
               </table>
@@ -1196,28 +1216,54 @@
               <table>
                 <tbody>
                   <tr>
-                    <td>Naam</td>
-                    <td name="first">aaaa aaaaa</td>
+                    <td class="w-52 text-sm py-1.5">Naam</td>
+                    <td
+                      class="text-sm py-1.5"
+                      name="first"
+                    ></td>
                   </tr>
                   <tr>
-                    <td>Geboortedatum</td>
-                    <td name="birthdate">01-11-2023</td>
+                    <td class="w-52 text-sm py-1.5">
+                      Geboortedatum
+                    </td>
+                    <td
+                      class="text-sm py-1.5"
+                      name="birthdate"
+                    ></td>
                   </tr>
                   <tr>
-                    <td>E-mailadres</td>
-                    <td name="email">votaxoy328@dabeixin.com</td>
+                    <td class="w-52 text-sm py-1.5">
+                      E-mailadres
+                    </td>
+                    <td
+                      class="text-sm py-1.5"
+                      name="email"
+                    ></td>
                   </tr>
                   <tr>
-                    <td>Telefoonnummer</td>
-                    <td name="phone">99999999999999</td>
+                    <td class="w-52 text-sm py-1.5">
+                      Telefoonnummer
+                    </td>
+                    <td
+                      class="text-sm py-1.5"
+                      name="phone"
+                    ></td>
                   </tr>
                   <tr>
-                    <td>IBAN</td>
-                    <td name="iban">234234234</td>
+                    <td class="w-52 text-sm py-1.5">IBAN</td>
+                    <td
+                      class="text-sm py-1.5"
+                      name="iban"
+                    ></td>
                   </tr>
                   <tr>
-                    <td>Naam rekeninghouder</td>
-                    <td name="owner">asdasda asdasd</td>
+                    <td class="w-52 text-sm py-1.5">
+                      Naam rekeninghouder
+                    </td>
+                    <td
+                      class="text-sm py-1.5"
+                      name="owner"
+                    ></td>
                   </tr>
                 </tbody>
               </table>
@@ -1304,8 +1350,6 @@
               >
                 Terug naar aanbod samenstellen
               </button>
-              <script src="https://cdn.jsdelivr.net/npm/signature_pad@3.0.0-beta.3/dist/signature_pad.min.js"></script>
-              <script src="signed.js"></script>
             </div>
           </form>
           <div class="result bg-[#f8f8f8] px-2 lg:p-10">
@@ -1941,8 +1985,19 @@
                     stroke="currentColor"
                     aria-hidden="true"
                   >
-                      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                      <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    <circle
+                      class="opacity-25"
+                      cx="12"
+                      cy="12"
+                      r="10"
+                      stroke="currentColor"
+                      stroke-width="4"
+                    ></circle>
+                    <path
+                      class="opacity-75"
+                      fill="currentColor"
+                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                    ></path>
                   </svg>
                 </div>
                 <div class="mt-3 text-center sm:mt-5">
@@ -1950,7 +2005,7 @@
                     class="text-base font-semibold leading-6 text-gray-900"
                     id="modal-title"
                   >
-                  wachten ...
+                    wachten ...
                   </h3>
                   <div class="mt-2 space-y-2">
                     <p class="text-sm text-gray-500">
@@ -1971,5 +2026,7 @@
     <script src="script.js"></script>
     <script src="utils.js"></script>
     <script src="api.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@3.0.0-beta.3/dist/signature_pad.min.js"></script>
+    <script src="signed.js"></script>
   </body>
 </html>

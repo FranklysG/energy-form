@@ -1,4 +1,3 @@
-<script type="text/javascript" name="script">
 const form = {};
 const removeStepActive = (idx) => {
   const steps = document.querySelectorAll(".steps li");
@@ -123,7 +122,7 @@ function nextThree() {
     businessAddress,
     changeOrMoving,
     salutation,
-    betreftOrVerhuizing
+    betreftOrVerhuizing,
   } = getCustomer();
 
   form.postcode = postcode;
@@ -162,6 +161,7 @@ function nextThree() {
     "dark:after:border-[#87C232]"
   );
 
+  putCustomer();
   activateStep(2);
 }
 
@@ -330,4 +330,3 @@ function closeModal() {
   errors.close();
   loading.close();
 }
-</script>

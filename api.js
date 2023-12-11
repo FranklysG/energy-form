@@ -1,4 +1,3 @@
-<script type="text/javascript" name="api">
 const domain = "hosted-energy";
 const scope = "user";
 const version = "v1";
@@ -116,10 +115,10 @@ async function createEnergyOffer() {
       return: 0,
       return_e_high: 0,
       return_e_low: 0,
-      usage_e_single: 1844,
+      usage_e_single: form.peakRateEletric,
       usage_e_high: null,
       usage_e_low: null,
-      usage_g: 1024,
+      usage_g: form.peakRateGas,
       tarifftype: "0",
       e_gridoperator: "",
       g_gridoperator: "",
@@ -207,36 +206,42 @@ function getSignature() {
 
 async function getEstimateConsumer(element) {
   try {
-    
-    document.querySelector("dialog[name=loading]").showModal();
-
     var requestOptions = {
       headers: myHeaders,
       redirect: "follow",
     };
-    
+
     let isBusiness = getIsBusiness();
     let building_type = getBuildType();
     let household_size = getHouseHoldSize();
 
     let url = `${base_url}/user/energy/estimation?building_type=${building_type}`;
+    let response = {};
 
-    if(Boolean(parseInt(isBusiness))){
-      url+=`&business=${isBusiness}`
-    }else{
-      url+=`&household_size=${household_size}`
-    }
-
-    const response = await fetch(
-      url,
-      {
+    if (Boolean(parseInt(isBusiness))) {
+      document.querySelector("dialog[name=loading]").showModal();
+      url += `&business=${isBusiness}`;
+      response = await fetch(url, {
         method: "GET",
         ...requestOptions,
+      })
+        .then((response) => response.text())
+        .then((result) => result)
+        .catch((error) => console.log("error", error));
+    } else {
+      url += `&household_size=${household_size}`;
+
+      if (household_size !== undefined) {
+        document.querySelector("dialog[name=loading]").showModal();
+        response = await fetch(url, {
+          method: "GET",
+          ...requestOptions,
+        })
+          .then((response) => response.text())
+          .then((result) => result)
+          .catch((error) => console.log("error", error));
       }
-    )
-      .then((response) => response.text())
-      .then((result) => result)
-      .catch((error) => console.log("error", error));
+    }
 
     const { errors, success, data } = JSON.parse(response);
     document.querySelector("dialog[name=loading]").close();
@@ -253,32 +258,75 @@ async function getEstimateConsumer(element) {
         list.appendChild(listItem);
       });
 
-      return
+      return;
     } else {
-      const peakRateEletric = document.querySelector('input[name=peak-rate-eletric]');
-      const peakRateGas = document.querySelector('input[name=peak-rate-gas]');
-      const household_size = document.querySelector('input[name=household_size]');
+      const peakRateEletric = document.querySelector(
+        "input[name=peak-rate-eletric]"
+      );
+      const peakRateGas = document.querySelector("input[name=peak-rate-gas]");
+      const household_size = document.querySelector(
+        "input[name=household_size]"
+      );
 
       switch (household_size.value) {
-        case '1':
-          peakRateEletric.value = data.e_low
+        case "8":
+          peakRateEletric.value = data.e_low;
           break;
-        case '2':
-          peakRateEletric.value = data.e_high
+        case "9":
+          peakRateEletric.value = data.e_high;
           break;
         default:
-          peakRateEletric.value = data.e_single
+          peakRateEletric.value = data.e_single;
           break;
       }
 
-
-      if(peakRateGas){
-        peakRateGas.value = data.gas
+      if (peakRateGas) {
+        peakRateGas.value = data.gas;
       }
-    }
 
+      putPeakRateCustomer(peakRateEletric);
+      putPeakRateCustomer(peakRateGas);
+    }
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
 }
-</script>
+
+async function getProductWithCauculation() {
+  const product_id = getProductId();
+  const business = getIsBusiness();
+  const product_type = getProductType();
+  const my_consumption = getMyConsumption();
+  const { meterType, peakRateEletric, connectionEletric } = getMeterType();
+  const { peakRateGas, connectionGas } = getGasType();
+
+  const params = {
+    postcode: "7521WC",
+    housenumber: 15,
+    type: product_type,
+    tarifftype: meterType,
+    usage_e_single: peakRateEletric,
+    usage_g: peakRateGas,
+    has_return: 0,
+    building_function: business,
+    e_connection_type: connectionEletric,
+    g_connection_type: connectionGas,
+  };
+
+  const url = new URL(`${base_url}/user/products/${product_id}/energy`);
+  Object.keys(params).forEach((key) =>
+    url.searchParams.append(key, params[key])
+  );
+
+  const response = await fetch(url, {
+    method: "GET",
+    ...requestOptions,
+  })
+    .then((response) => response.text())
+    .then((result) => result)
+    .catch((error) => console.log("error", error));
+
+    const { errors, success, data } = JSON.parse(response);
+    const costs_eletric = data.cost_specifications.electricity;
+    const costs_gas = data.cost_specifications.gas;
+}

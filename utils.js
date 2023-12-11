@@ -1,4 +1,3 @@
-<script type="text/javascript" name="utils">
 function getIsBusiness() {
   var radios = document.querySelectorAll("input[type=radio][name=business]");
   var radioSelecionado;
@@ -31,6 +30,24 @@ function getProductType() {
       );
       if (inputOculto) {
         radioSelecionado = inputOculto.value;
+      }
+      return;
+    }
+  });
+
+  return radioSelecionado;
+}
+
+function getProductId() {
+  var radios = document.querySelectorAll("input[type=radio][name=business]");
+  var radioSelecionado;
+  radios.forEach(function (radio) {
+    if (radio.checked) {
+      var inputOculto = document.querySelector(
+        'input[type=radio][name=business][value="' + radio.value + '"]'
+      );
+      if (inputOculto) {
+        radioSelecionado = inputOculto.getAttribute('data-product');;
       }
       return;
     }
@@ -259,26 +276,26 @@ function getCustomer() {
 }
 
 function putCustomer() {
-  window.onload = function () {
-    document.querySelector("td[name=first-address]").innerHTML =
-      form.streetname + ", " + form.romNumber;
-    document.querySelector("td[name=last-address]").innerHTML =
-      form.postcode + ", " + form.city;
-    document.querySelector("td[name=ean]").innerHTML = form.ean;
-    document.querySelector("td[name=startdatum]").innerHTML = form.startdatum;
-    document.querySelector("td[name=changeOrMoving]").innerHTML = form.owner;
+  document.querySelector("td[name=first-address]").innerHTML =
+    (form.streetname || "") + ", " + (form.romNumber || "");
+  document.querySelector("td[name=last-address]").innerHTML =
+    (form.postcode || "") + ", " + (form.city || "");
+  document.querySelector("td[name=ean]").innerHTML = form.ean || "";
+  document.querySelector("td[name=startdatum]").innerHTML =
+    form.startdatum || "";
+  document.querySelector("td[name=changeOrMoving]").innerHTML =
+    form.owner || "";
 
-    document.querySelector("td[name=first]").innerHTML =
-      form.first + " " + form.last;
-    document.querySelector("td[name=birthdate]").innerHTML = form.birthdate;
-    document.querySelector("td[name=email]").innerHTML = form.email;
-    document.querySelector("td[name=phone]").innerHTML = form.phone;
-    document.querySelector("td[name=iban]").innerHTML = form.iban;
-    document.querySelector("td[name=owner]").innerHTML = form.owner;
-  };
+  document.querySelector("td[name=first]").innerHTML =
+    (form.first || "") + " " + (form.last || "");
+  document.querySelector("td[name=birthdate]").innerHTML = form.birthdate || "";
+  document.querySelector("td[name=email]").innerHTML = form.email || "";
+  document.querySelector("td[name=phone]").innerHTML = form.phone || "";
+  document.querySelector("td[name=iban]").innerHTML = form.iban || "";
+  document.querySelector("td[name=owner]").innerHTML = form.owner || "";
 }
 
-function putPeakRateCustomer(e) {
+async function putPeakRateCustomer(e) {
   let totalStoorm = document.querySelector("label[name=total-stoorm]");
   totalStoorm.classList.remove("bg-slate-200");
   totalStoorm.classList.remove("animate-pulse");
@@ -286,6 +303,8 @@ function putPeakRateCustomer(e) {
   let totalGas = document.querySelector("label[name=total-gas]");
   totalGas.classList.remove("bg-slate-200");
   totalGas.classList.remove("animate-pulse");
+
+  // await getProductWithCauculation();
 
   if (e.name === "peak-rate-eletric") {
     const connectionEletricSelect = document.querySelector(
@@ -414,4 +433,3 @@ function putPeakRateCustomer(e) {
     total.innerHTML = "€ " + stoormGas.toFixed(2);
   }
 }
-</script>

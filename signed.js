@@ -1,4 +1,3 @@
-<script type="text/javascript" name="signed">
 function download(dataURL, filename) {
   if (
     navigator.userAgent.indexOf("Safari") > -1 &&
@@ -57,4 +56,3 @@ saveButton?.addEventListener("click", function (event) {
 cancelButton?.addEventListener("click", function (event) {
   signaturePad.clear();
 });
-</script>
