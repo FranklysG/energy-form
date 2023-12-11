@@ -45,17 +45,17 @@ async function getProduct(element) {
         peakRateGas.classList.add("bg-gray-50");
         peakRateGas.removeAttribute("disabled");
 
-        const purchase_fee_return_delivery_electricity = document.querySelector(
-          "label[name=purchase_fee_return_delivery_electricity]"
+        const purchase_surcharge_tariff_inc_vat = document.querySelector(
+          "label[name=purchase_surcharge_tariff_inc_vat]"
         );
-        purchase_fee_return_delivery_electricity.innerHTML =
-          custom.purchase_fee_return_delivery_electricity;
+        purchase_surcharge_tariff_inc_vat.innerHTML =
+          custom.purchase_surcharge_tariff_inc_vat;
 
-        const purchase_surcharge_electricity = document.querySelector(
-          "label[name=purchase_surcharge_electricity]"
+        const dynamic_average_tariff_inc_vat = document.querySelector(
+          "label[name=dynamic_average_tariff_inc_vat]"
         );
-        purchase_surcharge_electricity.innerHTML =
-          custom.purchase_surcharge_electricity;
+        dynamic_average_tariff_inc_vat.innerHTML =
+          custom.dynamic_average_tariff_inc_vat;
 
         const purchase_surcharge_gas = document.querySelector(
           "label[name=purchase_surcharge_gas]"
@@ -206,6 +206,10 @@ function getSignature() {
 
 async function getEstimateConsumer(element) {
   try {
+    let helpCosumer = getMyConsumption();
+    if (!Boolean(parseInt(helpCosumer)))
+      return
+
     var requestOptions = {
       headers: myHeaders,
       redirect: "follow",
@@ -303,7 +307,7 @@ async function getProductWithCauculation() {
   const params = {
     postcode: "7521WC",
     housenumber: 15,
-    type: product_type,
+    type: "e_g",
     tarifftype: meterType,
     usage_e_single: peakRateEletric,
     usage_g: peakRateGas,
@@ -329,4 +333,146 @@ async function getProductWithCauculation() {
     const { errors, success, data } = JSON.parse(response);
     const costs_eletric = data.cost_specifications.electricity;
     const costs_gas = data.cost_specifications.gas;
+ 
+    // Init eletric calc
+    if(product_type === 'e' || product_type === 'e_g'){
+      document.querySelector('label[name=eletric_dynamic_average_tariff_inc_vat]').innerHTML = costs_eletric.tariff.dynamic_average_tariff_inc_vat
+      document.querySelector('label[name=eletric_purchase_surcharge_tariff_inc_vat]').innerHTML = costs_eletric.tariff.purchase_surcharge_tariff_inc_vat
+      document.querySelector('label[name=eletric_purchase_surcharge_tariff_inc_vat]').innerHTML = costs_eletric.tariff.purchase_surcharge_tariff_inc_vat
+      document.querySelectorAll('label[name=eletric_usage_single]').forEach((element) => {
+        element.innerHTML = costs_eletric.usage_single
+      })
+      document.querySelector('td[name=eletric_expected_dynamic_purchase_cost_inc_vat]').innerHTML = `€ ${costs_eletric.expected_dynamic_purchase_cost_inc_vat}`
+      document.querySelector('td[name=eletric_purchase_surcharge_cost_inc_vat]').innerHTML = `€ ${costs_eletric.purchase_surcharge_cost_inc_vat}`
+      document.querySelector('td[name=eletric_government_tax_per_year_inc_vat]').innerHTML = `€ ${costs_eletric.government_tax_per_year_inc_vat}`
+
+      const [eletric_tariff_range, eletric_tariff_rate] = Object.entries(costs_eletric.tariff_energytax_exc_vat)[0];
+      const tariff_eletric_formatter = `${eletric_tariff_range} X € ${eletric_tariff_rate.replace(',', '.')}`;
+      document.querySelector('td[name=eletric_tariff_energytax_exc_vat]').innerHTML = tariff_eletric_formatter;
+
+      const [eletric_total_range, eletric_total_rate] = Object.entries(costs_eletric.total_energytax_exc_vat)[0];
+      const total_eletric_formatter = `€ ${eletric_total_rate.replace(',', '.')}`;
+      document.querySelector('td[name=eletric_total_energytax_exc_vat]').innerHTML = total_eletric_formatter;
+      document.querySelector('td[name=eletric_fixed_delivery_cost_inc_vat]').innerHTML = `€ ${costs_eletric.fixed_delivery_cost_inc_vat}`;
+      document.querySelector('td[name=eletric_tax_reduction_inc_vat]').innerHTML = `€ ${costs_eletric.tax_reduction_inc_vat}`;
+      document.querySelector('label[name=eletric_grid_operator_name]').innerHTML = costs_eletric.grid_operator_name;
+      document.querySelector('td[name=eletric_tariff_grid_operator_year_inc_vat]').innerHTML = `€ ${costs_eletric.tariff_grid_operator_year_inc_vat}`;
+      document.querySelectorAll('td[name=eletric_total]').forEach(element => {
+        element.innerHTML = `€ ${costs_eletric.total}`;
+      });
+      document.querySelectorAll('label[name=eletric_total]').forEach(element => {
+        element.innerHTML = `€ ${costs_eletric.total}`;
+      });
+    } else {
+      document.querySelector('label[name=eletric_dynamic_average_tariff_inc_vat]').innerHTML = '€ 0.00';
+      document.querySelector('label[name=eletric_purchase_surcharge_tariff_inc_vat]').innerHTML = '€ 0.00';
+      document.querySelector('label[name=eletric_purchase_surcharge_tariff_inc_vat]').innerHTML = '€ 0.00';
+      document.querySelectorAll('label[name=eletric_usage_single]').forEach((element) => {
+        element.innerHTML = '€ 0.00';
+      })
+      document.querySelector('td[name=eletric_expected_dynamic_purchase_cost_inc_vat]').innerHTML = '€ 0.00';
+      document.querySelector('td[name=eletric_purchase_surcharge_cost_inc_vat]').innerHTML = '€ 0.00';
+      document.querySelector('td[name=eletric_government_tax_per_year_inc_vat]').innerHTML = '€ 0.00';
+
+      const [eletric_tariff_range, eletric_tariff_rate] = Object.entries(costs_eletric.tariff_energytax_exc_vat)[0];
+      const tariff_eletric_formatter = `${eletric_tariff_range} X € ${eletric_tariff_rate.replace(',', '.')}`;
+      document.querySelector('td[name=eletric_tariff_energytax_exc_vat]').innerHTML = '€ 0.00';
+
+      const [eletric_total_range, eletric_total_rate] = Object.entries(costs_eletric.total_energytax_exc_vat)[0];
+      const total_eletric_formatter = `€ ${eletric_total_rate.replace(',', '.')}`;
+      document.querySelector('td[name=eletric_total_energytax_exc_vat]').innerHTML = '€ 0.00';
+      document.querySelector('td[name=eletric_fixed_delivery_cost_inc_vat]').innerHTML = '€ 0.00';
+      document.querySelector('td[name=eletric_tax_reduction_inc_vat]').innerHTML = '€ 0.00';
+      document.querySelector('label[name=eletric_grid_operator_name]').innerHTML = '€ 0.00';
+      document.querySelector('td[name=eletric_tariff_grid_operator_year_inc_vat]').innerHTML = '€ 0.00';
+      document.querySelectorAll('td[name=eletric_total]').forEach(element => {
+        element.innerHTML = '€ 0.00';
+      });
+      document.querySelectorAll('label[name=eletric_total]').forEach(element => {
+        element.innerHTML = '€ 0.00';
+      });
+    }
+
+    // init gas calc
+    if(product_type === 'g' || product_type === 'e_g'){
+      document.querySelector('label[name=gas_dynamic_average_tariff_inc_vat]').innerHTML = costs_gas.tariff.dynamic_average_tariff_inc_vat
+      document.querySelector('label[name=gas_purchase_surcharge_tariff_inc_vat]').innerHTML = costs_gas.tariff.purchase_surcharge_tariff_inc_vat
+      document.querySelector('label[name=gas_purchase_surcharge_tariff_inc_vat]').innerHTML = costs_gas.tariff.purchase_surcharge_tariff_inc_vat
+      document.querySelectorAll('label[name=gas_usage_single]').forEach((element) => {
+        element.innerHTML = costs_gas.usage
+      })
+      document.querySelector('td[name=gas_expected_dynamic_purchase_cost_inc_vat]').innerHTML = `€ ${costs_gas.expected_dynamic_purchase_cost_inc_vat}`
+      document.querySelector('td[name=gas_purchase_surcharge_cost_inc_vat]').innerHTML = `€ ${costs_gas.purchase_surcharge_cost_inc_vat}`
+      document.querySelector('td[name=gas_government_tax_per_year_inc_vat]').innerHTML = `€ ${costs_gas.government_tax_per_year_inc_vat}`
+
+      const [gas_tariff_range, gas_tariff_rate] = Object.entries(costs_gas.tariff_energytax_exc_vat)[0];
+      const tariff_gas_formatter = `${gas_tariff_range} X € ${gas_tariff_rate.replace(',', '.')}`;
+      document.querySelector('td[name=gas_tariff_energytax_exc_vat]').innerHTML = tariff_gas_formatter;
+
+      const [gas_total_range, gas_total_rate] = Object.entries(costs_gas.total_energytax_exc_vat)[0];
+      const total_gas_formatter = `€ ${gas_total_rate.replace(',', '.')}`;
+      document.querySelector('td[name=gas_total_energytax_exc_vat]').innerHTML = total_gas_formatter;
+      document.querySelector('td[name=gas_fixed_delivery_cost_inc_vat]').innerHTML = `€ ${costs_gas.fixed_delivery_cost_inc_vat}`;
+      document.querySelector('label[name=gas_grid_operator_name]').innerHTML = `€ ${costs_gas.grid_operator_name}`
+      document.querySelector('td[name=gas_tariff_grid_operator_year_inc_vat]').innerHTML = `€ ${costs_gas.tariff_grid_operator_year_inc_vat}`;
+      document.querySelectorAll('td[name=gas_total]').forEach(element => {
+        element.innerHTML = `€ ${costs_gas.total}`;
+      });
+      document.querySelectorAll('label[name=gas_total]').forEach(element => {
+        element.innerHTML = `€ ${costs_gas.total}`;
+      });
+    } else {
+      document.querySelector('label[name=gas_dynamic_average_tariff_inc_vat]').innerHTML = '€ 0.00'
+      document.querySelector('label[name=gas_purchase_surcharge_tariff_inc_vat]').innerHTML = '€ 0.00'
+      document.querySelector('label[name=gas_purchase_surcharge_tariff_inc_vat]').innerHTML = '€ 0.00'
+      document.querySelectorAll('label[name=gas_usage_single]').forEach((element) => {
+        element.innerHTML = '€ 0.00'
+      })
+      document.querySelector('td[name=gas_expected_dynamic_purchase_cost_inc_vat]').innerHTML = '€ 0.00';
+      document.querySelector('td[name=gas_purchase_surcharge_cost_inc_vat]').innerHTML = '€ 0.00';
+      document.querySelector('td[name=gas_government_tax_per_year_inc_vat]').innerHTML = '€ 0.00';
+      document.querySelector('td[name=gas_tariff_energytax_exc_vat]').innerHTML = '€ 0.00';
+      document.querySelector('td[name=gas_total_energytax_exc_vat]').innerHTML = '€ 0.00';
+      document.querySelector('td[name=gas_fixed_delivery_cost_inc_vat]').innerHTML = '€ 0.00';
+      document.querySelector('label[name=gas_grid_operator_name]').innerHTML = '€ 0.00'
+      document.querySelector('td[name=gas_tariff_grid_operator_year_inc_vat]').innerHTML = '€ 0.00';
+      document.querySelectorAll('td[name=gas_total]').forEach(element => {
+        element.innerHTML = '€ 0.00';
+      });
+      document.querySelectorAll('label[name=gas_total]').forEach(element => {
+        element.innerHTML = '€ 0.00';
+      });
+    }
+
+    // init cost toal
+    const gas_total = document.querySelector('td[name=gas_total]').textContent;
+    const eletric_total = document.querySelector('td[name=eletric_total]').textContent;
+    
+    const gas = parseFloat(gas_total.replace(/[^\d,]/g, '').replace(',', '.'));
+    const eletric = parseFloat(eletric_total.replace(/[^\d,]/g, '').replace(',', '.'));
+
+    const total_year = gas + eletric;
+
+    const total_month = total_year / 12;
+
+    const total_year = total_year.toLocaleString('pt-BR', {
+      style: 'currency',
+      currency: 'EUR'
+    });
+
+    const total_month = total_month.toLocaleString('pt-BR', {
+      style: 'currency',
+      currency: 'EUR'
+    });
+
+    
+    document.querySelectorAll('td[name=gas_eletric_total]').forEach(element => {
+      element.innerHTML = total_year;
+    });
+    
+    document.querySelectorAll('label[name=gas_eletric_total]').forEach(element => {
+      element.innerHTML = total_year;
+    });
+    document.querySelector('td[name=total_per_month]').innerHTML = total_month;
+    document.querySelector('label[name=total_per_month]').innerHTML = total_month;
 }

@@ -132,6 +132,7 @@
                       name="electriciteit-or-gas"
                       value="e"
                       hidden
+                      onchange="getEstimateConsumer(this)"
                       onclick="setCardActive(this)"
                     />
                     <div
@@ -155,6 +156,7 @@
                       name="electriciteit-or-gas"
                       value="g"
                       hidden
+                      onchange="getEstimateConsumer(this)"
                       onclick="setCardActive(this)"
                     />
                     <div
@@ -178,6 +180,7 @@
                       name="electriciteit-or-gas"
                       value="e_g"
                       hidden
+                      onchange="getEstimateConsumer(this)"
                       onclick="setCardActive(this)"
                     />
                     <div
@@ -1161,49 +1164,26 @@
               <table>
                 <tbody>
                   <tr>
-                    <td class="w-52 text-sm py-1.5">
-                      Straat en huisnummer
-                    </td>
-                    <td
-                      class="text-sm py-1.5"
-                      name="first-address"
-                    ></td>
+                    <td class="w-52 text-sm py-1.5">Straat en huisnummer</td>
+                    <td class="text-sm py-1.5" name="first-address"></td>
                   </tr>
                   <tr>
-                    <td class="w-52 text-sm py-1.5">
-                      Postcode en plaats
-                    </td>
-                    <td
-                      class="text-sm py-1.5"
-                      name="last-address"
-                    ></td>
+                    <td class="w-52 text-sm py-1.5">Postcode en plaats</td>
+                    <td class="text-sm py-1.5" name="last-address"></td>
                   </tr>
                   <tr>
                     <td class="w-52 text-sm py-1.5">
                       Aansluiting elektriciteit EAN
                     </td>
-                    <td
-                      class="text-sm py-1.5"
-                      name="ean"
-                    ></td>
+                    <td class="text-sm py-1.5" name="ean"></td>
                   </tr>
                   <tr>
-                    <td class="w-52 text-sm py-1.5">
-                      Start levering
-                    </td>
-                    <td
-                      class="text-sm py-1.5"
-                      name="startdatum"
-                    ></td>
+                    <td class="w-52 text-sm py-1.5">Start levering</td>
+                    <td class="text-sm py-1.5" name="startdatum"></td>
                   </tr>
                   <tr>
-                    <td class="w-52 text-sm py-1.5">
-                      Verhuizing
-                    </td>
-                    <td
-                      class="text-sm py-1.5"
-                      name="changeOrMoving"
-                    ></td>
+                    <td class="w-52 text-sm py-1.5">Verhuizing</td>
+                    <td class="text-sm py-1.5" name="changeOrMoving"></td>
                   </tr>
                 </tbody>
               </table>
@@ -1217,53 +1197,27 @@
                 <tbody>
                   <tr>
                     <td class="w-52 text-sm py-1.5">Naam</td>
-                    <td
-                      class="text-sm py-1.5"
-                      name="first"
-                    ></td>
+                    <td class="text-sm py-1.5" name="first"></td>
                   </tr>
                   <tr>
-                    <td class="w-52 text-sm py-1.5">
-                      Geboortedatum
-                    </td>
-                    <td
-                      class="text-sm py-1.5"
-                      name="birthdate"
-                    ></td>
+                    <td class="w-52 text-sm py-1.5">Geboortedatum</td>
+                    <td class="text-sm py-1.5" name="birthdate"></td>
                   </tr>
                   <tr>
-                    <td class="w-52 text-sm py-1.5">
-                      E-mailadres
-                    </td>
-                    <td
-                      class="text-sm py-1.5"
-                      name="email"
-                    ></td>
+                    <td class="w-52 text-sm py-1.5">E-mailadres</td>
+                    <td class="text-sm py-1.5" name="email"></td>
                   </tr>
                   <tr>
-                    <td class="w-52 text-sm py-1.5">
-                      Telefoonnummer
-                    </td>
-                    <td
-                      class="text-sm py-1.5"
-                      name="phone"
-                    ></td>
+                    <td class="w-52 text-sm py-1.5">Telefoonnummer</td>
+                    <td class="text-sm py-1.5" name="phone"></td>
                   </tr>
                   <tr>
                     <td class="w-52 text-sm py-1.5">IBAN</td>
-                    <td
-                      class="text-sm py-1.5"
-                      name="iban"
-                    ></td>
+                    <td class="text-sm py-1.5" name="iban"></td>
                   </tr>
                   <tr>
-                    <td class="w-52 text-sm py-1.5">
-                      Naam rekeninghouder
-                    </td>
-                    <td
-                      class="text-sm py-1.5"
-                      name="owner"
-                    ></td>
+                    <td class="w-52 text-sm py-1.5">Naam rekeninghouder</td>
+                    <td class="text-sm py-1.5" name="owner"></td>
                   </tr>
                 </tbody>
               </table>
@@ -1487,12 +1441,9 @@
                       <td class="py-4 border border-gray-200 px-3">
                         Totaal jaarlijkse kosten stroom
                       </td>
-                      <td
-                        name="total-kosten-stroom"
-                        class="text-right border border-gray-200 px-3"
-                      >
+                      <td class="text-right border border-gray-200 px-3">
                         <label
-                          name="total-stoorm"
+                          name="eletric_total"
                           class="bg-slate-200 animate-pulse rounded-md px-8 py-0.5"
                         ></label>
                       </td>
@@ -1501,12 +1452,9 @@
                       <td class="py-4 border border-gray-200 px-3">
                         Totaal jaarlijkse kosten gas
                       </td>
-                      <td
-                        name="total-kosten-stroom"
-                        class="text-right border border-gray-200 px-3"
-                      >
+                      <td class="text-right border border-gray-200 px-3">
                         <label
-                          name="total-gas"
+                          name="gas_total"
                           class="bg-slate-200 animate-pulse rounded-md px-8 py-0.5"
                         ></label>
                       </td>
@@ -1519,7 +1467,7 @@
                         class="text-right border border-gray-200 px-3 font-bold"
                       >
                         <label
-                          name="total-stoorm-gas"
+                          name="gas_eletric_total"
                           class="bg-slate-200 animate-pulse rounded-md px-8 py-0.5 content-['']"
                         ></label>
                       </td>
@@ -1536,23 +1484,22 @@
                   </tbody>
                 </table>
 
-                <div class="EvAvgCostsMonth font-bold text-[#87C232]">
+                <div class="flex justify-between font-bold text-[#87C232]">
                   Indicatie termijnbedrag (p/m)
-                  <span class="pl-4"
-                    ><label
-                      name="totla-sugguest"
+                  <label
+                      name="total_per_month"
                       class="bg-slate-200 animate-pulse rounded-md px-8 py-0.5"
                     ></label
-                  ></span>
+                  >
                 </div>
-                <div class="EvAvgCostsYear">
+                <div class="font-bold flex justify-between py-4">
                   Verwachte kosten per jaar
-                  <span class="pl-4"
-                    ><label
-                      name="total-year"
+                  <label
+                      name="gas_eletric_total"
                       class="bg-slate-200 animate-pulse rounded-md px-8 py-0.5"
-                    ></label
-                  ></span>
+                    >
+                    </label
+                  >
                 </div>
 
                 <p class="mt-5">
@@ -1596,11 +1543,13 @@
                 <tr>
                   <td class="py-4 border border-gray-200 px-3">
                     Verwachte inkoopprijs (gemiddeld)
-                    <label name="peak-rate-eletric">0</label> x €
-                    <label name="purchase_surcharge_electricity">0,00</label>
+                    <label name="eletric_usage_single">0</label> x €
+                    <label name="eletric_dynamic_average_tariff_inc_vat"
+                      >0,00</label
+                    >
                   </td>
                   <td
-                    name="eletric-total-price-buy"
+                    name="eletric_expected_dynamic_purchase_cost_inc_vat"
                     class="text-right border border-gray-200 py-4 px-3"
                   >
                     € 0,00
@@ -1608,14 +1557,14 @@
                 </tr>
                 <tr>
                   <td class="py-4 border border-gray-200 px-3">
-                    Inkoopvergoeding <label name="peak-rate-eletric">0</label> x
-                    €
-                    <label name="purchase_fee_return_delivery_electricity"
+                    Inkoopvergoeding
+                    <label name="eletric_usage_single">0</label> x €
+                    <label name="eletric_purchase_surcharge_tariff_inc_vat"
                       >0,00</label
                     >
                   </td>
                   <td
-                    name="eletric-total-tax-buy"
+                    name="eletric_purchase_surcharge_cost_inc_vat"
                     class="text-right border border-gray-200 px-3"
                   >
                     € 0,00
@@ -1626,18 +1575,21 @@
                     Overheidsheffingen
                   </td>
                   <td
-                    name="eletric-total-buy-and-tax"
+                    name="eletric_government_tax_per_year_inc_vat"
                     class="font-bold text-right border border-gray-200 px-3"
                   >
                     € 0,00
                   </td>
                 </tr>
                 <tr>
-                  <td class="py-4 border border-gray-200 px-3">
-                    0 - <label name="peak-rate-eletric">0</label> x € 0,00
+                  <td
+                    name="eletric_tariff_energytax_exc_vat"
+                    class="py-4 border border-gray-200 px-3"
+                  >
+                    0 - € 0,00
                   </td>
                   <td
-                    name="eletric-total-buy-and-tax-margem"
+                    name="eletric_total_energytax_exc_vat"
                     class="text-right border border-gray-200 px-3"
                   >
                     € 0,00
@@ -1652,25 +1604,48 @@
                   <td class="py-4 border border-gray-200 px-3">
                     Vaste leveringskosten
                   </td>
-                  <td class="text-right border border-gray-200 px-3">€ 0,00</td>
+                  <td
+                    name="eletric_fixed_delivery_cost_inc_vat"
+                    class="text-right border border-gray-200 px-3"
+                  >
+                    € 0,00
+                  </td>
                 </tr>
                 <tr>
                   <td class="py-4 border border-gray-200 px-3">
                     Vermindering energiebelasting
                   </td>
-                  <td class="text-right border border-gray-200 px-3">€ 0,00</td>
+                  <td
+                    name="eletric_tax_reduction_inc_vat"
+                    class="text-right border border-gray-200 px-3"
+                  >
+                    € 0,00
+                  </td>
                 </tr>
                 <tr>
                   <td class="py-4 border border-gray-200 px-3">
-                    Netbeheerkosten (Stedin 3x25A)
+                    Netbeheerkosten (<label
+                      name="eletric_grid_operator_name"
+                    ></label
+                    >)
                   </td>
-                  <td class="text-right border border-gray-200 px-3">€ 0,00</td>
+                  <td
+                    name="eletric_tariff_grid_operator_year_inc_vat"
+                    class="text-right border border-gray-200 px-3"
+                  >
+                    € 0,00
+                  </td>
                 </tr>
                 <tr>
                   <td class="py-4 border border-gray-200 px-3 font-bold">
                     Totaal jaarlijkse kosten stroom
                   </td>
-                  <td class="text-right border border-gray-200 px-3">€ 0,00</td>
+                  <td
+                    name="eletric_total"
+                    class="font-bold text-right border border-gray-200 px-3"
+                  >
+                    € 0,00
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -1690,14 +1665,13 @@
                 <tr>
                   <td class="py-4 border border-gray-200 px-3">
                     Verwachte inkoopprijs (gemiddeld)
-                    <span class="SmallText"
-                      ><br /><label name="peak-rate-gas">0</label>m<sup>3</sup>
-                      x €
-                      <label name="purchase_surcharge_gas">0,00</label></span
+                    <label name="gas_usage_single">0</label>m<sup>3</sup> x €
+                    <label name="gas_dynamic_average_tariff_inc_vat"
+                      >0,00</label
                     >
                   </td>
                   <td
-                    name="gas-total-price-buy"
+                    name="gas_expected_dynamic_purchase_cost_inc_vat"
                     class="text-right border border-gray-200 px-3"
                   >
                     € 0,00
@@ -1706,13 +1680,13 @@
                 <tr>
                   <td class="py-4 border border-gray-200 px-3">
                     Inkoopvergoeding
-                    <span class="SmallText"
-                      ><br /><label name="peak-rate-gas">0</label>m<sup>3</sup>
-                      x € <label name="inkoopopslag_gas">0,00</label></span
+                    <label name="gas_usage_single">0</label>m<sup>3</sup> x €
+                    <label name="gas_purchase_surcharge_tariff_inc_vat"
+                      >0,00</label
                     >
                   </td>
                   <td
-                    name="gas-total-tax-buy"
+                    name="gas_purchase_surcharge_cost_inc_vat"
                     class="text-right border border-gray-200 px-3"
                   >
                     € 0,00
@@ -1723,18 +1697,21 @@
                     Overheidsheffingen
                   </td>
                   <td
-                    name="gas-total-buy-and-tax"
-                    class="text-right border border-gray-200 px-3"
+                    name="gas_government_tax_per_year_inc_vat"
+                    class="font-bold text-right border border-gray-200 px-3"
                   >
                     € 0,00
                   </td>
                 </tr>
-                <tr class="SmallText">
-                  <td class="py-4 border border-gray-200 px-3">
-                    <label name="peak-rate-gas">0</label>m<sup>3</sup> x € 0,00
+                <tr>
+                  <td
+                    name="gas_tariff_energytax_exc_vat"
+                    class="py-4 border border-gray-200 px-3"
+                  >
+                    0 - € 0,00
                   </td>
                   <td
-                    name="gas-total-buy-and-tax-margem"
+                    name="gas_total_energytax_exc_vat"
                     class="text-right border border-gray-200 px-3"
                   >
                     € 0,00
@@ -1749,20 +1726,36 @@
                   <td class="py-4 border border-gray-200 px-3">
                     Vaste leveringskosten
                   </td>
-                  <td class="text-right border border-gray-200 px-3">€ 0,00</td>
+                  <td
+                    name="gas_fixed_delivery_cost_inc_vat"
+                    class="text-right border border-gray-200 px-3"
+                  >
+                    € 0,00
+                  </td>
                 </tr>
                 <tr>
                   <td class="py-4 border border-gray-200 px-3">
-                    Netbeheerkosten (Stedin t/m G6, verbruik &gt; 4000)
+                    Netbeheerkosten (<label
+                      name="gas_grid_operator_name"
+                    ></label
+                    >)
                   </td>
-                  <td class="text-right border border-gray-200 px-3">€ 0,00</td>
+                  <td
+                    name="gas_tariff_grid_operator_year_inc_vat"
+                    class="text-right border border-gray-200 px-3"
+                  >
+                    € 0,00
+                  </td>
                 </tr>
                 <tr>
                   <td class="py-4 border border-gray-200 px-3">
                     <b>Totaal jaarlijkse kosten gas</b>
                   </td>
-                  <td class="text-right border border-gray-200 px-3">
-                    <b>€ 0,00</b>
+                  <td
+                    name="gas_total"
+                    class="text-right border font-bold border-gray-200 px-3"
+                  >
+                    € 0,00
                   </td>
                 </tr>
               </tbody>
@@ -1783,20 +1776,30 @@
                   <td class="py-4 border border-gray-200 px-3">
                     Totaal jaarlijkse kosten stroom
                   </td>
-                  <td class="py-4 border border-gray-200 px-3">€ 0,00</td>
+                  <td
+                    name="eletric_total"
+                    class="py-4 border border-gray-200 px-3"
+                  >
+                    € 0,00
+                  </td>
                 </tr>
                 <tr>
                   <td class="py-4 border border-gray-200 px-3">
                     Totaal jaarlijkse kosten gas
                   </td>
-                  <td class="py-4 border border-gray-200 px-3">€ 0,00</td>
+                  <td name="gas_total" class="py-4 border border-gray-200 px-3">
+                    € 0,00
+                  </td>
                 </tr>
                 <tr>
                   <td class="py-4 border border-gray-200 px-3">
                     <b>Totaal jaarlijkse kosten stroom &amp; gas</b>
                   </td>
-                  <td class="py-4 border border-gray-200 px-3">
-                    <b>€ 0,00</b>
+                  <td
+                    name="gas_eletric_total"
+                    class="font-bold py-4 border border-gray-200 px-3"
+                  >
+                    € 0,00
                   </td>
                 </tr>
                 <tr>
@@ -1807,7 +1810,7 @@
                   <td class="py-4 border border-gray-200 px-3">
                     Indicatie termijnbedrag (p/m)
                   </td>
-                  <td class="py-4 border border-gray-200 px-3">€ 0,00</td>
+                  <td name="total_per_month" class="py-4 border border-gray-200 px-3">€ 0,00</td>
                 </tr>
               </tbody>
             </table>
