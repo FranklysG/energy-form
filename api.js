@@ -455,24 +455,18 @@ async function getProductWithCauculation() {
 
     const total_month = total_year / 12;
 
-    const total_year = total_year.toLocaleString('pt-BR', {
-      style: 'currency',
-      currency: 'EUR'
-    });
-
-    const total_month = total_month.toLocaleString('pt-BR', {
-      style: 'currency',
-      currency: 'EUR'
-    });
-
-    
     document.querySelectorAll('td[name=gas_eletric_total]').forEach(element => {
-      element.innerHTML = total_year;
+      element.innerHTML = total_year.toLocaleString('pt-BR', {style: 'currency',currency: 'EUR'});;
     });
     
     document.querySelectorAll('label[name=gas_eletric_total]').forEach(element => {
-      element.innerHTML = total_year;
+      element.innerHTML = total_year.toLocaleString('pt-BR', {style: 'currency',currency: 'EUR'});;
     });
-    document.querySelector('td[name=total_per_month]').innerHTML = total_month;
-    document.querySelector('label[name=total_per_month]').innerHTML = total_month;
+
+    document.querySelector('label[name=total_per_month]').innerHTML = total_month.toLocaleString('pt-BR', {style: 'currency',currency: 'EUR'});
+    
+    const total_btw_percent = 17.35;
+    const value_btw = total_year * (total_btw_percent / 100);
+    document.querySelector('label[name=total_btw]').innerHTML = value_btw.toLocaleString('pt-BR', {style: 'currency',currency: 'EUR'})
+    document.querySelector('td[name=total_btw]').innerHTML = value_btw.toLocaleString('pt-BR', {style: 'currency',currency: 'EUR'})
 }

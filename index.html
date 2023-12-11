@@ -507,7 +507,6 @@
                         id="ZZP"
                         value="zzp"
                         type="radio"
-                        checked
                         name="building_type"
                         onchange="getEstimateConsumer()"
                         hidden
@@ -1476,7 +1475,7 @@
                       <td class="py-4 border border-gray-200 px-3">BTW</td>
                       <td class="text-right border border-gray-200 px-3">
                         <label
-                          name="total-btw"
+                          name="total_btw"
                           class="bg-slate-200 animate-pulse rounded-md px-8 py-0.5"
                         ></label>
                       </td>
@@ -1488,6 +1487,14 @@
                   Indicatie termijnbedrag (p/m)
                   <label
                       name="total_per_month"
+                      class="bg-slate-200 animate-pulse rounded-md px-8 py-0.5"
+                    ></label
+                  >
+                </div>
+                <div class="hidden flex justify-between font-bold text-[#87C232]">
+                  Indicatie termijnbedrag (p/m) incl. BTW
+                  <label
+                      name="total_per_month_btw"
                       class="bg-slate-200 animate-pulse rounded-md px-8 py-0.5"
                     ></label
                   >
@@ -1804,7 +1811,7 @@
                 </tr>
                 <tr>
                   <td class="py-4 border border-gray-200 px-3">BTW</td>
-                  <td class="py-4 border border-gray-200 px-3">€ 0,00</td>
+                  <td name="total_btw" class="py-4 border border-gray-200 px-3">€ 0,00</td>
                 </tr>
                 <tr>
                   <td class="py-4 border border-gray-200 px-3">

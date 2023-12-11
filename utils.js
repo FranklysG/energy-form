@@ -304,6 +304,12 @@ async function putPeakRateCustomer(e) {
   totalGas.classList.remove("bg-slate-200");
   totalGas.classList.remove("animate-pulse");
   
+  const btw = document.querySelectorAll("label[name=total_btw]").forEach((element) => {
+    element.classList.remove("bg-slate-200");
+    element.classList.remove("animate-pulse");
+    element.innerHTML = "€ 0.00";
+  });
+  
   const total = document.querySelectorAll("label[name=gas_eletric_total]").forEach((element) => {
     element.classList.remove("bg-slate-200");
     element.classList.remove("animate-pulse");
