@@ -352,3 +352,8 @@ async function putPeakRateCustomer(e) {
     }
   }
 }
+
+function putZeroCosumer() {
+  document.querySelector('peak-rate-eletric').value = ''
+  document.querySelector('peak-rate-gas').value = ''
+}

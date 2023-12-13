@@ -86,6 +86,38 @@ async function getProduct(element) {
 async function createEnergyOffer() {
   document.querySelector("dialog[name=loading]").showModal();
   const signature = getSignature();
+  const my_consumption = getMyConsumption();
+
+  if(!Boolean(Number(my_consumption))){
+    const product_id = getProductId();
+    const business = getIsBusiness();
+    let product_type = getProductType();
+    let my_consumption = getMyConsumption();
+    let { meterType, peakRateEletric, connectionEletric } = getMeterType();
+    let { peakRateGas, connectionGas } = getGasType();
+
+    if(!Boolean(Number(my_consumption))){
+      connectionEletric = 'E_3X25A';
+      connectionGas = 'G_G6_500'
+    }
+
+    if(!Number(peakRateEletric)){
+      peakRateEletric = 0
+    }
+
+    if(!Number(peakRateGas)){
+      peakRateGas = 0
+    }
+
+    form.type = product_type;
+    form.building_function = business;
+    form.postcode = '7521WC';
+    form.housenumber = 75;
+    form.usage_e_single = peakRateEletric;
+    form.usage_g = peakRateGas;
+  }
+
+
   try {
     var raw = JSON.stringify({
       transaction_type: "offer",
@@ -299,15 +331,28 @@ async function getEstimateConsumer(element) {
 async function getProductWithCauculation() {
   const product_id = getProductId();
   const business = getIsBusiness();
-  const product_type = getProductType();
-  const my_consumption = getMyConsumption();
-  const { meterType, peakRateEletric, connectionEletric } = getMeterType();
-  const { peakRateGas, connectionGas } = getGasType();
+  let product_type = getProductType();
+  let my_consumption = getMyConsumption();
+  let { meterType, peakRateEletric, connectionEletric } = getMeterType();
+  let { peakRateGas, connectionGas } = getGasType();
+
+  if(!Boolean(Number(my_consumption))){
+    connectionEletric = 'E_3X25A';
+    connectionGas = 'G_G6_500'
+  }
+
+  if(!Number(peakRateEletric)){
+    peakRateEletric = 0
+  }
+
+  if(!Number(peakRateGas)){
+    peakRateGas = 0
+  }
 
   const params = {
     postcode: "7521WC",
     housenumber: 15,
-    type: "e_g",
+    type: 'e_g',
     tarifftype: meterType,
     usage_e_single: peakRateEletric,
     usage_g: peakRateGas,
@@ -317,11 +362,14 @@ async function getProductWithCauculation() {
     g_connection_type: connectionGas,
   };
 
+
   const url = new URL(`${base_url}/user/products/${product_id}/energy`);
   Object.keys(params).forEach((key) =>
     url.searchParams.append(key, params[key])
   );
 
+
+  document.querySelector("dialog[name=loading]").showModal();
   const response = await fetch(url, {
     method: "GET",
     ...requestOptions,
@@ -330,6 +378,8 @@ async function getProductWithCauculation() {
     .then((result) => result)
     .catch((error) => console.log("error", error));
 
+
+    document.querySelector("dialog[name=loading]").close();
     const { errors, success, data } = JSON.parse(response);
     const costs_eletric = data.cost_specifications.electricity;
     const costs_gas = data.cost_specifications.gas;
