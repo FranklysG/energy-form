@@ -296,7 +296,6 @@ function closeResultModal() {
 
 function validateAndHighlightEmptyFields() {
   var form_to_validade = document.querySelector("form");
-
   if (form_to_validade) {
     var isValid = true;
 

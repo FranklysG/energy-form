@@ -15,6 +15,9 @@ var requestOptions = {
 };
 
 async function getProduct(element) {
+  document
+  .querySelector("span[name=message-error]")
+  .classList.add("hidden");
   const product_id = element.getAttribute("data-product");
   try {
     if (product_id) {
@@ -77,13 +80,14 @@ async function getProduct(element) {
       }
     }
   } catch (error) {
-    document
-      .querySelector("span[name=message-error]")
-      .classList.remove("hidden");
+    console.log(error)
   }
 }
 
 async function createEnergyOffer() {
+  document
+  .querySelector("span[name=message-error]")
+  .classList.add("hidden");
   document.querySelector("dialog[name=loading]").showModal();
   const signature = getSignature();
   const my_consumption = getMyConsumption();
@@ -227,7 +231,9 @@ async function createEnergyOffer() {
       document.querySelector("dialog[name=success]").showModal();
     }
   } catch (error) {
-    console.log(error);
+    document
+  .querySelector("span[name=message-error]")
+  .classList.remove("hidden");
   }
 }
 
@@ -238,6 +244,9 @@ function getSignature() {
 
 async function getEstimateConsumer(element) {
   try {
+    document
+  .querySelector("span[name=message-error]")
+  .classList.add("hidden");
     let helpCosumer = getMyConsumption();
     if (!Boolean(parseInt(helpCosumer)))
       return
@@ -324,7 +333,9 @@ async function getEstimateConsumer(element) {
       putPeakRateCustomer(peakRateGas);
     }
   } catch (error) {
-    console.log(error);
+    document
+  .querySelector("span[name=message-error]")
+  .classList.remove("hidden");
   }
 }
 
