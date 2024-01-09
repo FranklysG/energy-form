@@ -1,0 +1,3460 @@
+<!-- main.js -->
+<main>
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap"
+  />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <section class="pt-10 flex flex-col max-w-6xl mx-auto pb-20">
+    <div class="w-full h-40 bg-[#f8f8f8] flex items-center">
+      <div class="w-full max-w-sm lg:max-w-md mx-auto my-auto px-5">
+        <ol class="steps flex items-center w-full h-fit">
+          <li
+            class="step-li flex w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-4 after:inline-block active text-[#87C232] dark:text-[#87C232] after:border-[#87C232] dark:after:border-[#87C232] relative"
+          >
+            <span
+              class="flex items-center justify-center w-10 h-10 bg-[#87C232] rounded-full lg:h-12 lg:w-12 dark:bg-[#87C232] shrink-0 text-white"
+            >
+              01
+            </span>
+            <p class="absolute top-14 left-0 lg:-left-8">Samenstellen</p>
+          </li>
+          <li
+            class="step-li flex w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-[#1E2329] after:border-4 after:inline-block dark:after:border-[#1E2329] relative"
+          >
+            <span
+              class="flex items-center justify-center w-10 h-10 bg-[#1E2329] rounded-full lg:h-12 lg:w-12 shrink-0 text-white"
+            >
+              02
+            </span>
+            <p class="absolute top-14 -left-3 lg:ml-2">Invullen</p>
+          </li>
+          <li class="flex items-center w-fit relative">
+            <span
+              class="flex items-center justify-center w-10 h-10 bg-[#1E2329] rounded-full lg:h-12 lg:w-12 shrink-0 text-white"
+            >
+              03
+            </span>
+            <p class="absolute top-14 -left-16 lg:-left-5">Controleren</p>
+          </li>
+        </ol>
+      </div>
+    </div>
+    <div class="px-3 xl:px-0 grid grid-cols-1 lg:grid-cols-2 gap-4 mt-12">
+      <form class="">
+        <div class="step step-one flex flex-col gap-10">
+          <h2 class="text-[#1E2329] text-3xl font-semibold my-4 mt-0">
+            Stel je aanbod samen
+          </h2>
+          <div>
+            <h3 class="text-[#1e2329] text-base text-label font-medium mb-5">
+              Ben je zakelijk of particulier?
+            </h3>
+            <div class="flex flex-wrap gap-3">
+              <label
+                for="Zakelijk"
+                class="card bg-[#f8f8f8] text-[#1E2329] after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3 after:rounded-full after:bg-[#f8f8f8] rounded-md relative p-4 px-2 cursor-pointer hover:after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5 text-center"
+              >
+                <input
+                  id="Zakelijk"
+                  type="radio"
+                  name="business"
+                  value="1"
+                  data-product="62286"
+                  onchange="getProduct(this)"
+                  hidden
+                  onclick="setCardActive(this)"
+                />
+                <div
+                  class="bg-white w-[4.688rem] h-[4.688rem] rounded-full flex items-center justify-center"
+                >
+                  <img
+                    class="w-14 h-14 object-cover"
+                    src="http://greenly.checkweb.online/wp-content/uploads/2023/11/house-four.png"
+                    alt="build"
+                  />
+                </div>
+                <p class="text-xs">Zakelijk</p>
+              </label>
+
+              <label
+                for="Particulier"
+                class="card bg-[#f8f8f8] text-[#1E2329] after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3 after:rounded-full after:bg-[#f8f8f8] rounded-md relative p-4 px-2 cursor-pointer hover:after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5 text-center"
+              >
+                <input
+                  id="Particulier"
+                  type="radio"
+                  name="business"
+                  value="0"
+                  data-product="62286"
+                  onchange="getProduct(this)"
+                  hidden
+                  onclick="setCardActive(this)"
+                />
+                <div
+                  class="bg-white w-[4.688rem] h-[4.688rem] rounded-full flex items-center justify-center"
+                >
+                  <img
+                    class="w-14 h-14 object-cover"
+                    src="http://greenly.checkweb.online/wp-content/uploads/2023/11/house.png"
+                    alt="house"
+                  />
+                </div>
+                <p class="text-xs">Particulier</p>
+              </label>
+            </div>
+          </div>
+          <div class="border-t border-gray-200"></div>
+          <div>
+            <h3 class="text-[#1e2329] text-base text-label font-medium mb-5">
+              Kies je energieproduct
+            </h3>
+            <div class="flex flex-wrap gap-3">
+              <label
+                id="Electriciteit"
+                class="card bg-[#f8f8f8] text-[#1E2329] after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3 after:rounded-full after:bg-[#f8f8f8] rounded-md relative p-4 px-2 cursor-pointer hover:after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5 text-center"
+              >
+                <input
+                  id="Electriciteit"
+                  type="radio"
+                  name="electriciteit-or-gas"
+                  value="e"
+                  hidden
+                  onchange="getEstimateConsumer(this)"
+                  onclick="setCardActive(this)"
+                />
+                <div
+                  class="bg-white w-[4.688rem] h-[4.688rem] rounded-full flex items-center justify-center"
+                >
+                  <img
+                    class="w-14 h-14 object-cover"
+                    src="http://greenly.checkweb.online/wp-content/uploads/2023/11/energy.png"
+                    alt="build"
+                  />
+                </div>
+                <p class="text-xs">Electriciteit</p>
+              </label>
+              <label
+                for="Gas"
+                class="card bg-[#f8f8f8] text-[#1E2329] after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3 after:rounded-full after:bg-[#f8f8f8] rounded-md relative p-4 px-2 cursor-pointer hover:after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5 text-center"
+              >
+                <input
+                  id="Gas"
+                  type="radio"
+                  name="electriciteit-or-gas"
+                  value="g"
+                  hidden
+                  onchange="getEstimateConsumer(this)"
+                  onclick="setCardActive(this)"
+                />
+                <div
+                  class="bg-white w-[4.688rem] h-[4.688rem] rounded-full flex items-center justify-center"
+                >
+                  <img
+                    class="w-14 h-14 object-cover"
+                    src="http://greenly.checkweb.online/wp-content/uploads/2023/11/gas.png"
+                    alt="house"
+                  />
+                </div>
+                <p class="text-xs">Gas</p>
+              </label>
+              <label
+                for="Electriciteit-Gas"
+                class="card bg-[#f8f8f8] text-[#1E2329] after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3 after:rounded-full after:bg-[#f8f8f8] rounded-md relative p-4 px-2 cursor-pointer hover:after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5 text-center"
+              >
+                <input
+                  id="Electriciteit-Gas"
+                  type="radio"
+                  name="electriciteit-or-gas"
+                  value="e_g"
+                  hidden
+                  onchange="getEstimateConsumer(this)"
+                  onclick="setCardActive(this)"
+                />
+                <div
+                  class="bg-white w-[4.688rem] h-[4.688rem] rounded-full flex items-center justify-center"
+                >
+                  <img
+                    class="w-14 h-14 object-cover"
+                    src="http://greenly.checkweb.online/wp-content/uploads/2023/11/energy-gas.png"
+                    alt="house"
+                  />
+                </div>
+                <p class="text-xs">Electriciteit & Gas</p>
+              </label>
+            </div>
+          </div>
+          <div>
+            <div class="meter-content">
+              <h3 class="text-[#1e2329] text-base text-label font-medium mb-5">
+                Heb je een slimme meter?
+              </h3>
+              <div class="grid grid-cols-2 gap-3">
+                <label
+                  for="meter-ja"
+                  class="card bg-[#f8f8f8] text-[#1E2329] after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3 after:rounded-full after:bg-[#f8f8f8] rounded-md relative p-4 px-4 cursor-pointer hover:after:bg-[#87C232]"
+                >
+                  <input
+                    id="meter-ja"
+                    type="radio"
+                    name="smart-meter"
+                    value="Ja"
+                    hidden
+                    onclick="setCardActive(this)"
+                  />
+                  <p class="text-xs">Ja</p>
+                </label>
+                <label
+                  for="meter-nee"
+                  class="card bg-[#f8f8f8] text-[#1E2329] after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3 after:rounded-full after:bg-[#f8f8f8] rounded-md relative p-4 px-4 cursor-pointer hover:after:bg-[#87C232]"
+                >
+                  <input
+                    id="meter-nee"
+                    type="radio"
+                    name="smart-meter"
+                    value="Nee"
+                    hidden
+                    onclick="setCardActive(this)"
+                  />
+                  <p class="text-xs">Nee</p>
+                </label>
+              </div>
+            </div>
+            <div
+              class="nee-message border border-[#7A7A7A] bg-[#FFF8E8] my-3 p-3 text-[#1E2329] text-sm italic hidden"
+            >
+              Meld je je aan zonder slimme meter? Dan kunnen wij je verbruik
+              niet doorlopend uitlezen en ontvang je slechts eenmaal per jaar
+              een verbruikersafrekening i.p.v. iedere maand.
+            </div>
+          </div>
+
+          <div>
+            <h3 class="text-[#1e2329] text-base text-label font-medium mb-5">
+              Mijn energieverbruik
+            </h3>
+            <div class="grid grid-cols-2 gap-3">
+              <label
+                for="ik-weet"
+                class="card bg-[#f8f8f8] text-[#1E2329] after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3 after:rounded-full after:bg-[#f8f8f8] rounded-md relative p-4 px-4 cursor-pointer hover:after:bg-[#87C232]"
+              >
+                <input
+                  id="ik-weet"
+                  type="radio"
+                  name="my-consumption"
+                  value="0"
+                  hidden
+                  onclick="setCardActive(this)"
+                />
+                <p class="text-xs">Ik weet mijn verbruik</p>
+              </label>
+              <label
+                for="hulp"
+                class="card bg-[#f8f8f8] text-[#1E2329] after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3 after:rounded-full after:bg-[#f8f8f8] rounded-md relative p-4 px-4 cursor-pointer hover:after:bg-[#87C232]"
+              >
+                <input
+                  id="hulp"
+                  type="radio"
+                  name="my-consumption"
+                  value="1"
+                  hidden
+                  onclick="setCardActive(this)"
+                />
+                <p class="text-xs">Help mij schatten</p>
+              </label>
+            </div>
+          </div>
+          <div class="help-options hidden">
+            <div class="type-wonning-fields hidden">
+              <h3 class="text-[#1e2329] text-base text-label font-medium mb-5">
+                Mijn type woning
+              </h3>
+              <div class="flex flex-wrap gap-3">
+                <label
+                  id="appartement"
+                  class="card bg-[#f8f8f8] text-[#1E2329] after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3 after:rounded-full after:bg-[#f8f8f8] rounded-md relative p-4 px-2 cursor-pointer hover:after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5 text-center"
+                >
+                  <input
+                    id="appartement"
+                    value="appartement"
+                    type="radio"
+                    checked
+                    name="building_type"
+                    onchange="getEstimateConsumer()"
+                    hidden
+                    onclick="setCardActive(this)"
+                  />
+                  <div
+                    class="bg-white w-[4.688rem] h-[4.688rem] rounded-full flex items-center justify-center"
+                  >
+                    <img
+                      class="w-14 h-14 object-cover"
+                      src="http://greenly.checkweb.online/wp-content/uploads/2023/11/house-four.png"
+                      alt="build"
+                    />
+                  </div>
+                  <p class="text-xs">Appartement</p>
+                </label>
+                <label
+                  for="tussenwoning"
+                  class="card bg-[#f8f8f8] text-[#1E2329] after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3 after:rounded-full after:bg-[#f8f8f8] rounded-md relative p-4 px-2 cursor-pointer hover:after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5 text-center"
+                >
+                  <input
+                    id="tussenwoning"
+                    value="tussenwoning"
+                    type="radio"
+                    name="building_type"
+                    onchange="getEstimateConsumer()"
+                    hidden
+                    onclick="setCardActive(this)"
+                  />
+                  <div
+                    class="bg-white w-[4.688rem] h-[4.688rem] rounded-full flex items-center justify-center"
+                  >
+                    <img
+                      class="w-14 h-14 object-cover"
+                      src="http://greenly.checkweb.online/wp-content/uploads/2023/11/house-three.png"
+                      alt="house"
+                    />
+                  </div>
+                  <p class="text-xs">Tussenwoning</p>
+                </label>
+                <label
+                  for="hoekwoning"
+                  class="card bg-[#f8f8f8] text-[#1E2329] after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3 after:rounded-full after:bg-[#f8f8f8] rounded-md relative p-4 px-2 cursor-pointer hover:after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5 text-center"
+                >
+                  <input
+                    id="hoekwoning"
+                    value="hoekwoning"
+                    type="radio"
+                    name="building_type"
+                    onchange="getEstimateConsumer()"
+                    hidden
+                    onclick="setCardActive(this)"
+                  />
+                  <div
+                    class="bg-white w-[4.688rem] h-[4.688rem] rounded-full flex items-center justify-center"
+                  >
+                    <img
+                      class="w-14 h-14 object-cover"
+                      src="http://greenly.checkweb.online/wp-content/uploads/2023/11/house-two.png"
+                      alt="house"
+                    />
+                  </div>
+                  <p class="text-xs">Hoekwoning</p>
+                </label>
+                <label
+                  for="vrijstaand"
+                  class="card bg-[#f8f8f8] text-[#1E2329] after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3 after:rounded-full after:bg-[#f8f8f8] rounded-md relative p-4 px-2 cursor-pointer hover:after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5 text-center"
+                >
+                  <input
+                    id="vrijstaand"
+                    value="vrijstaand"
+                    type="radio"
+                    name="building_type"
+                    onchange="getEstimateConsumer()"
+                    hidden
+                    onclick="setCardActive(this)"
+                  />
+                  <div
+                    class="bg-white w-[4.688rem] h-[4.688rem] rounded-full flex items-center justify-center"
+                  >
+                    <img
+                      class="w-14 h-14 object-cover"
+                      src="http://greenly.checkweb.online/wp-content/uploads/2023/11/house.png"
+                      alt="house"
+                    />
+                  </div>
+                  <p class="text-xs">Vrijstaand</p>
+                </label>
+              </div>
+            </div>
+            <div class="mt-8 aantal-personen-fields hidden">
+              <h3 class="text-[#1e2329] text-base text-label font-medium mb-5">
+                Aantal personen
+              </h3>
+              <div class="flex flex-wrap gap-3">
+                <label
+                  id="persoon-1"
+                  class="card bg-[#f8f8f8] text-[#1E2329] after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3 after:rounded-full after:bg-[#f8f8f8] rounded-md relative p-4 px-2 cursor-pointer hover:after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5 text-center"
+                >
+                  <input
+                    id="persoon-1"
+                    value="1"
+                    type="radio"
+                    name="household_size"
+                    onchange="getEstimateConsumer()"
+                    hidden
+                    onclick="setCardActive(this)"
+                  />
+                  <div
+                    class="bg-white w-[4.688rem] h-[4.688rem] rounded-full flex items-center justify-center"
+                  >
+                    <img
+                      class="w-14 h-14 object-cover"
+                      src="http://greenly.checkweb.online/wp-content/uploads/2023/11/1-personen.png"
+                      alt="build"
+                    />
+                  </div>
+                  <p class="text-xs">1 Persoon</p>
+                </label>
+                <label
+                  for="personen-2"
+                  class="card bg-[#f8f8f8] text-[#1E2329] after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3 after:rounded-full after:bg-[#f8f8f8] rounded-md relative p-4 px-2 cursor-pointer hover:after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5 text-center"
+                >
+                  <input
+                    id="personen-2"
+                    value="2"
+                    type="radio"
+                    name="household_size"
+                    onchange="getEstimateConsumer()"
+                    hidden
+                    onclick="setCardActive(this)"
+                  />
+                  <div
+                    class="bg-white w-[4.688rem] h-[4.688rem] rounded-full flex items-center justify-center"
+                  >
+                    <img
+                      class="w-14 h-14 object-cover"
+                      src="http://greenly.checkweb.online/wp-content/uploads/2023/11/2-personen.png"
+                      alt="house"
+                    />
+                  </div>
+                  <p class="text-xs">2 Personen</p>
+                </label>
+                <label
+                  for="personen-3-4"
+                  class="card bg-[#f8f8f8] text-[#1E2329] after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3 after:rounded-full after:bg-[#f8f8f8] rounded-md relative p-4 px-2 cursor-pointer hover:after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5 text-center"
+                >
+                  <input
+                    id="personen-3-4"
+                    value="3-4"
+                    type="radio"
+                    name="household_size"
+                    onchange="getEstimateConsumer()"
+                    hidden
+                    onclick="setCardActive(this)"
+                  />
+                  <div
+                    class="bg-white w-[4.688rem] h-[4.688rem] rounded-full flex items-center justify-center"
+                  >
+                    <img
+                      class="w-14 h-14 object-cover"
+                      src="http://greenly.checkweb.online/wp-content/uploads/2023/11/4-personen.png"
+                      alt="house"
+                    />
+                  </div>
+                  <p class="text-xs">3-4 Personen</p>
+                </label>
+                <label
+                  for="personen-5-6"
+                  class="card bg-[#f8f8f8] text-[#1E2329] after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3 after:rounded-full after:bg-[#f8f8f8] rounded-md relative p-4 px-2 cursor-pointer hover:after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5 text-center"
+                >
+                  <input
+                    id="personen-5-6"
+                    value="5-6"
+                    type="radio"
+                    name="household_size"
+                    onchange="getEstimateConsumer()"
+                    hidden
+                    onclick="setCardActive(this)"
+                  />
+                  <div
+                    class="bg-white w-[4.688rem] h-[4.688rem] rounded-full flex items-center justify-center"
+                  >
+                    <img
+                      class="w-14 h-14 object-cover"
+                      src="http://greenly.checkweb.online/wp-content/uploads/2023/11/5-personen.png"
+                      alt="house"
+                    />
+                  </div>
+                  <p class="text-xs">5-6 Personen</p>
+                </label>
+              </div>
+            </div>
+            <div class="company-help-fields">
+              <h3 class="text-[#1e2329] text-base text-label font-medium mb-5">
+                Selecteer jouw bedrijfstype
+              </h3>
+              <div class="flex flex-wrap gap-3">
+                <label
+                  id="ZZP"
+                  class="card bg-[#f8f8f8] text-[#1E2329] after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3 after:rounded-full after:bg-[#f8f8f8] rounded-md relative p-4 px-2 cursor-pointer hover:after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5 text-center"
+                >
+                  <input
+                    id="ZZP"
+                    value="zzp"
+                    type="radio"
+                    name="building_type"
+                    onchange="getEstimateConsumer()"
+                    hidden
+                    onclick="setCardActive(this)"
+                  />
+                  <div
+                    class="bg-white w-[4.688rem] h-[4.688rem] rounded-full flex items-center justify-center"
+                  >
+                    <img
+                      class="w-14 h-14 object-cover"
+                      src="http://greenly.checkweb.online/wp-content/uploads/2023/11/house.png"
+                      alt="build"
+                    />
+                  </div>
+                  <p class="text-xs">ZZP</p>
+                </label>
+                <label
+                  for="eenmanszaak"
+                  class="card bg-[#f8f8f8] text-[#1E2329] after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3 after:rounded-full after:bg-[#f8f8f8] rounded-md relative p-4 px-2 cursor-pointer hover:after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5 text-center"
+                >
+                  <input
+                    id="eenmanszaak"
+                    value="eenmanszaak"
+                    type="radio"
+                    name="building_type"
+                    onchange="getEstimateConsumer()"
+                    hidden
+                    onclick="setCardActive(this)"
+                  />
+                  <div
+                    class="bg-white w-[4.688rem] h-[4.688rem] rounded-full flex items-center justify-center"
+                  >
+                    <img
+                      class="w-14 h-14 object-cover"
+                      src="/assets/eenmanszaak_Icon.png"
+                      alt="house"
+                    />
+                  </div>
+                  <p class="text-xs">Eenmanszaak</p>
+                </label>
+                <label
+                  for="winkel"
+                  class="card bg-[#f8f8f8] text-[#1E2329] after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3 after:rounded-full after:bg-[#f8f8f8] rounded-md relative p-4 px-2 cursor-pointer hover:after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5 text-center"
+                >
+                  <input
+                    id="winkel"
+                    value="winkel"
+                    type="radio"
+                    name="building_type"
+                    onchange="getEstimateConsumer()"
+                    hidden
+                    onclick="setCardActive(this)"
+                  />
+                  <div
+                    class="bg-white w-[4.688rem] h-[4.688rem] rounded-full flex items-center justify-center"
+                  >
+                    <img
+                      class="w-14 h-14 object-cover"
+                      src="/assets/winkel_icon.png"
+                      alt="house"
+                    />
+                  </div>
+                  <p class="text-xs">Winkel</p>
+                </label>
+                <label
+                  for="kantoorpand"
+                  class="card bg-[#f8f8f8] text-[#1E2329] after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3 after:rounded-full after:bg-[#f8f8f8] rounded-md relative p-4 px-2 cursor-pointer hover:after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5 text-center"
+                >
+                  <input
+                    id="kantoorpand"
+                    value="kantoorpand"
+                    type="radio"
+                    name="building_type"
+                    onchange="getEstimateConsumer()"
+                    hidden
+                    onclick="setCardActive(this)"
+                  />
+                  <div
+                    class="bg-white w-[4.688rem] h-[4.688rem] rounded-full flex items-center justify-center"
+                  >
+                    <img
+                      class="w-14 h-14 object-cover"
+                      src="/assets/businnes.png"
+                      alt="house"
+                    />
+                  </div>
+                  <p class="text-xs">Kantoorpand</p>
+                </label>
+                <label
+                  for="industrieel"
+                  class="card bg-[#f8f8f8] text-[#1E2329] after:content-[''] after:w-2.5 after:h-2.5 after:absolute after:top-3 after:right-3 after:rounded-full after:bg-[#f8f8f8] rounded-md relative p-4 px-2 cursor-pointer hover:after:bg-[#87C232] w-32 h-44 flex items-center flex-col justify-center gap-5 text-center"
+                >
+                  <input
+                    id="industrieel"
+                    value="industrieel"
+                    type="radio"
+                    name="building_type"
+                    onchange="getEstimateConsumer()"
+                    hidden
+                    onclick="setCardActive(this)"
+                  />
+                  <div
+                    class="bg-white w-[4.688rem] h-[4.688rem] rounded-full flex items-center justify-center"
+                  >
+                    <img
+                      class="w-14 h-14 object-cover"
+                      src="/assets/Industrie_icon.png"
+                      alt="house"
+                    />
+                  </div>
+                  <p class="text-xs">Industrieel</p>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="border-t border-gray-200"></div>
+          <div class="Electriciteit fields">
+            <h3 class="text-[#1e2329] text-base text-label font-medium mb-5">
+              Electriciteit
+            </h3>
+            <div class="flex flex-col gap-3">
+              <div>
+                <label
+                  class="field-label text-[0.844rem] leading-7 text-[#3a3a3a]"
+                  >Enkele of dubbele meter</label
+                >
+                <select
+                  class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-lg pl-4"
+                  name="meter-type"
+                >
+                  <option value="0">Enkele meter</option>
+                  <option value="1">Dubbele meter</option>
+                </select>
+              </div>
+              <div class="relative">
+                <label
+                  class="field-label text-[0.844rem] leading-7 text-[#3a3a3a]"
+                  for=""
+                  >Verbruik</label
+                >
+                <input
+                  class="field w-full h-11 bg-gray-300 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-lg pl-4"
+                  type="number"
+                  required
+                  onchange="putPeakRateCustomer(this)"
+                  disabled
+                  name="peak-rate-eletric"
+                />
+                <span class="absolute bottom-2 right-3">kWh</span>
+              </div>
+              <div>
+                <label
+                  class="field-label text-[0.844rem] leading-7 text-[#3a3a3a]"
+                  for=""
+                  >Aansluiting</label
+                >
+                <select
+                  class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-lg pl-4"
+                  name="connection-eletric"
+                  required
+                >
+                  <option value="">Selecteer aub uw aansluiting</option>
+                  <option value="E_3X25A">3x 25A</option>
+                  <option value="E_3X35A">3x 35A</option>
+                  <option value="E_3X50A">3x 50A</option>
+                  <option value="E_3X63A">3x 63A</option>
+                  <option value="E_3X80A">3x 80A</option>
+                  <option value="E_NULTARIEF">Grootverbruik</option>
+                </select>
+              </div>
+              <label
+                for="zonnepanelen"
+                class="flex items-center gap-3 cursor-pointer"
+              >
+                <input type="checkbox" id="zonnepanelen" />
+                Ik heb zonnepanelen
+              </label>
+              <div class="relative zonnepanelen-field hidden">
+                <label
+                  class="field-label text-[0.844rem] leading-7 text-[#3a3a3a]"
+                  for=""
+                  >Opwek zonnepanelen</label
+                >
+                <input
+                  class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-lg pl-4"
+                  type="number"
+                />
+                <span class="absolute bottom-2 right-3">kWh</span>
+              </div>
+            </div>
+          </div>
+          <div
+            class="border-t border-gray-200 electriciteit-gas-divider hidden"
+          ></div>
+          <div class="Gas fields hidden">
+            <h3 class="text-[#1e2329] text-base text-label font-medium mb-5">
+              Gas
+            </h3>
+            <div class="flex flex-col gap-3">
+              <div class="relative">
+                <label
+                  class="field-label text-[0.844rem] leading-7 text-[#3a3a3a]"
+                  for=""
+                  >Verbruik gas</label
+                >
+                <input
+                  class="field w-full h-11 bg-gray-300 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-lg pl-4"
+                  name="peak-rate-gas"
+                  required
+                  onchange="putPeakRateCustomer(this)"
+                  type="number"
+                />
+                <span class="absolute bottom-2 right-3">m3</span>
+              </div>
+              <div>
+                <label
+                  class="field-label text-[0.844rem] leading-7 text-[#3a3a3a]"
+                  for="connection-gas"
+                  >Aansluiting</label
+                >
+                <select
+                  id="connection-gas"
+                  class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-lg pl-4"
+                  name="connection-gas"
+                  required
+                >
+                  <option value="">Selecteer aub uw aansluiting</option>
+                  <option value="G_G6_500">
+                    G6, jaarverbruik tot 500 m3(n)
+                  </option>
+                  <option value="G_G6_500_4000">
+                    G6, jaarverbruik 500 tot 4.000 m3(n)
+                  </option>
+                  <option value="G_G6_4000">
+                    G6, jaarverbruik vanaf 4.000 m3(n)
+                  </option>
+                  <option value="G_G10">G10</option>
+                  <option value="G_G16">G16</option>
+                  <option value="G_G25">G25</option>
+                  <option value="G_NULTARIEF">Grootverbruik</option>
+                </select>
+              </div>
+              <div class="relative zonnepanelen-field hidden">
+                <label
+                  class="field-label text-[0.844rem] leading-7 text-[#3a3a3a]"
+                  for=""
+                  >Opwek zonnepanelen</label
+                >
+                <input
+                  class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-lg pl-4"
+                  type="number"
+                />
+                <span class="absolute bottom-2 right-3">kWh</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col">
+            <div class="inline-flex items-center gap-3 mt-5">
+              <svg
+                class="w-10 h-10"
+                xmlns="http://www.w3.org/2000/svg"
+                height="2em"
+                viewBox="0 0 512 512"
+              >
+                <style>
+                  svg {
+                    fill: #87c232;
+                  }
+                </style>
+                <path
+                  d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"
+                />
+              </svg>
+              <div class="text-sm font-bold">
+                <span class="text-[#87C232]">Volgende stap:</span
+                ><span class="ml-2">
+                  Controleer je gegevens en bevestig je aanvraag.</span
+                >
+              </div>
+            </div>
+            <span
+              name="message-error"
+              class="bg-red-600 hidden text-base p-3 text-white text-center mt-4"
+            >
+              Jouw persoonlijke aanbod kon niet worden geladen. Ververs aub de
+              pagina.
+            </span>
+          </div>
+
+          <button
+            type="button"
+            onclick="nextTwo()"
+            class="button w-full h-12 bg-[#87C232] text-center text-white hover:text-[#1E2329] mt-5 uppercase font-bold"
+          >
+            Gegevens invullen
+          </button>
+        </div>
+        <div class="step step-two hidden">
+          <div class="flex flex-col">
+            <div>
+              <h2 class="text-[#1E2329] text-3xl font-semibold my-12 mb-6">
+                Vul je gegevens in
+              </h2>
+              <h3 class="text-[#1E2329] text-base font-bold">Leveringsadres</h3>
+            </div>
+
+            <div class="flex flex-col gap-3 mt-6">
+              <div class="flex gap-3">
+                <div>
+                  <label
+                    class="field-label text-[0.844rem] leading-7 text-[#3a3a3a]"
+                    for=""
+                    >Postcode</label
+                  >
+                  <input
+                    placeholder="Postcode"
+                    name="postcode"
+                    required
+                    class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-lg pl-4"
+                    type="text"
+                  />
+                </div>
+                <div>
+                  <label
+                    class="field-label text-[0.844rem] leading-7 text-[#3a3a3a]"
+                    for=""
+                    >Nummer</label
+                  >
+                  <input
+                    placeholder="Nummer"
+                    name="housenumber"
+                    required
+                    class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-lg pl-4"
+                    type="text"
+                  />
+                </div>
+                <div>
+                  <label
+                    class="field-label text-[0.844rem] leading-7 text-[#3a3a3a]"
+                    for=""
+                    >Toevoeging</label
+                  >
+                  <input
+                    placeholder="Toevoeging"
+                    class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-lg pl-4"
+                    type="text"
+                  />
+                </div>
+              </div>
+              <div>
+                <label
+                  class="field-label text-[0.844rem] leading-7 text-[#3a3a3a]"
+                  for=""
+                  >Straat</label
+                >
+                <input
+                  placeholder="Straat"
+                  name="streetname"
+                  required
+                  class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-lg pl-4"
+                  type="text"
+                />
+              </div>
+              <div>
+                <label
+                  class="field-label text-[0.844rem] leading-7 text-[#3a3a3a]"
+                  for=""
+                  >Plaats</label
+                >
+                <input
+                  placeholder="Plaats"
+                  name="city"
+                  class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-lg pl-4"
+                  type="text"
+                />
+              </div>
+              <div>
+                <label
+                  class="field-label text-[0.844rem] leading-7 text-[#3a3a3a]"
+                  for=""
+                  >Is dit een woon- of werkadres?</label
+                >
+                <select
+                  class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-lg pl-4"
+                  name="business-address"
+                >
+                  <option value="Ja">JA</option>
+                  <option value="Nee">Nee</option>
+                </select>
+              </div>
+              <div>
+                <label
+                  class="field-label text-[0.844rem] leading-7 text-[#3a3a3a]"
+                  for=""
+                  >Betreft het een verhuizing</label
+                >
+                <select
+                  class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-lg pl-4"
+                  name="betreft-het-een-verhuizing"
+                >
+                  <option value="Ja">JA</option>
+                  <option value="Nee">Nee</option>
+                </select>
+              </div>
+              <div>
+                <label
+                  class="field-label text-[0.844rem] leading-7 text-[#3a3a3a]"
+                  for=""
+                  >Wil je wisselen van leverancier of ga je verhuizen?</label
+                >
+                <select
+                  class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-lg pl-4"
+                  name="change-or-moving"
+                >
+                  <option value="0">Overstappen</option>
+                  <option value="1">Verhuizing</option>
+                </select>
+              </div>
+              <div>
+                <label
+                  class="field-label text-[0.844rem] leading-7 text-[#3a3a3a]"
+                  for=""
+                  >Gewenste startdatum levering</label
+                >
+                <input
+                  class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-lg pl-4"
+                  type="date"
+                  name="startdatum"
+                />
+              </div>
+              <div class="border-t border-gray-200 my-5"></div>
+              <h3 class="text-[#1E2329] text-base font-bold">
+                Bedrijfsgegevens
+              </h3>
+              <div>
+                <label
+                  class="field-label text-[0.844rem] leading-7 text-[#3a3a3a]"
+                  for=""
+                  >Bedrijfsnaam</label
+                >
+                <input
+                  placeholder="Bedrijfsnaam"
+                  name="company"
+                  required
+                  class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-lg pl-4"
+                  type="text"
+                />
+              </div>
+              <div class="flex gap-3">
+                <div>
+                  <label
+                    class="field-label text-[0.844rem] leading-7 text-[#3a3a3a]"
+                    for=""
+                    >KvK-nummer</label
+                  >
+                  <input
+                    placeholder="KvK-nummer"
+                    name="company-coc"
+                    required
+                    class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-lg pl-4"
+                    type="text"
+                  />
+                </div>
+                <div>
+                  <label
+                    class="field-label text-[0.844rem] leading-7 text-[#3a3a3a]"
+                    for=""
+                    >BTW-nummer</label
+                  >
+                  <input
+                    placeholder="BTW-nummer"
+                    name="company-vat"
+                    class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-lg pl-4"
+                    type="text"
+                  />
+                </div>
+              </div>
+              <div class="border-t border-gray-200 my-5"></div>
+              <h3 class="text-[#1E2329] text-base font-bold">
+                Persoonlijke gegevens
+              </h3>
+              <div>
+                <label
+                  class="field-label text-[0.844rem] leading-7 text-[#3a3a3a]"
+                  for=""
+                  >Aanhef</label
+                >
+                <select
+                  class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-lg pl-4"
+                  name="salutation"
+                >
+                  <option value="male">Dhr</option>
+                  <option value="female">Mevr</option>
+                </select>
+              </div>
+              <div class="flex gap-3">
+                <div>
+                  <label
+                    class="field-label text-[0.844rem] leading-7 text-[#3a3a3a]"
+                    for=""
+                    >Voornaam</label
+                  >
+                  <input
+                    placeholder="Voornaam"
+                    name="first"
+                    required
+                    class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-lg pl-4"
+                    type="text"
+                  />
+                </div>
+                <div>
+                  <label
+                    class="field-label text-[0.844rem] leading-7 text-[#3a3a3a]"
+                    for=""
+                    >Achternaam</label
+                  >
+                  <input
+                    placeholder="Achternaam"
+                    name="last"
+                    required
+                    class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-lg pl-4"
+                    type="text"
+                  />
+                </div>
+              </div>
+              <div>
+                <label
+                  class="field-label text-[0.844rem] leading-7 text-[#3a3a3a]"
+                  for=""
+                  >Geboortedatum</label
+                >
+                <input
+                  placeholder="Selecteer uw geboortedatum"
+                  name="birthdate"
+                  required
+                  class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-lg pl-4"
+                  type="date"
+                />
+              </div>
+              <div class="flex gap-3">
+                <div>
+                  <label
+                    class="field-label text-[0.844rem] leading-7 text-[#3a3a3a]"
+                    for=""
+                    >E-mailadres</label
+                  >
+                  <input
+                    placeholder="E-mailadres"
+                    name="email"
+                    required
+                    class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-lg pl-4"
+                    type="email"
+                  />
+                </div>
+                <div>
+                  <label
+                    class="field-label text-[0.844rem] leading-7 text-[#3a3a3a]"
+                    for=""
+                    >Telefoonnummer</label
+                  >
+                  <input
+                    placeholder="Telefoonnummer"
+                    name="phone"
+                    required
+                    class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-lg pl-4"
+                    type="tel"
+                  />
+                </div>
+              </div>
+              <div>
+                <label
+                  class="field-label text-[0.844rem] leading-7 text-[#3a3a3a]"
+                  for=""
+                  >IBAN</label
+                >
+                <input
+                  placeholder="IBAN (bankrekeningnummer)"
+                  name="iban"
+                  class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-lg pl-4"
+                  type="number"
+                />
+              </div>
+              <div>
+                <label
+                  class="field-label text-[0.844rem] leading-7 text-[#3a3a3a]"
+                  for=""
+                  >Naam rekeninghouder</label
+                >
+                <input
+                  placeholder="Naam rekeninghouder"
+                  name="owner"
+                  required
+                  class="field w-full h-11 bg-gray-50 text-[#1E2329] placeholder:text-gray-400 text-base border border-gray-200 rounded-lg pl-4"
+                  type="text"
+                />
+              </div>
+              <div class="inline-flex items-center gap-3 mt-5">
+                <svg
+                  class="w-10 h-10"
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="2em"
+                  viewBox="0 0 512 512"
+                >
+                  <style>
+                    svg {
+                      fill: #87c232;
+                    }
+                  </style>
+                  <path
+                    d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"
+                  />
+                </svg>
+                <div class="text-sm">
+                  <span class="text-[#87C232]">Volgende stap:</span
+                  ><span class="ml-2">
+                    Controleer je gegevens en bevestig je aanvraag.</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <button
+            onclick="nextThree()"
+            type="button"
+            class="button w-full h-12 bg-[#87C232] text-center text-white hover:text-[#1E2329] mt-5 uppercase font-bold"
+          >
+            Gegevens invullen
+          </button>
+          <button
+            onclick="prevOne()"
+            type="button"
+            class="w-full h-12 border border-[#87C232] text-center text-[#87C232] hover:text-[#87C232] mt-5 uppercase font-bold"
+          >
+            Terug naar aanbod samenstellen
+          </button>
+        </div>
+
+        <div class="step step-three hidden">
+          <h2 class="text-[#1E2329] text-3xl font-semibold my-12">
+            Controleer je gegevens
+          </h2>
+          <p>Controleer je gegevens goed, voordat je ze bevestigt!</p>
+          <h3 class="text-base text-[#3a3a3a] font-medium mb-5 mt-5">
+            Leveringsadres
+          </h3>
+          <table>
+            <tbody>
+              <tr>
+                <td class="w-52 text-sm py-1.5">Straat en huisnummer</td>
+                <td class="text-sm py-1.5" name="first-address"></td>
+              </tr>
+              <tr>
+                <td class="w-52 text-sm py-1.5">Postcode en plaats</td>
+                <td class="text-sm py-1.5" name="last-address"></td>
+              </tr>
+              <tr>
+                <td class="w-52 text-sm py-1.5">
+                  Aansluiting elektriciteit EAN
+                </td>
+                <td class="text-sm py-1.5" name="ean"></td>
+              </tr>
+              <tr>
+                <td class="w-52 text-sm py-1.5">Start levering</td>
+                <td class="text-sm py-1.5" name="startdatum"></td>
+              </tr>
+              <tr>
+                <td class="w-52 text-sm py-1.5">Verhuizing</td>
+                <td class="text-sm py-1.5" name="changeOrMoving"></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="border-t border-gray-200 my-8"></div>
+          <h3 class="text-base text-[#3a3a3a] font-medium mb-5 mt-5">
+            Persoonlijke gegevens
+          </h3>
+
+          <table>
+            <tbody>
+              <tr>
+                <td class="w-52 text-sm py-1.5">Naam</td>
+                <td class="text-sm py-1.5" name="first"></td>
+              </tr>
+              <tr>
+                <td class="w-52 text-sm py-1.5">Geboortedatum</td>
+                <td class="text-sm py-1.5" name="birthdate"></td>
+              </tr>
+              <tr>
+                <td class="w-52 text-sm py-1.5">E-mailadres</td>
+                <td class="text-sm py-1.5" name="email"></td>
+              </tr>
+              <tr>
+                <td class="w-52 text-sm py-1.5">Telefoonnummer</td>
+                <td class="text-sm py-1.5" name="phone"></td>
+              </tr>
+              <tr>
+                <td class="w-52 text-sm py-1.5">IBAN</td>
+                <td class="text-sm py-1.5" name="iban"></td>
+              </tr>
+              <tr>
+                <td class="w-52 text-sm py-1.5">Naam rekeninghouder</td>
+                <td class="text-sm py-1.5" name="owner"></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="border-t border-gray-200 my-8"></div>
+          <h3 class="text-base text-[#3a3a3a] font-medium mb-5 mt-5">
+            Handtekening voor akkoord
+          </h3>
+
+          <div>
+            <div class="">
+              <canvas
+                id="signature-pad"
+                class="signature-pad"
+                style="
+                  border: 1px solid rgb(0, 0, 0);
+                  height: 150px;
+                  width: 100%;
+                  touch-action: none;
+                "
+                width="560"
+                height="150"
+              ></canvas>
+            </div>
+            <div class="signature-pad--footer">
+              <div class="signature-pad--actions">
+                <div class="column">
+                  <span
+                    id="clear"
+                    style="cursor: pointer; text-decoration: underline"
+                    >Wissen</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="border-t border-gray-200 my-8"></div>
+          <h3 class="text-base text-[#3a3a3a] font-medium mb-5 mt-5">
+            Betaling
+          </h3>
+
+          <p class="max-w-3xl">
+            De betaling van de maandelijkse termijnbedragen verloopt via een
+            automatische incasso. Ga je akkoord met het voorstel? Dan ontvang je
+            daaropvolgend een verzoek van ons om digitaal een incassomachtiging
+            af te geven.
+          </p>
+
+          Bij het ondertekenen van het contract ga je akkoord met onze
+          <a href="#" target="_blank">contract- en algemene voorwaarden</a>
+          <div class="inline-flex items-center gap-3 mt-5">
+            <svg
+              class="w-10 h-10"
+              xmlns="http://www.w3.org/2000/svg"
+              height="2em"
+              viewBox="0 0 512 512"
+            >
+              <style>
+                svg {
+                  fill: #87c232;
+                }
+              </style>
+              <path
+                d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM216 336h24V272H216c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24H216c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"
+              />
+            </svg>
+            <div class="text-sm font-bold">
+              <span class="text-[#87C232]">Volgende stap:</span
+              ><span class="ml-2">
+                Controleer je gegevens en bevestig je aanvraag.</span
+              >
+            </div>
+          </div>
+          <button
+            onclick="createEnergyOffer()"
+            class="button w-full h-12 bg-[#87C232] text-center text-white hover:text-[#1E2329] mt-5 uppercase font-bold"
+          >
+            Gegevens invullen
+          </button>
+          <button
+            onclick="prevTwo()"
+            type="button"
+            class="w-full h-12 border border-[#87C232] text-center text-[#87C232] hover:text-[#87C232] mt-5 uppercase font-bold"
+          >
+            Terug naar aanbod samenstellen
+          </button>
+        </div>
+      </form>
+      <div class="result bg-[#f8f8f8] px-2 lg:p-10">
+        <div class="EvOfferPanel" id="EvOfferPanel_62285">
+          <div class="EvStepAanbod" id="EvStepAanbod">
+            <h3
+              class="text-lg text-center text-[#1e2329] uppercase mt-4 lg:mt-0"
+            >
+              Jouw persoonlijk aanbod
+            </h3>
+
+            <div class="EvClear"></div>
+            <div class="border-t border-gray-200 my-8"></div>
+            <div class="flex flex-col gap-3">
+              <div class="OfferPointContainer flex items-center gap-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6 fill-none text-[#87C232] flex-shrink-0"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M4.5 12.75l6 6 9-13.5"
+                  />
+                </svg>
+
+                <span class="text-sm lg:text-base"
+                  >Spotmarkten EPEX/LEBA + Opslag
+                </span>
+              </div>
+              <div class="OfferPointContainer flex items-center gap-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6 fill-none text-[#87C232] flex-shrink-0"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M4.5 12.75l6 6 9-13.5"
+                  />
+                </svg>
+
+                <span class="text-sm lg:text-base"
+                  >Uur gewogen product voor elektriciteit (prijs en tarief van
+                  betreffend uur)
+                </span>
+              </div>
+              <div class="OfferPointContainer flex items-center gap-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6 fill-none text-[#87C232] flex-shrink-0"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M4.5 12.75l6 6 9-13.5"
+                  />
+                </svg>
+
+                <span class="text-sm lg:text-base"
+                  >Per dag variërende prijs voor gas</span
+                >
+              </div>
+            </div>
+
+            <div class="EvClear"></div>
+            <div class="border-t border-gray-200 my-8"></div>
+
+            <div class="OfferPointContainer flex items-center gap-3">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6 text-[#87C232] flex-shrink-0"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"
+                />
+              </svg>
+
+              <span>Energie tegen inkoopprijzen</span>
+            </div>
+            <div class="OfferPointContainer flex items-center gap-3 mt-3">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6 text-[#87C232] flex-shrink-0 fill-none"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M14.25 7.756a4.5 4.5 0 100 8.488M7.5 10.5h5.25m-5.25 3h5.25M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+
+              <span>Elke maand betaal je de werkelijke kosten</span>
+            </div>
+
+            <div class="OfferTextBlock mt-8">
+              <p class="text-sm lg:text-base">
+                Jouw voorschot wordt o.a. berekend op basis van de gemiddelde
+                marktprijs, je verbruiksprofiel en eventueel je eigen opwek. In
+                jouw persoonlijke aanbod zie je een indicatie van de gemiddelde
+                kosten per maand en de verwachte kosten per jaar.
+              </p>
+            </div>
+
+            <div class="EvClear"></div>
+
+            <table
+              class="EvOfferTable border-collapse border border-gray-200 my-5 w-full"
+            >
+              <tbody class="text-xs">
+                <tr>
+                  <td class="py-4 border border-gray-200 px-3">
+                    Totaal jaarlijkse kosten stroom
+                  </td>
+                  <td class="text-right border border-gray-200 px-3">
+                    <label
+                      name="eletric_total"
+                      class="bg-slate-200 animate-pulse rounded-md px-8 py-0.5"
+                    ></label>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-4 border border-gray-200 px-3">
+                    Totaal jaarlijkse kosten gas
+                  </td>
+                  <td class="text-right border border-gray-200 px-3">
+                    <label
+                      name="gas_total"
+                      class="bg-slate-200 animate-pulse rounded-md px-8 py-0.5"
+                    ></label>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-4 border border-gray-200 px-3">
+                    <b>Totaal jaarlijkse kosten stroom &amp; gas</b>
+                  </td>
+                  <td class="text-right border border-gray-200 px-3 font-bold">
+                    <label
+                      name="gas_eletric_total"
+                      class="bg-slate-200 animate-pulse rounded-md px-8 py-0.5 content-['']"
+                    ></label>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="py-4 border border-gray-200 px-3">BTW</td>
+                  <td class="text-right border border-gray-200 px-3">
+                    <label
+                      name="total_btw"
+                      class="bg-slate-200 animate-pulse rounded-md px-8 py-0.5"
+                    ></label>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div class="flex justify-between font-bold text-[#87C232]">
+              Indicatie termijnbedrag (p/m)
+              <label
+                name="total_per_month"
+                class="bg-slate-200 animate-pulse rounded-md px-8 py-0.5"
+              ></label>
+            </div>
+            <div class="hidden flex justify-between font-bold text-[#87C232]">
+              Indicatie termijnbedrag (p/m) incl. BTW
+              <label
+                name="total_per_month_btw"
+                class="bg-slate-200 animate-pulse rounded-md px-8 py-0.5"
+              ></label>
+            </div>
+            <div class="font-bold flex justify-between py-4">
+              Verwachte kosten per jaar
+              <label
+                name="gas_eletric_total"
+                class="bg-slate-200 animate-pulse rounded-md px-8 py-0.5"
+              >
+              </label>
+            </div>
+
+            <p class="mt-5">
+              De prijzen van het prijsplafond zijn verwerkt in dit persoonlijk
+              aanbod.
+            </p>
+            <button
+              onclick="openResultModal()"
+              type="button w-full h-12 bg-[#87C232] text-center text-white hover:text-[#1E2329] mt-5 uppercase font-bold"
+              class="w-full h-12 border border-[#87C232] text-center text-[#87C232] mt-5 uppercase font-bold hover:border-[#1E2329] hover:text-[#1E2329]"
+            >
+              Prijsstructuur en kosten
+            </button>
+
+            <div class="EvClear"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div
+    class="w-full h-full fixed top-0 left-0 flex items-center bg-black/20 result-modal hidden"
+    onclick="closeResultModal()"
+  >
+    <div
+      class="bg-white w-full max-w-2xl h-full max-h-[479px] mx-auto overflow-auto p-2"
+    >
+      <h3 class="font-bold text-xl text-[#1E2329] text-center">
+        PRIJSSTRUCTUUR EN KOSTEN
+      </h3>
+      <div class="p-12 bg-[#F8F8F8] stroom-result-modal">
+        <h3 class="font-bold text-xl text-[#1E2329] text-center">STROOM</h3>
+        <div class="border-t border-gray-200 my-8"></div>
+        <table class="border-collapse border border-gray-200 my-5 w-full">
+          <tbody class="text-xs">
+            <tr class="py-4">
+              <td class="text-left py-4 pl-3 text-xs font-bold">
+                Variabele kosten
+              </td>
+            </tr>
+            <tr>
+              <td class="py-4 border border-gray-200 px-3">
+                Verwachte inkoopprijs (gemiddeld)
+                <label name="eletric_usage_single">0</label> x €
+                <label name="eletric_dynamic_average_tariff_inc_vat"
+                  >0,00</label
+                >
+              </td>
+              <td
+                name="eletric_expected_dynamic_purchase_cost_inc_vat"
+                class="text-right border border-gray-200 py-4 px-3"
+              >
+                € 0,00
+              </td>
+            </tr>
+            <tr>
+              <td class="py-4 border border-gray-200 px-3">
+                Inkoopvergoeding
+                <label name="eletric_usage_single">0</label> x €
+                <label name="eletric_purchase_surcharge_tariff_inc_vat"
+                  >0,00</label
+                >
+              </td>
+              <td
+                name="eletric_purchase_surcharge_cost_inc_vat"
+                class="text-right border border-gray-200 px-3"
+              >
+                € 0,00
+              </td>
+            </tr>
+            <tr>
+              <td class="py-4 border border-gray-200 px-3">
+                Overheidsheffingen
+              </td>
+              <td
+                name="eletric_government_tax_per_year_inc_vat"
+                class="font-bold text-right border border-gray-200 px-3"
+              >
+                € 0,00
+              </td>
+            </tr>
+            <tr>
+              <td
+                name="eletric_tariff_energytax_exc_vat"
+                class="py-4 border border-gray-200 px-3"
+              >
+                0 - € 0,00
+              </td>
+              <td
+                name="eletric_total_energytax_exc_vat"
+                class="text-right border border-gray-200 px-3"
+              >
+                € 0,00
+              </td>
+            </tr>
+            <tr class="py-4">
+              <td class="text-left py-4 pl-3 text-xs font-bold">
+                Vaste kosten
+              </td>
+            </tr>
+            <tr>
+              <td class="py-4 border border-gray-200 px-3">
+                Vaste leveringskosten
+              </td>
+              <td
+                name="eletric_fixed_delivery_cost_inc_vat"
+                class="text-right border border-gray-200 px-3"
+              >
+                € 0,00
+              </td>
+            </tr>
+            <tr>
+              <td class="py-4 border border-gray-200 px-3">
+                Vermindering energiebelasting
+              </td>
+              <td
+                name="eletric_tax_reduction_inc_vat"
+                class="text-right border border-gray-200 px-3"
+              >
+                € 0,00
+              </td>
+            </tr>
+            <tr>
+              <td class="py-4 border border-gray-200 px-3">
+                Netbeheerkosten (<label
+                  name="eletric_grid_operator_name"
+                ></label
+                >)
+              </td>
+              <td
+                name="eletric_tariff_grid_operator_year_inc_vat"
+                class="text-right border border-gray-200 px-3"
+              >
+                € 0,00
+              </td>
+            </tr>
+            <tr>
+              <td class="py-4 border border-gray-200 px-3 font-bold">
+                Totaal jaarlijkse kosten stroom
+              </td>
+              <td
+                name="eletric_total"
+                class="font-bold text-right border border-gray-200 px-3"
+              >
+                € 0,00
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="p-12 bg-[#F8F8F8] mt-8 gas-result-modal hidden">
+        <h3 class="font-bold text-xl text-[#1E2329] text-center">GAS</h3>
+
+        <div class="border-t border-gray-200 my-8"></div>
+
+        <table class="border-collapse border border-gray-200 my-5 w-full">
+          <tbody class="text-xs">
+            <tr class="py-4">
+              <td class="text-left py-4 pl-3 text-xs font-bold">
+                Variabele kosten
+              </td>
+            </tr>
+            <tr>
+              <td class="py-4 border border-gray-200 px-3">
+                Verwachte inkoopprijs (gemiddeld)
+                <label name="gas_usage_single">0</label>m<sup>3</sup> x €
+                <label name="gas_dynamic_average_tariff_inc_vat">0,00</label>
+              </td>
+              <td
+                name="gas_expected_dynamic_purchase_cost_inc_vat"
+                class="text-right border border-gray-200 px-3"
+              >
+                € 0,00
+              </td>
+            </tr>
+            <tr>
+              <td class="py-4 border border-gray-200 px-3">
+                Inkoopvergoeding
+                <label name="gas_usage_single">0</label>m<sup>3</sup> x €
+                <label name="gas_purchase_surcharge_tariff_inc_vat">0,00</label>
+              </td>
+              <td
+                name="gas_purchase_surcharge_cost_inc_vat"
+                class="text-right border border-gray-200 px-3"
+              >
+                € 0,00
+              </td>
+            </tr>
+            <tr>
+              <td class="py-4 border border-gray-200 px-3">
+                Overheidsheffingen
+              </td>
+              <td
+                name="gas_government_tax_per_year_inc_vat"
+                class="font-bold text-right border border-gray-200 px-3"
+              >
+                € 0,00
+              </td>
+            </tr>
+            <tr>
+              <td
+                name="gas_tariff_energytax_exc_vat"
+                class="py-4 border border-gray-200 px-3"
+              >
+                0 - € 0,00
+              </td>
+              <td
+                name="gas_total_energytax_exc_vat"
+                class="text-right border border-gray-200 px-3"
+              >
+                € 0,00
+              </td>
+            </tr>
+            <tr class="py-4">
+              <td class="text-left py-4 pl-3 text-xs font-bold">
+                Variabele kosten
+              </td>
+            </tr>
+            <tr>
+              <td class="py-4 border border-gray-200 px-3">
+                Vaste leveringskosten
+              </td>
+              <td
+                name="gas_fixed_delivery_cost_inc_vat"
+                class="text-right border border-gray-200 px-3"
+              >
+                € 0,00
+              </td>
+            </tr>
+            <tr>
+              <td class="py-4 border border-gray-200 px-3">
+                Netbeheerkosten (<label name="gas_grid_operator_name"></label>)
+              </td>
+              <td
+                name="gas_tariff_grid_operator_year_inc_vat"
+                class="text-right border border-gray-200 px-3"
+              >
+                € 0,00
+              </td>
+            </tr>
+            <tr>
+              <td class="py-4 border border-gray-200 px-3">
+                <b>Totaal jaarlijkse kosten gas</b>
+              </td>
+              <td
+                name="gas_total"
+                class="text-right border font-bold border-gray-200 px-3"
+              >
+                € 0,00
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="EvGreyPanel p-12 bg-[#F8F8F8] mt-8">
+        <h3 class="font-bold text-xl text-[#1E2329] text-center">
+          TOTAAL STROOM & GAS
+        </h3>
+
+        <div class="border-t border-gray-200 my-8"></div>
+
+        <table
+          class="EvOfferTable border-collapse border border-gray-200 my-5 w-full"
+        >
+          <tbody class="text-xs">
+            <tr>
+              <td class="py-4 border border-gray-200 px-3">
+                Totaal jaarlijkse kosten stroom
+              </td>
+              <td name="eletric_total" class="py-4 border border-gray-200 px-3">
+                € 0,00
+              </td>
+            </tr>
+            <tr>
+              <td class="py-4 border border-gray-200 px-3">
+                Totaal jaarlijkse kosten gas
+              </td>
+              <td name="gas_total" class="py-4 border border-gray-200 px-3">
+                € 0,00
+              </td>
+            </tr>
+            <tr>
+              <td class="py-4 border border-gray-200 px-3">
+                <b>Totaal jaarlijkse kosten stroom &amp; gas</b>
+              </td>
+              <td
+                name="gas_eletric_total"
+                class="font-bold py-4 border border-gray-200 px-3"
+              >
+                € 0,00
+              </td>
+            </tr>
+            <tr>
+              <td class="py-4 border border-gray-200 px-3">BTW</td>
+              <td name="total_btw" class="py-4 border border-gray-200 px-3">
+                € 0,00
+              </td>
+            </tr>
+            <tr>
+              <td class="py-4 border border-gray-200 px-3">
+                Indicatie termijnbedrag (p/m)
+              </td>
+              <td
+                name="total_per_month"
+                class="py-4 border border-gray-200 px-3"
+              >
+                € 0,00
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <button
+        type="button"
+        onclick="closeResultModal()"
+        class="text-sm mx-auto w-full flex justify-center my-8"
+      >
+        Sluiten
+      </button>
+    </div>
+  </div>
+  <dialog
+    class="relative z-10"
+    name="success"
+    aria-labelledby="modal-title"
+    role="dialog"
+    aria-modal="true"
+  >
+    <div
+      class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+    ></div>
+
+    <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+      <div
+        class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0"
+      >
+        <div
+          class="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6"
+        >
+          <div>
+            <div
+              class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-100"
+            >
+              <svg
+                class="h-6 w-6 text-green-600"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M4.5 12.75l6 6 9-13.5"
+                />
+              </svg>
+            </div>
+            <div class="mt-3 text-center sm:mt-5">
+              <h3
+                class="text-base font-semibold leading-6 text-gray-900"
+                id="modal-title"
+              >
+                Aanbieding succesvol verzonden
+              </h3>
+              <div class="mt-2">
+                <p class="text-sm text-gray-500">
+                  Even geduld a.u.b., wij nemen contact met u op zodra wij uw
+                  zending hebben geanalyseerd.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="mt-5 sm:mt-6">
+            <button
+              type="button"
+              onclick="closeModal()"
+              class="inline-flex w-full justify-center rounded-md bg-[#87C232] px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-[#87C232]/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#87C232]"
+            >
+              Opnieuw simuleren
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+  <dialog
+    class="relative z-10"
+    name="errors"
+    aria-labelledby="modal-title"
+    role="dialog"
+    aria-modal="true"
+  >
+    <div
+      class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+    ></div>
+
+    <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+      <div
+        class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0"
+      >
+        <div
+          class="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6"
+        >
+          <div>
+            <div
+              class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-red-100"
+            >
+              <svg
+                class="h-6 w-6 text-red-600"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </div>
+            <div class="mt-3 text-center sm:mt-5">
+              <h3
+                class="text-base font-semibold leading-6 text-gray-900"
+                id="modal-title"
+              >
+                Er is iets fout gegaan
+              </h3>
+              <div class="mt-2 space-y-2">
+                <p class="text-sm text-gray-500">
+                  Controleer of alle velden correct zijn ingevuld
+                </p>
+                <ul
+                  name="list-errors"
+                  class="flex flex-col items-start flex-start justify-start list-disc pl-10 gap-2"
+                ></ul>
+              </div>
+            </div>
+          </div>
+          <div class="mt-5 sm:mt-6">
+            <button
+              type="button"
+              onclick="closeModal()"
+              class="inline-flex w-full justify-center rounded-md bg-[#87C232] px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-[#87C232]/70 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#87C232]"
+            >
+              Opnieuw simuleren
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+  <dialog
+    class="relative z-10"
+    name="loading"
+    aria-labelledby="modal-title"
+    role="dialog"
+    aria-modal="true"
+  >
+    <div
+      class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+    ></div>
+
+    <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+      <div
+        class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0"
+      >
+        <div
+          class="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6"
+        >
+          <div>
+            <div
+              class="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-yellow-100"
+            >
+              <svg
+                class="h-6 w-6 text-yellow-600 animate-spin"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <circle
+                  class="opacity-25"
+                  cx="12"
+                  cy="12"
+                  r="10"
+                  stroke="currentColor"
+                  stroke-width="4"
+                ></circle>
+                <path
+                  class="opacity-75"
+                  fill="currentColor"
+                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                ></path>
+              </svg>
+            </div>
+            <div class="mt-3 text-center sm:mt-5">
+              <h3
+                class="text-base font-semibold leading-6 text-gray-900"
+                id="modal-title"
+              >
+                wachten ...
+              </h3>
+              <div class="mt-2 space-y-2">
+                <p class="text-sm text-gray-500">
+                  Een ogenblik geduld terwijl we uw gegevens valideren
+                </p>
+                <ul
+                  name="list-errors"
+                  class="flex flex-col items-start flex-start justify-start list-disc pl-10 gap-2"
+                ></ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+</main>
+<!-- scirpt.js -->
+<script>
+  const form = {};
+  const removeStepActive = (idx) => {
+    const steps = document.querySelectorAll(".steps li");
+    const step = steps[idx];
+
+    step.classList.remove(
+      "active",
+      "text-[#87C232]",
+      "dark:text-[#87C232]",
+      "after:border-[#87C232]",
+      "dark:after:border-[#87C232]"
+    );
+    step.classList.add("text-[#1E2329]");
+
+    const stepSpan = step.querySelector("span");
+    stepSpan.classList.remove("bg-[#87C232]");
+    stepSpan.classList.add("bg-[#1E2329]");
+
+    const stepParagraph = step.querySelector("p");
+    stepParagraph.classList.remove("text-[#87C232]");
+  };
+
+  const activateStep = (idx) => {
+    const stepSpan = document.querySelectorAll(".steps li.active span");
+    const stepParagraph = document.querySelectorAll(".steps li.active p");
+
+    stepSpan[idx].classList.remove("bg-[#1E2329]");
+    stepSpan[idx].classList.add("bg-[#87C232]", "text-white");
+    stepParagraph[idx].classList.add("text-[#87C232]");
+  };
+
+  function prevOne() {
+    const stepOne = document.querySelector(".step-one");
+    const stepTwo = document.querySelector(".step-two");
+
+    stepOne.classList.remove("hidden");
+    stepTwo.classList.add("hidden");
+    removeStepActive(1);
+  }
+
+  function nextTwo() {
+    const isValid = validateAndHighlightEmptyFields();
+    if (!isValid) return;
+
+    const data = [];
+    const business = getIsBusiness();
+    const product_type = getProductType();
+    const smart_meter = getSmartMeter();
+    const my_consumption = getMyConsumption();
+    const { meterType, peakRateEletric, connectionEletric } = getMeterType();
+    const { peakRateGas, connectionGas } = getGasType();
+
+    form.business = business;
+    form.type = product_type;
+    form.heeft_u_een_slimme_elektricteitsmeter = smart_meter;
+    form.my_consumption = my_consumption;
+    form.meterType = meterType;
+    form.peakRateEletric = peakRateEletric;
+    form.connectionEletric = connectionEletric;
+    form.peakRateGas = peakRateGas;
+    form.connectionGas = connectionGas;
+
+    if (my_consumption == 1) {
+      const building_type = getBuildType();
+      form.building_type = building_type;
+      if (business == 0) {
+        const household_size = getHouseHoldSize();
+        form.household_size = household_size;
+      }
+    }
+
+    const stepOne = document.querySelector(".step-one");
+    const stepTwo = document.querySelector(".step-two");
+    const steps = document.querySelectorAll(".steps li");
+
+    stepOne.classList.add("hidden");
+    stepTwo.classList.remove("hidden");
+    steps[1].classList.add(
+      "active",
+      "text-[#87C232]",
+      "dark:text-[#87C232]",
+      "after:border-[#87C232]",
+      "dark:after:border-[#87C232]"
+    );
+
+    activateStep(1);
+    putCustomer();
+  }
+
+  function prevTwo() {
+    const stepOne = document.querySelector(".step-one");
+    const stepTwo = document.querySelector(".step-two");
+    const stepThree = document.querySelector(".step-three");
+
+    stepOne.classList.add("hidden");
+    stepTwo.classList.remove("hidden");
+    stepThree.classList.add("hidden");
+    removeStepActive(2);
+  }
+
+  function nextThree() {
+    const isValid = validateAndHighlightEmptyFields();
+    if (!isValid) return;
+
+    const data = [];
+    const {
+      postcode,
+      housenumber,
+      streetname,
+      city,
+      startdatum,
+      company,
+      companyCoc,
+      companyVat,
+      first,
+      last,
+      birthdate,
+      email,
+      phone,
+      iban,
+      owner,
+      businessAddress,
+      changeOrMoving,
+      salutation,
+      betreftOrVerhuizing,
+    } = getCustomer();
+
+    form.postcode = postcode;
+    form.housenumber = housenumber;
+    form.streetname = streetname;
+    form.city = city;
+    form.startdatum = startdatum;
+    form.company = company;
+    form.companyCoc = companyCoc;
+    form.companyVat = companyVat;
+    form.first = first;
+    form.last = last;
+    form.birthdate = birthdate;
+    form.email = email;
+    form.phone = phone;
+    form.iban = iban;
+    form.owner = owner;
+    form.businessAddress = businessAddress;
+    form.changeOrMoving = changeOrMoving;
+    form.salutation = salutation;
+    form.betreftOrVerhuizing = betreftOrVerhuizing;
+
+    const stepOne = document.querySelector(".step-one");
+    const stepTwo = document.querySelector(".step-two");
+    const stepThree = document.querySelector(".step-three");
+    const steps = document.querySelectorAll(".steps li");
+
+    stepOne.classList.add("hidden");
+    stepTwo.classList.add("hidden");
+    stepThree.classList.remove("hidden");
+    steps[2].classList.add(
+      "active",
+      "text-[#87C232]",
+      "dark:text-[#87C232]",
+      "after:border-[#87C232]",
+      "dark:after:border-[#87C232]"
+    );
+
+    putCustomer();
+    activateStep(2);
+  }
+
+  function setCardActive(el) {
+    const container = el.parentNode.parentNode;
+
+    container.querySelectorAll(".card").forEach((items) => {
+      items.classList.remove(
+        // "text-white",
+        // "bg-[#1E2329]",
+        "after:bg-[#87C232]",
+        "active"
+      );
+      items.classList.add(
+        // "bg-[#f8f8f8]",
+        // "text-[#1E2329]",
+        "after:bg-[#f8f8f8]"
+      );
+    });
+
+    const parentClassList = el.parentNode.classList;
+    parentClassList.remove(
+      // "bg-[#f8f8f8]",
+      // "text-[#1E2329]",
+      "after:bg-[#f8f8f8]"
+    );
+    parentClassList.add(
+      // "text-white",
+      // "bg-[#1E2329]",
+      "after:bg-[#87C232]",
+      "active"
+    );
+  }
+
+  function toggleHelpInput() {
+    const helpOptions = document.querySelector(".help-options");
+    helpOptions.classList.toggle(
+      "hidden",
+      !document.querySelector("input#hulp").checked
+    );
+  }
+
+  function toggleSunPannel() {
+    const pannelField = document.querySelector(".zonnepanelen-field");
+    pannelField.classList.toggle(
+      "hidden",
+      !document.querySelector("input#zonnepanelen").checked
+    );
+  }
+
+  function toggleNeeMessage() {
+    const message = document.querySelector(".nee-message");
+    message.classList.toggle(
+      "hidden",
+      !document.querySelector("input#meter-nee").checked
+    );
+  }
+
+  function setupClickEvent(elementId, func) {
+    document
+      .querySelector(`input#${elementId}`)
+      .addEventListener("click", func);
+  }
+
+  window.addEventListener("load", () => {
+    setupClickEvent("hulp", toggleHelpInput);
+    setupClickEvent("ik-weet", toggleHelpInput);
+    setupClickEvent("zonnepanelen", toggleSunPannel);
+    setupClickEvent("meter-nee", toggleNeeMessage);
+    setupClickEvent("meter-ja", toggleNeeMessage);
+  });
+
+  const showElement = (selector) => {
+    document.querySelector(selector).classList.remove("hidden");
+  };
+
+  const hideElement = (selector) => {
+    document.querySelector(selector).classList.add("hidden");
+  };
+
+  window.addEventListener("load", () => {
+    const eletricInput = document.getElementById("Electriciteit");
+    const gasInput = document.getElementById("Gas");
+    const bothInput = document.getElementById("Electriciteit-Gas");
+
+    eletricInput.addEventListener("click", () => {
+      showElement(".Electriciteit.fields");
+      hideElement(".Gas.fields");
+      hideElement(".electriciteit-gas-divider");
+
+      showElement(".stroom-result-modal");
+      hideElement(".gas-result-modal");
+    });
+
+    gasInput.addEventListener("click", () => {
+      showElement(".Gas.fields");
+      hideElement(".Electriciteit.fields");
+      hideElement(".electriciteit-gas-divider");
+
+      showElement(".gas-result-modal");
+      hideElement(".stroom-result-modal");
+    });
+
+    bothInput.addEventListener("click", () => {
+      showElement(".Gas.fields");
+      showElement(".Electriciteit.fields");
+      showElement(".electriciteit-gas-divider");
+
+      showElement(".gas-result-modal");
+      showElement(".stroom-result-modal");
+    });
+  });
+
+  window.addEventListener("load", () => {
+    const particularInput = document.getElementById("Particulier");
+    const companyInput = document.getElementById("Zakelijk");
+
+    particularInput.addEventListener("click", () => {
+      showElement(".aantal-personen-fields");
+      showElement(".type-wonning-fields");
+      hideElement(".company-help-fields");
+    });
+
+    companyInput.addEventListener("click", () => {
+      hideElement(".aantal-personen-fields");
+      hideElement(".type-wonning-fields");
+      showElement(".company-help-fields");
+    });
+  });
+
+  function openResultModal() {
+    showElement(".result-modal");
+  }
+
+  function closeResultModal() {
+    hideElement(".result-modal");
+  }
+
+  function validateAndHighlightEmptyFields() {
+    var form_to_validade = document.querySelector("form");
+    if (form_to_validade) {
+      var isValid = true;
+
+      form_to_validade
+        .querySelectorAll("input, select, textarea")
+        .forEach(function (field) {
+          var isVisible = field.offsetParent !== null;
+
+          if (isVisible) {
+            if (!field.checkValidity()) {
+              isValid = false;
+
+              if (field.value.trim() === "") {
+                field.style.border = "1px solid red";
+              }
+            } else {
+              field.style.border = "";
+            }
+          }
+        });
+
+      return isValid;
+    } else {
+      console.error("Formulário não encontrado.");
+    }
+  }
+
+  function closeModal() {
+    const errors = document.querySelector("dialog[name=errors]");
+    const success = document.querySelector("dialog[name=success]");
+    const loading = document.querySelector("dialog[name=loading]");
+    success.close();
+    errors.close();
+    loading.close();
+  }
+</script>
+<!-- utils.js -->
+<script>
+  function getIsBusiness() {
+    var radios = document.querySelectorAll("input[type=radio][name=business]");
+    var radioSelecionado;
+    radios.forEach(function (radio) {
+      if (radio.checked) {
+        var inputOculto = document.querySelector(
+          'input[type=radio][name=business][value="' + radio.value + '"]'
+        );
+        if (inputOculto) {
+          radioSelecionado = inputOculto.value;
+        }
+        return;
+      }
+    });
+
+    return radioSelecionado;
+  }
+
+  function getProductType() {
+    var radios = document.querySelectorAll(
+      "input[type=radio][name=electriciteit-or-gas]"
+    );
+    var radioSelecionado;
+    radios.forEach(function (radio) {
+      if (radio.checked) {
+        var inputOculto = document.querySelector(
+          'input[type=radio][name=electriciteit-or-gas][value="' +
+            radio.value +
+            '"]'
+        );
+        if (inputOculto) {
+          radioSelecionado = inputOculto.value;
+        }
+        return;
+      }
+    });
+
+    return radioSelecionado;
+  }
+
+  function getProductId() {
+    var radios = document.querySelectorAll("input[type=radio][name=business]");
+    var radioSelecionado;
+    radios.forEach(function (radio) {
+      if (radio.checked) {
+        var inputOculto = document.querySelector(
+          'input[type=radio][name=business][value="' + radio.value + '"]'
+        );
+        if (inputOculto) {
+          radioSelecionado = inputOculto.getAttribute("data-product");
+        }
+        return;
+      }
+    });
+
+    return radioSelecionado;
+  }
+
+  function getSmartMeter() {
+    var radios = document.querySelectorAll(
+      "input[type=radio][name=smart-meter]"
+    );
+    var radioSelecionado;
+    radios.forEach(function (radio) {
+      if (radio.checked) {
+        var inputOculto = document.querySelector(
+          'input[type=radio][name=smart-meter][value="' + radio.value + '"]'
+        );
+        if (inputOculto) {
+          radioSelecionado = inputOculto.value;
+        }
+        return;
+      }
+    });
+
+    return radioSelecionado;
+  }
+
+  function getMyConsumption() {
+    var radios = document.querySelectorAll(
+      "input[type=radio][name=my-consumption]"
+    );
+    var radioSelecionado;
+    radios.forEach(function (radio) {
+      if (radio.checked) {
+        var inputOculto = document.querySelector(
+          'input[type=radio][name=my-consumption][value="' + radio.value + '"]'
+        );
+        if (inputOculto) {
+          radioSelecionado = inputOculto.value;
+        }
+        return;
+      }
+    });
+
+    return radioSelecionado;
+  }
+
+  function getBuildType() {
+    var radios = document.querySelectorAll(
+      "input[type=radio][name=building_type]"
+    );
+    var radioSelecionado;
+    radios.forEach(function (radio) {
+      if (radio.checked) {
+        var inputOculto = document.querySelector(
+          'input[type=radio][name=building_type][value="' + radio.value + '"]'
+        );
+        if (inputOculto) {
+          radioSelecionado = inputOculto.value;
+        }
+        return;
+      }
+    });
+
+    return radioSelecionado;
+  }
+
+  function getHouseHoldSize() {
+    var radios = document.querySelectorAll(
+      "input[type=radio][name=household_size]"
+    );
+    var radioSelecionado;
+    radios.forEach(function (radio) {
+      if (radio.checked) {
+        var inputOculto = document.querySelector(
+          'input[type=radio][name=household_size][value="' + radio.value + '"]'
+        );
+        if (inputOculto) {
+          radioSelecionado = inputOculto.value;
+        }
+        return;
+      }
+    });
+
+    return radioSelecionado;
+  }
+
+  function getMeterType() {
+    var meterTypeElement = document.querySelector("select[name=meter-type]");
+    var peakRateElement = document.querySelector(
+      "input[name=peak-rate-eletric]"
+    );
+    var connectionElement = document.querySelector(
+      "select[name=connection-eletric]"
+    );
+
+    var data = {};
+
+    if (meterTypeElement) {
+      data.meterType = meterTypeElement.value;
+    }
+
+    if (peakRateElement) {
+      data.peakRateEletric = peakRateElement.value;
+    }
+
+    if (connectionElement) {
+      data.connectionEletric = connectionElement.value;
+    }
+
+    return data;
+  }
+
+  function getGasType() {
+    var peakRateElement = document.querySelector("input[name=peak-rate-gas]");
+    var connectionElement = document.querySelector(
+      "select[name=connection-gas]"
+    );
+
+    var data = {};
+
+    if (peakRateElement) {
+      data.peakRateGas = peakRateElement.value;
+    }
+
+    if (connectionElement) {
+      data.connectionGas = connectionElement.value;
+    }
+
+    return data;
+  }
+
+  function getCustomer() {
+    const postcode = document.querySelector("input[name=postcode]");
+    const housenumber = document.querySelector("input[name=housenumber]");
+    const streetname = document.querySelector("input[name=streetname]");
+    const city = document.querySelector("input[name=city]");
+    const startdatum = document.querySelector("input[name=startdatum]");
+    const company = document.querySelector("input[name=company]");
+    const companyCoc = document.querySelector("input[name=company-coc]");
+    const companyVat = document.querySelector("input[name=company-vat]");
+    const first = document.querySelector("input[name=first]");
+    const last = document.querySelector("input[name=last]");
+    const birthdate = document.querySelector("input[name=birthdate]");
+    const email = document.querySelector("input[name=email]");
+    const phone = document.querySelector("input[name=phone]");
+    const iban = document.querySelector("input[name=iban]");
+    const owner = document.querySelector("input[name=owner]");
+
+    const betreftOrVerhuizing = document.querySelector(
+      "select[name=betreft-het-een-verhuizing]"
+    );
+
+    const businessAddress = document.querySelector(
+      "select[name=business-address]"
+    );
+    const changeOrMoving = document.querySelector(
+      "select[name=change-or-moving]"
+    );
+    const salutation = document.querySelector("select[name=salutation]");
+
+    var data = {};
+    if (postcode) {
+      data.postcode = postcode.value;
+    }
+    if (housenumber) {
+      data.housenumber = housenumber.value;
+    }
+    if (streetname) {
+      data.streetname = streetname.value;
+    }
+    if (city) {
+      data.city = city.value;
+    }
+    if (businessAddress) {
+      data.businessAddress = businessAddress.value;
+    }
+    if (changeOrMoving) {
+      data.changeOrMoving = changeOrMoving.value;
+    }
+    if (startdatum) {
+      data.startdatum = startdatum.value;
+    }
+    if (salutation) {
+      data.salutation = salutation.value;
+    }
+    if (company) {
+      data.company = company.value;
+    }
+    if (companyCoc) {
+      data.companyCoc = companyCoc.value;
+    }
+    if (companyVat) {
+      data.companyVat = companyVat.value;
+    }
+    if (first) {
+      data.first = first.value;
+    }
+    if (last) {
+      data.last = last.value;
+    }
+    if (email) {
+      data.email = email.value;
+    }
+    if (birthdate) {
+      const selectedDate = new Date(birthdate.value);
+      const day = String(selectedDate.getDate()).padStart(2, "0");
+      const month = String(selectedDate.getMonth() + 1).padStart(2, "0");
+      const year = selectedDate.getFullYear();
+
+      const formattedDate = `${day}-${month}-${year}`;
+      data.birthdate = formattedDate;
+    }
+    if (phone) {
+      data.phone = phone.value;
+    }
+    if (iban) {
+      data.iban = iban.value;
+    }
+    if (owner) {
+      data.owner = owner.value;
+    }
+    if (company) {
+      data.company = company.value;
+    }
+    if (betreftOrVerhuizing) {
+      data.betreftOrVerhuizing = betreftOrVerhuizing.value;
+    }
+
+    return data;
+  }
+
+  function putCustomer() {
+    document.querySelector("td[name=first-address]").innerHTML =
+      (form.streetname || "") + ", " + (form.romNumber || "");
+    document.querySelector("td[name=last-address]").innerHTML =
+      (form.postcode || "") + ", " + (form.city || "");
+    document.querySelector("td[name=ean]").innerHTML = form.ean || "";
+    document.querySelector("td[name=startdatum]").innerHTML =
+      form.startdatum || "";
+    document.querySelector("td[name=changeOrMoving]").innerHTML =
+      form.owner || "";
+
+    document.querySelector("td[name=first]").innerHTML =
+      (form.first || "") + " " + (form.last || "");
+    document.querySelector("td[name=birthdate]").innerHTML =
+      form.birthdate || "";
+    document.querySelector("td[name=email]").innerHTML = form.email || "";
+    document.querySelector("td[name=phone]").innerHTML = form.phone || "";
+    document.querySelector("td[name=iban]").innerHTML = form.iban || "";
+    document.querySelector("td[name=owner]").innerHTML = form.owner || "";
+  }
+
+  async function putPeakRateCustomer(e) {
+    let totalStoorm = document.querySelector("label[name=eletric_total]");
+    totalStoorm.classList.remove("bg-slate-200");
+    totalStoorm.classList.remove("animate-pulse");
+
+    let totalGas = document.querySelector("label[name=gas_total]");
+    totalGas.classList.remove("bg-slate-200");
+    totalGas.classList.remove("animate-pulse");
+
+    const btw = document
+      .querySelectorAll("label[name=total_btw]")
+      .forEach((element) => {
+        element.classList.remove("bg-slate-200");
+        element.classList.remove("animate-pulse");
+        element.innerHTML = "€ 0.00";
+      });
+
+    const total = document
+      .querySelectorAll("label[name=gas_eletric_total]")
+      .forEach((element) => {
+        element.classList.remove("bg-slate-200");
+        element.classList.remove("animate-pulse");
+        element.innerHTML = "€ 0.00";
+      });
+
+    const total_per_month = document
+      .querySelectorAll("label[name=total_per_month]")
+      .forEach((element) => {
+        element.classList.remove("bg-slate-200");
+        element.classList.remove("animate-pulse");
+        element.innerHTML = "€ 0.00";
+      });
+
+    await getProductWithCauculation(e);
+
+    if (e.name === "peak-rate-eletric") {
+      const connectionEletricSelect = document.querySelector(
+        'select[name="connection-eletric"]'
+      );
+      if (connectionEletricSelect) {
+        const currentIndex = connectionEletricSelect.selectedIndex;
+        if (currentIndex < connectionEletricSelect.options.length - 1) {
+          connectionEletricSelect.selectedIndex = currentIndex + 1;
+          const event = new Event("change");
+          connectionEletricSelect.dispatchEvent(event);
+        }
+      }
+    }
+
+    if (e.name === "peak-rate-gas") {
+      const connectionGasSelect = document.querySelector(
+        'select[name="connection-gas"]'
+      );
+      if (connectionGasSelect) {
+        const currentIndex = connectionGasSelect.selectedIndex;
+        if (currentIndex < connectionGasSelect.options.length - 1) {
+          connectionGasSelect.selectedIndex = currentIndex + 1;
+          const event = new Event("change");
+          connectionGasSelect.dispatchEvent(event);
+        }
+      }
+    }
+  }
+
+  function putZeroCosumer() {
+    document.querySelector("peak-rate-eletric").value = "";
+    document.querySelector("peak-rate-gas").value = "";
+  }
+</script>
+<!-- api.js -->
+<script>
+  const domain = "hosted-energy";
+  const scope = "user";
+  const version = "v1";
+  const base_url = `https://app.salesdock.nl/api/${domain}/${version}`;
+  const token = "MXibGmyJlNNaCFxJVirLbQLvji8MngOuNiYHVOM9Qhe1FRS6yjfY6navgNcR";
+
+  var myHeaders = new Headers();
+  myHeaders.append("Authorization", `Bearer ${token}`);
+  myHeaders.append("Accept", "application/json");
+  myHeaders.append("Content-Type", "application/json");
+
+  var requestOptions = {
+    headers: myHeaders,
+    redirect: "follow",
+  };
+
+  async function getProduct(element) {
+    document.querySelector("span[name=message-error]").classList.add("hidden");
+    const product_id = element.getAttribute("data-product");
+    try {
+      if (product_id) {
+        const response = await fetch(
+          `${base_url}/${scope}/products/${product_id}`,
+          {
+            method: "GET",
+            ...requestOptions,
+          }
+        )
+          .then((response) => response.text())
+          .then((result) => result)
+          .catch((error) => console.log("error", error));
+
+        const { data } = JSON.parse(response);
+        const custom = data.customfields;
+
+        if (custom) {
+          const peakRateEletric = document.querySelector(
+            "input[name=peak-rate-eletric]"
+          );
+          peakRateEletric.classList.remove("bg-gray-300");
+          peakRateEletric.classList.add("bg-gray-50");
+          peakRateEletric.removeAttribute("disabled");
+
+          const peakRateGas = document.querySelector(
+            "input[name=peak-rate-gas]"
+          );
+          peakRateGas.classList.remove("bg-gray-300");
+          peakRateGas.classList.add("bg-gray-50");
+          peakRateGas.removeAttribute("disabled");
+
+          const purchase_surcharge_tariff_inc_vat = document.querySelector(
+            "label[name=purchase_surcharge_tariff_inc_vat]"
+          );
+          purchase_surcharge_tariff_inc_vat.innerHTML =
+            custom.purchase_surcharge_tariff_inc_vat;
+
+          const dynamic_average_tariff_inc_vat = document.querySelector(
+            "label[name=dynamic_average_tariff_inc_vat]"
+          );
+          dynamic_average_tariff_inc_vat.innerHTML =
+            custom.dynamic_average_tariff_inc_vat;
+
+          const purchase_surcharge_gas = document.querySelector(
+            "label[name=purchase_surcharge_gas]"
+          );
+          purchase_surcharge_gas.innerHTML = custom.purchase_surcharge_gas;
+
+          const inkoopopslag_gas = document.querySelector(
+            "label[name=inkoopopslag_gas]"
+          );
+          inkoopopslag_gas.innerHTML = custom["inkoopopslag-gas"];
+
+          const btw_nr_verplicht_bij_teruglevering = document.querySelector(
+            "label[name=total-btw]"
+          );
+          btw_nr_verplicht_bij_teruglevering.classList.remove("bg-slate-200");
+          btw_nr_verplicht_bij_teruglevering.classList.remove("animate-pulse");
+          btw_nr_verplicht_bij_teruglevering.innerHTML =
+            custom["btw-nr-verplicht-bij-teruglevering"];
+        }
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async function createEnergyOffer() {
+    document.querySelector("span[name=message-error]").classList.add("hidden");
+    document.querySelector("dialog[name=loading]").showModal();
+    const signature = getSignature();
+    const my_consumption = getMyConsumption();
+
+    if (!Boolean(Number(my_consumption))) {
+      const product_id = getProductId();
+      const business = getIsBusiness();
+      let product_type = getProductType();
+      let my_consumption = getMyConsumption();
+      let { meterType, peakRateEletric, connectionEletric } = getMeterType();
+      let { peakRateGas, connectionGas } = getGasType();
+
+      if (!Boolean(Number(my_consumption))) {
+        connectionEletric = "E_3X25A";
+        connectionGas = "G_G6_500";
+      }
+
+      if (!Number(peakRateEletric)) {
+        peakRateEletric = 0;
+      }
+
+      if (!Number(peakRateGas)) {
+        peakRateGas = 0;
+      }
+
+      form.type = product_type;
+      form.building_function = business;
+      form.postcode = "7521WC";
+      form.housenumber = 75;
+      form.usage_e_single = peakRateEletric;
+      form.usage_g = peakRateGas;
+    }
+
+    try {
+      var raw = JSON.stringify({
+        transaction_type: "offer",
+        postcode: form.postcode,
+        housenumber: form.housenumber,
+        suffix: null,
+        type: form.type,
+        has_return: 0,
+        building_function: form.business,
+        gender: form.salutation,
+        firstname: form.first,
+        lastname: form.last,
+        birthdate: form.birthdate,
+        streetname: form.streetname,
+        city: form.city,
+        email: form.email,
+        phone: form.phone,
+        contact_person: form.first,
+        company_name: form.company,
+        company_coc: form.companyCoc,
+        company_vat: form.companyVat,
+        iban: form.iban,
+        iban_holder: "",
+        sale_channel: "online",
+        product_id: "62286",
+        tarifftype: form.meterType,
+        return: 0,
+        return_e_high: 0,
+        return_e_low: 0,
+        usage_e_single: form.peakRateEletric,
+        usage_e_high: null,
+        usage_e_low: null,
+        usage_g: form.peakRateGas,
+        tarifftype: "0",
+        e_gridoperator: "",
+        g_gridoperator: "",
+        e_connection_type: "",
+        g_connection_type: "",
+        g_region: "",
+        electricity_ean: "800000000000000000",
+        gas_ean: "800000000000000001",
+        e_connection_type: form.connectionEletric,
+        g_connection_type: form.connectionGas,
+        connection_postcode: form.postcode,
+        connection_housenumber: form.housenumber,
+        connection_suffix: null,
+        connection_streetname: form.streetname,
+        connection_city: form.city,
+        business: form.business,
+        signature: [
+          {
+            name: "Image",
+            content: signature,
+            extension: "png",
+          },
+        ],
+        questionData: {
+          ingangsdatum: form.startdatum,
+          overstaptest_switchdate_option: "Zo snel als mogelijk",
+          overstaptest: form.changeOrMoving,
+          "betreft-het-een-verhuizing": form.betreftOrVerhuizing,
+          "gewenste-overstapdatum-stroom": form.startdatum,
+          "gewenste-overstapdatum-gas": form.startdatum,
+          betaalwijze: "Factuur",
+          "heeft-u-een-slimme-elektricteitsmeter":
+            form.heeft_u_een_slimme_elektricteitsmeter,
+          "heeft-u-een-slimme-gasmeter":
+            form.heeft_u_een_slimme_elektricteitsmeter,
+        },
+        agreements: {
+          "privay-statement": "1",
+        },
+      });
+
+      var requestOptions = {
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow",
+      };
+
+      const response = await fetch(
+        `${base_url}/sales/flow/energie-small-business/Flexflow`,
+        {
+          method: "POST",
+          ...requestOptions,
+        }
+      )
+        .then((response) => response.text())
+        .then((result) => result)
+        .catch((error) => console.log("error", error));
+
+      document.querySelector("dialog[name=loading]").close();
+      const { errors, success, data } = JSON.parse(response);
+
+      if (!success) {
+        document.querySelector("dialog[name=errors]").showModal();
+        const list = document.querySelector("ul[name=list-errors]");
+        console.log(errors);
+        Object.keys(errors).forEach((item) => {
+          const errorMessage = errors[item][0];
+          const listItem = document.createElement("li");
+          listItem.className = "text-xs font-normal text-red-700";
+          listItem.textContent = errorMessage;
+          list.appendChild(listItem);
+        });
+      } else {
+        document.querySelector("dialog[name=success]").showModal();
+      }
+    } catch (error) {
+      document
+        .querySelector("span[name=message-error]")
+        .classList.remove("hidden");
+    }
+  }
+
+  function getSignature() {
+    var dataURL = signaturePad.toDataURL();
+    return dataURL;
+  }
+
+  async function getEstimateConsumer(element) {
+    try {
+      document
+        .querySelector("span[name=message-error]")
+        .classList.add("hidden");
+      let helpCosumer = getMyConsumption();
+      if (!Boolean(parseInt(helpCosumer))) return;
+
+      var requestOptions = {
+        headers: myHeaders,
+        redirect: "follow",
+      };
+
+      let isBusiness = getIsBusiness();
+      let building_type = getBuildType();
+      let household_size = getHouseHoldSize();
+
+      let url = `${base_url}/user/energy/estimation?building_type=${building_type}`;
+      let response = {};
+
+      if (Boolean(parseInt(isBusiness))) {
+        document.querySelector("dialog[name=loading]").showModal();
+        url += `&business=${isBusiness}`;
+        response = await fetch(url, {
+          method: "GET",
+          ...requestOptions,
+        })
+          .then((response) => response.text())
+          .then((result) => result)
+          .catch((error) => console.log("error", error));
+      } else {
+        url += `&household_size=${household_size}`;
+
+        if (household_size !== undefined) {
+          document.querySelector("dialog[name=loading]").showModal();
+          response = await fetch(url, {
+            method: "GET",
+            ...requestOptions,
+          })
+            .then((response) => response.text())
+            .then((result) => result)
+            .catch((error) => console.log("error", error));
+        }
+      }
+
+      const { errors, success, data } = JSON.parse(response);
+      document.querySelector("dialog[name=loading]").close();
+
+      if (!success) {
+        document.querySelector("dialog[name=errors]").showModal();
+        const list = document.querySelector("ul[name=list-errors]");
+
+        Object.keys(errors).forEach((item) => {
+          const errorMessage = errors[item][0];
+          const listItem = document.createElement("li");
+          listItem.className = "text-xs font-normal text-red-700";
+          listItem.textContent = errorMessage;
+          list.appendChild(listItem);
+        });
+
+        return;
+      } else {
+        const peakRateEletric = document.querySelector(
+          "input[name=peak-rate-eletric]"
+        );
+        const peakRateGas = document.querySelector("input[name=peak-rate-gas]");
+        const household_size = document.querySelector(
+          "input[name=household_size]"
+        );
+
+        switch (household_size.value) {
+          case "8":
+            peakRateEletric.value = data.e_low;
+            break;
+          case "9":
+            peakRateEletric.value = data.e_high;
+            break;
+          default:
+            peakRateEletric.value = data.e_single;
+            break;
+        }
+
+        if (peakRateGas) {
+          peakRateGas.value = data.gas;
+        }
+
+        putPeakRateCustomer(peakRateEletric);
+        putPeakRateCustomer(peakRateGas);
+      }
+    } catch (error) {
+      document
+        .querySelector("span[name=message-error]")
+        .classList.remove("hidden");
+    }
+  }
+
+  async function getProductWithCauculation() {
+    const product_id = getProductId();
+    const business = getIsBusiness();
+    let product_type = getProductType();
+    let my_consumption = getMyConsumption();
+    let { meterType, peakRateEletric, connectionEletric } = getMeterType();
+    let { peakRateGas, connectionGas } = getGasType();
+
+    if (!Boolean(Number(my_consumption))) {
+      connectionEletric = "E_3X25A";
+      connectionGas = "G_G6_500";
+    }
+
+    if (!Number(peakRateEletric)) {
+      peakRateEletric = 0;
+    }
+
+    if (!Number(peakRateGas)) {
+      peakRateGas = 0;
+    }
+
+    const params = {
+      postcode: "7521WC",
+      housenumber: 15,
+      type: "e_g",
+      tarifftype: meterType,
+      usage_e_single: peakRateEletric,
+      usage_g: peakRateGas,
+      has_return: 0,
+      building_function: business,
+      e_connection_type: connectionEletric,
+      g_connection_type: connectionGas,
+    };
+
+    const url = new URL(`${base_url}/user/products/${product_id}/energy`);
+    Object.keys(params).forEach((key) =>
+      url.searchParams.append(key, params[key])
+    );
+
+    document.querySelector("dialog[name=loading]").showModal();
+    const response = await fetch(url, {
+      method: "GET",
+      ...requestOptions,
+    })
+      .then((response) => response.text())
+      .then((result) => result)
+      .catch((error) => console.log("error", error));
+
+    document.querySelector("dialog[name=loading]").close();
+    const { errors, success, data } = JSON.parse(response);
+    const costs_eletric = data.cost_specifications.electricity;
+    const costs_gas = data.cost_specifications.gas;
+
+    // Init eletric calc
+    if (product_type === "e" || product_type === "e_g") {
+      document.querySelector(
+        "label[name=eletric_dynamic_average_tariff_inc_vat]"
+      ).innerHTML = costs_eletric.tariff.dynamic_average_tariff_inc_vat;
+      document.querySelector(
+        "label[name=eletric_purchase_surcharge_tariff_inc_vat]"
+      ).innerHTML = costs_eletric.tariff.purchase_surcharge_tariff_inc_vat;
+      document.querySelector(
+        "label[name=eletric_purchase_surcharge_tariff_inc_vat]"
+      ).innerHTML = costs_eletric.tariff.purchase_surcharge_tariff_inc_vat;
+      document
+        .querySelectorAll("label[name=eletric_usage_single]")
+        .forEach((element) => {
+          element.innerHTML = costs_eletric.usage_single;
+        });
+      document.querySelector(
+        "td[name=eletric_expected_dynamic_purchase_cost_inc_vat]"
+      ).innerHTML = `€ ${costs_eletric.expected_dynamic_purchase_cost_inc_vat}`;
+      document.querySelector(
+        "td[name=eletric_purchase_surcharge_cost_inc_vat]"
+      ).innerHTML = `€ ${costs_eletric.purchase_surcharge_cost_inc_vat}`;
+      document.querySelector(
+        "td[name=eletric_government_tax_per_year_inc_vat]"
+      ).innerHTML = `€ ${costs_eletric.government_tax_per_year_inc_vat}`;
+
+      const [eletric_tariff_range, eletric_tariff_rate] = Object.entries(
+        costs_eletric.tariff_energytax_exc_vat
+      )[0];
+      const tariff_eletric_formatter = `${eletric_tariff_range} X € ${eletric_tariff_rate.replace(
+        ",",
+        "."
+      )}`;
+      document.querySelector(
+        "td[name=eletric_tariff_energytax_exc_vat]"
+      ).innerHTML = tariff_eletric_formatter;
+
+      const [eletric_total_range, eletric_total_rate] = Object.entries(
+        costs_eletric.total_energytax_exc_vat
+      )[0];
+      const total_eletric_formatter = `€ ${eletric_total_rate.replace(
+        ",",
+        "."
+      )}`;
+      document.querySelector(
+        "td[name=eletric_total_energytax_exc_vat]"
+      ).innerHTML = total_eletric_formatter;
+      document.querySelector(
+        "td[name=eletric_fixed_delivery_cost_inc_vat]"
+      ).innerHTML = `€ ${costs_eletric.fixed_delivery_cost_inc_vat}`;
+      document.querySelector(
+        "td[name=eletric_tax_reduction_inc_vat]"
+      ).innerHTML = `€ ${costs_eletric.tax_reduction_inc_vat}`;
+      document.querySelector(
+        "label[name=eletric_grid_operator_name]"
+      ).innerHTML = costs_eletric.grid_operator_name;
+      document.querySelector(
+        "td[name=eletric_tariff_grid_operator_year_inc_vat]"
+      ).innerHTML = `€ ${costs_eletric.tariff_grid_operator_year_inc_vat}`;
+      document.querySelectorAll("td[name=eletric_total]").forEach((element) => {
+        element.innerHTML = `€ ${costs_eletric.total}`;
+      });
+      document
+        .querySelectorAll("label[name=eletric_total]")
+        .forEach((element) => {
+          element.innerHTML = `€ ${costs_eletric.total}`;
+        });
+    } else {
+      document.querySelector(
+        "label[name=eletric_dynamic_average_tariff_inc_vat]"
+      ).innerHTML = "€ 0.00";
+      document.querySelector(
+        "label[name=eletric_purchase_surcharge_tariff_inc_vat]"
+      ).innerHTML = "€ 0.00";
+      document.querySelector(
+        "label[name=eletric_purchase_surcharge_tariff_inc_vat]"
+      ).innerHTML = "€ 0.00";
+      document
+        .querySelectorAll("label[name=eletric_usage_single]")
+        .forEach((element) => {
+          element.innerHTML = "€ 0.00";
+        });
+      document.querySelector(
+        "td[name=eletric_expected_dynamic_purchase_cost_inc_vat]"
+      ).innerHTML = "€ 0.00";
+      document.querySelector(
+        "td[name=eletric_purchase_surcharge_cost_inc_vat]"
+      ).innerHTML = "€ 0.00";
+      document.querySelector(
+        "td[name=eletric_government_tax_per_year_inc_vat]"
+      ).innerHTML = "€ 0.00";
+
+      const [eletric_tariff_range, eletric_tariff_rate] = Object.entries(
+        costs_eletric.tariff_energytax_exc_vat
+      )[0];
+      const tariff_eletric_formatter = `${eletric_tariff_range} X € ${eletric_tariff_rate.replace(
+        ",",
+        "."
+      )}`;
+      document.querySelector(
+        "td[name=eletric_tariff_energytax_exc_vat]"
+      ).innerHTML = "€ 0.00";
+
+      const [eletric_total_range, eletric_total_rate] = Object.entries(
+        costs_eletric.total_energytax_exc_vat
+      )[0];
+      const total_eletric_formatter = `€ ${eletric_total_rate.replace(
+        ",",
+        "."
+      )}`;
+      document.querySelector(
+        "td[name=eletric_total_energytax_exc_vat]"
+      ).innerHTML = "€ 0.00";
+      document.querySelector(
+        "td[name=eletric_fixed_delivery_cost_inc_vat]"
+      ).innerHTML = "€ 0.00";
+      document.querySelector(
+        "td[name=eletric_tax_reduction_inc_vat]"
+      ).innerHTML = "€ 0.00";
+      document.querySelector(
+        "label[name=eletric_grid_operator_name]"
+      ).innerHTML = "€ 0.00";
+      document.querySelector(
+        "td[name=eletric_tariff_grid_operator_year_inc_vat]"
+      ).innerHTML = "€ 0.00";
+      document.querySelectorAll("td[name=eletric_total]").forEach((element) => {
+        element.innerHTML = "€ 0.00";
+      });
+      document
+        .querySelectorAll("label[name=eletric_total]")
+        .forEach((element) => {
+          element.innerHTML = "€ 0.00";
+        });
+    }
+
+    // init gas calc
+    if (product_type === "g" || product_type === "e_g") {
+      document.querySelector(
+        "label[name=gas_dynamic_average_tariff_inc_vat]"
+      ).innerHTML = costs_gas.tariff.dynamic_average_tariff_inc_vat;
+      document.querySelector(
+        "label[name=gas_purchase_surcharge_tariff_inc_vat]"
+      ).innerHTML = costs_gas.tariff.purchase_surcharge_tariff_inc_vat;
+      document.querySelector(
+        "label[name=gas_purchase_surcharge_tariff_inc_vat]"
+      ).innerHTML = costs_gas.tariff.purchase_surcharge_tariff_inc_vat;
+      document
+        .querySelectorAll("label[name=gas_usage_single]")
+        .forEach((element) => {
+          element.innerHTML = costs_gas.usage;
+        });
+      document.querySelector(
+        "td[name=gas_expected_dynamic_purchase_cost_inc_vat]"
+      ).innerHTML = `€ ${costs_gas.expected_dynamic_purchase_cost_inc_vat}`;
+      document.querySelector(
+        "td[name=gas_purchase_surcharge_cost_inc_vat]"
+      ).innerHTML = `€ ${costs_gas.purchase_surcharge_cost_inc_vat}`;
+      document.querySelector(
+        "td[name=gas_government_tax_per_year_inc_vat]"
+      ).innerHTML = `€ ${costs_gas.government_tax_per_year_inc_vat}`;
+
+      const [gas_tariff_range, gas_tariff_rate] = Object.entries(
+        costs_gas.tariff_energytax_exc_vat
+      )[0];
+      const tariff_gas_formatter = `${gas_tariff_range} X € ${gas_tariff_rate.replace(
+        ",",
+        "."
+      )}`;
+      document.querySelector(
+        "td[name=gas_tariff_energytax_exc_vat]"
+      ).innerHTML = tariff_gas_formatter;
+
+      const [gas_total_range, gas_total_rate] = Object.entries(
+        costs_gas.total_energytax_exc_vat
+      )[0];
+      const total_gas_formatter = `€ ${gas_total_rate.replace(",", ".")}`;
+      document.querySelector("td[name=gas_total_energytax_exc_vat]").innerHTML =
+        total_gas_formatter;
+      document.querySelector(
+        "td[name=gas_fixed_delivery_cost_inc_vat]"
+      ).innerHTML = `€ ${costs_gas.fixed_delivery_cost_inc_vat}`;
+      document.querySelector(
+        "label[name=gas_grid_operator_name]"
+      ).innerHTML = `€ ${costs_gas.grid_operator_name}`;
+      document.querySelector(
+        "td[name=gas_tariff_grid_operator_year_inc_vat]"
+      ).innerHTML = `€ ${costs_gas.tariff_grid_operator_year_inc_vat}`;
+      document.querySelectorAll("td[name=gas_total]").forEach((element) => {
+        element.innerHTML = `€ ${costs_gas.total}`;
+      });
+      document.querySelectorAll("label[name=gas_total]").forEach((element) => {
+        element.innerHTML = `€ ${costs_gas.total}`;
+      });
+    } else {
+      document.querySelector(
+        "label[name=gas_dynamic_average_tariff_inc_vat]"
+      ).innerHTML = "€ 0.00";
+      document.querySelector(
+        "label[name=gas_purchase_surcharge_tariff_inc_vat]"
+      ).innerHTML = "€ 0.00";
+      document.querySelector(
+        "label[name=gas_purchase_surcharge_tariff_inc_vat]"
+      ).innerHTML = "€ 0.00";
+      document
+        .querySelectorAll("label[name=gas_usage_single]")
+        .forEach((element) => {
+          element.innerHTML = "€ 0.00";
+        });
+      document.querySelector(
+        "td[name=gas_expected_dynamic_purchase_cost_inc_vat]"
+      ).innerHTML = "€ 0.00";
+      document.querySelector(
+        "td[name=gas_purchase_surcharge_cost_inc_vat]"
+      ).innerHTML = "€ 0.00";
+      document.querySelector(
+        "td[name=gas_government_tax_per_year_inc_vat]"
+      ).innerHTML = "€ 0.00";
+      document.querySelector(
+        "td[name=gas_tariff_energytax_exc_vat]"
+      ).innerHTML = "€ 0.00";
+      document.querySelector("td[name=gas_total_energytax_exc_vat]").innerHTML =
+        "€ 0.00";
+      document.querySelector(
+        "td[name=gas_fixed_delivery_cost_inc_vat]"
+      ).innerHTML = "€ 0.00";
+      document.querySelector("label[name=gas_grid_operator_name]").innerHTML =
+        "€ 0.00";
+      document.querySelector(
+        "td[name=gas_tariff_grid_operator_year_inc_vat]"
+      ).innerHTML = "€ 0.00";
+      document.querySelectorAll("td[name=gas_total]").forEach((element) => {
+        element.innerHTML = "€ 0.00";
+      });
+      document.querySelectorAll("label[name=gas_total]").forEach((element) => {
+        element.innerHTML = "€ 0.00";
+      });
+    }
+
+    // init cost toal
+    const gas_total = document.querySelector("td[name=gas_total]").textContent;
+    const eletric_total = document.querySelector(
+      "td[name=eletric_total]"
+    ).textContent;
+
+    const gas = parseFloat(gas_total.replace(/[^\d,]/g, "").replace(",", "."));
+    const eletric = parseFloat(
+      eletric_total.replace(/[^\d,]/g, "").replace(",", ".")
+    );
+
+    const total_year = gas + eletric;
+
+    const total_month = total_year / 12;
+
+    document
+      .querySelectorAll("td[name=gas_eletric_total]")
+      .forEach((element) => {
+        element.innerHTML = total_year.toLocaleString("pt-BR", {
+          style: "currency",
+          currency: "EUR",
+        });
+      });
+
+    document
+      .querySelectorAll("label[name=gas_eletric_total]")
+      .forEach((element) => {
+        element.innerHTML = total_year.toLocaleString("pt-BR", {
+          style: "currency",
+          currency: "EUR",
+        });
+      });
+
+    document.querySelector("label[name=total_per_month]").innerHTML =
+      total_month.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "EUR",
+      });
+
+    const total_btw_percent = 17.35;
+    const value_btw = total_year * (total_btw_percent / 100);
+    document.querySelector("label[name=total_btw]").innerHTML =
+      value_btw.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "EUR",
+      });
+    document.querySelector("td[name=total_btw]").innerHTML =
+      value_btw.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "EUR",
+      });
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/signature_pad@3.0.0-beta.3/dist/signature_pad.min.js"></script>
+<!-- signed.js -->
+<script src="signed.js">
+          function download(dataURL, filename) {
+    if (
+      navigator.userAgent.indexOf("Safari") > -1 &&
+      navigator.userAgent.indexOf("Chrome") === -1
+    ) {
+      window.open(dataURL);
+    } else {
+      var blob = dataURLToBlob(dataURL);
+      var url = window.URL.createObjectURL(blob);
+
+      var a = document.createElement("a");
+      a.style = "display: none";
+      a.href = url;
+      a.download = filename;
+
+      document.body.appendChild(a);
+      a.click();
+
+      window.URL.revokeObjectURL(url);
+    }
+  }
+
+  function dataURLToBlob(dataURL) {
+    var parts = dataURL.split(";base64,");
+    var contentType = parts[0].split(":")[1];
+    var raw = window.atob(parts[1]);
+    var rawLength = raw.length;
+    var uInt8Array = new Uint8Array(rawLength);
+
+    for (var i = 0; i < rawLength; ++i) {
+      uInt8Array[i] = raw.charCodeAt(i);
+    }
+
+    return new Blob([uInt8Array], { type: contentType });
+  }
+
+  var signaturePad = new SignaturePad(document.getElementById("signature-pad"), {
+    backgroundColor: "rgba(255, 255, 255, 0)",
+    penColor: "rgb(0, 0, 0)",
+  });
+
+  var saveButton = document.getElementById("save");
+  var cancelButton = document.getElementById("clear");
+
+  saveButton?.addEventListener("click", function (event) {
+    if (signaturePad.isEmpty()) {
+      alert("Faça sua assinatura.");
+    } else {
+      // var dataURL = signaturePad.toDataURL();
+      // download(dataURL, "signature.png");
+      // return dataURL;
+      // $("#imageCheck").val(dataURL);
+    }
+  });
+
+  cancelButton?.addEventListener("click", function (event) {
+    signaturePad.clear();
+  });
+</script>

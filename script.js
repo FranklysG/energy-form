@@ -170,23 +170,27 @@ function setCardActive(el) {
 
   container.querySelectorAll(".card").forEach((items) => {
     items.classList.remove(
-      "text-white",
-      "bg-[#1E2329]",
+      // "text-white",
+      // "bg-[#1E2329]",
       "after:bg-[#87C232]",
       "active"
     );
-    items.classList.add("bg-[#f8f8f8]", "text-[#1E2329]", "after:bg-[#f8f8f8]");
+    items.classList.add(
+      // "bg-[#f8f8f8]", 
+      // "text-[#1E2329]", 
+      "after:bg-[#f8f8f8]"
+      );
   });
 
   const parentClassList = el.parentNode.classList;
   parentClassList.remove(
-    "bg-[#f8f8f8]",
-    "text-[#1E2329]",
+    // "bg-[#f8f8f8]",
+    // "text-[#1E2329]",
     "after:bg-[#f8f8f8]"
   );
   parentClassList.add(
-    "text-white",
-    "bg-[#1E2329]",
+    // "text-white",
+    // "bg-[#1E2329]",
     "after:bg-[#87C232]",
     "active"
   );
